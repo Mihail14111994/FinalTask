@@ -1,49 +1,103 @@
-/*
- * Classname : com.rxp.realcontrol.serenity.drivers.DriverFactory
- *
- * Created on: 26 Nov 2018
- *
- * Copyright (c) 2000-2018 Realex Payments, Ltd.
- * Realex Payments, The Observatory, 7-11 Sir John Rogerson's Quay, Dublin 2, Ireland
- *
- * All Rights Reserved.
- *
- * This software is the confidential and proprietary information of
- * Realex Payments, Ltd. ("Confidential Information"). You shall not
- * disclose such Confidential Information and shall use it only in
- * accordance with the terms of the license agreement you entered into
- * with Realex Payments.
- *
- */
+///*
+// * Classname : com.rxp.realcontrol.serenity.drivers.DriverFactory
+// *
+// * Created on: 26 Nov 2018
+// *
+// * Copyright (c) 2000-2018 Realex Payments, Ltd.
+// * Realex Payments, The Observatory, 7-11 Sir John Rogerson's Quay, Dublin 2, Ireland
+// *
+// * All Rights Reserved.
+// *
+// * This software is the confidential and proprietary information of
+// * Realex Payments, Ltd. ("Confidential Information"). You shall not
+// * disclose such Confidential Information and shall use it only in
+// * accordance with the terms of the license agreement you entered into
+// * with Realex Payments.
+// *
+// */
+//package driverFactory;
+//
+//import io.github.bonigarcia.wdm.WebDriverManager;
+//import org.openqa.selenium.WebDriver;
+//import org.openqa.selenium.chrome.ChromeDriver;
+//import org.openqa.selenium.ie.InternetExplorerDriver;
+//
+//public class DriverFactory {
+//
+//	public WebDriver newDriver() {
+//		WebDriver driver = null;
+////		String browserName = System.getProperty("Browser", DriverType.CHROME.toString()).toUpperCase();
+////		DriverType driverType = DriverType.valueOf(browserName);
+//		DriverType driverType = DriverType.CHROME;
+//		switch (driverType) {
+//		case CHROME:
+//			WebDriverManager.chromedriver().setup();
+//			driver = new ChromeDriver();
+//			break;
+//		case IE:
+//			WebDriverManager.iedriver().setup();
+//			driver = new InternetExplorerDriver();
+//			break;
+//		default:
+//			WebDriverManager.chromedriver().setup();
+//			driver = new ChromeDriver();
+//			break;
+//		}
+//		return driver;
+//	}
+//}
 package driverFactory;
 
-import io.github.bonigarcia.wdm.DriverManagerType;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class DriverFactory {
+	static WebDriver driver = null;
+	public static WebDriver newDriver() {
 
-	public WebDriver newDriver() {
-		WebDriver driver = null;
 //		String browserName = System.getProperty("Browser", DriverType.CHROME.toString()).toUpperCase();
 //		DriverType driverType = DriverType.valueOf(browserName);
 		DriverType driverType = DriverType.CHROME;
 		switch (driverType) {
-		case CHROME:
-			WebDriverManager.chromedriver().setup();
-			driver = new ChromeDriver();
-			break;
-		case IE:
-			WebDriverManager.iedriver().setup();
-			driver = new InternetExplorerDriver();
-			break;
-		default:
-			WebDriverManager.chromedriver().setup();
-			driver = new ChromeDriver();
-			break;
+			case CHROME:
+				if (driver == null) {
+					WebDriverManager.chromedriver().setup();
+					driver = new ChromeDriver();
+				}
+				break;
+			case IE:
+				if (driver == null) {
+					WebDriverManager.iedriver().setup();
+					driver = new InternetExplorerDriver();
+				}
+				break;
+			default:
+				WebDriverManager.chromedriver().setup();
+				driver = new ChromeDriver();
+				break;
 		}
 		return driver;
 	}
+
+	public static WebDriver getDriver() {
+		return driver;
+	}
+
+	//	private static WebDriver driver;
+//
+//	public synchronized WebDriver createDriver() {
+//		if (driver == null)
+//			driver = new ChromeDriver();
+//		return driver;
+//	}
+//	public static WebDriver getDriver() {
+//		return driver;
+//	}
+//	public static void closeDriver() {
+//		driver.quit();
+//		driver = null;
+//	}
+
 }
