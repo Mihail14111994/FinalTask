@@ -2,26 +2,24 @@ package stepDefinition;
 
 import cucumber.api.java8.En;
 import driverFactory.DriverFactory;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.hamcrest.MatcherAssert;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pageObjects.HomePage;
 import pageObjects.TicketsPage;
+import stepImplementation.TicketsSteps;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-import java.sql.Driver;
+import java.util.List;
 
 public class TicketsDefinitions implements En {
 
@@ -30,41 +28,42 @@ public class TicketsDefinitions implements En {
     WebDriverWait wait = new WebDriverWait(driver,30);
     HomePage homePage=new HomePage();
     TicketsPage ticketsPage=new TicketsPage();
-    @BeforeClass
-    public static void setupDriver(){
-        WebDriverManager.chromedriver().setup();
-    }
-    @Before
-    public void setup() throws InterruptedException {
-        DriverFactory.getDriver().get("https://demo.opencart.com/");
-        DriverFactory.getDriver().manage().window().maximize();
-    }
+    TicketsSteps ticketsSteps = new TicketsSteps();
+    int priceOfTicket;
 
     @After
-    public void teardown() {
-        DriverFactory.getDriver().quit();
+    public void teardown(){
+        driver.quit();
     }
 
-    @Given("^User is on Tickets page$")
+    @Given("User is on Tickets page")
     public void ticketEventPage() {
         driver.get("https://www.fest.md/");
         homePage.getTicketsMenu().click();
         assertThat("Ticket Page is not displayed",ticketsPage.getPageName().getText(),is("Bilete"));
-
     }
 
-    @When("^User select a (.*) of tickets for an event$")
-    public void userSelectASection(int nrOfTickets) {
-
+    @When("User selects a {}")
+    public void userSelectsASection(String section) {
+        wait.until(ExpectedConditions.visibilityOf(ticketsPage.getAdBanner()));
+        List<WebElement> listOfSectionNames = ticketsPage.getSectionNames();
+        for (WebElement e:listOfSectionNames) {
+            if (e.getText().equals(section)) {
+            e.click();}
+        }
     }
-
-    @When("^User select a (.*)$")
-    public void userSelectASection(String section) {
-
+    @When("User selects {} of tickets for an event of the {}")
+    public void userSelectsAnEvent(int nr, String section) throws InterruptedException {
+        ticketsSteps.selectOnRandomEvent(section);
+        ticketsSteps.selectNrOTickets(nr);
+        priceOfTicket = ticketsSteps.submitTicketsNr();
     }
 
     @And("^The total price of tickets is displayed correct$")
     public void theTotalPriceOfTicketsIsDisplayedCorrect() {
+
+
+
     }
 
     @And("^All fields of booking are filled with (.*), (.*), (.*) and submited$")
@@ -110,7 +109,7 @@ public class TicketsDefinitions implements En {
 //    public void userSelectASection() {
 //    }
 
-    @And("User select a <nr> of tickets for an event")
-    public void userSelectANrOfTicketsForAnEvent() {
+    @And("User selects a <nr> of tickets for an event")
+    public void userSelectsANrOfTicketsForAnEvent() {
     }
 }
