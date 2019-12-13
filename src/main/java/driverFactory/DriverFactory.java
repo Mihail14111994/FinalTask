@@ -17,16 +17,15 @@
  */
 package driverFactory;
 
-import io.github.bonigarcia.wdm.DriverManagerType;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class DriverFactory {
-
+	WebDriver driver = null;
 	public WebDriver newDriver() {
-		WebDriver driver = null;
+
 //		String browserName = System.getProperty("Browser", DriverType.CHROME.toString()).toUpperCase();
 //		DriverType driverType = DriverType.valueOf(browserName);
 		DriverType driverType = DriverType.CHROME;
@@ -45,5 +44,11 @@ public class DriverFactory {
 			break;
 		}
 		return driver;
+	}
+
+	public void teardown() {
+		if (driver != null) {
+			driver.quit();
+		}
 	}
 }
