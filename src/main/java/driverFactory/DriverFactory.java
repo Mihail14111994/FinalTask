@@ -24,9 +24,9 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class DriverFactory {
+	static WebDriver driver = null;
+	public synchronized WebDriver newDriver() {
 
-	public WebDriver newDriver() {
-		WebDriver driver = null;
 //		String browserName = System.getProperty("Browser", DriverType.CHROME.toString()).toUpperCase();
 //		DriverType driverType = DriverType.valueOf(browserName);
 		DriverType driverType = DriverType.CHROME;
@@ -46,4 +46,24 @@ public class DriverFactory {
 		}
 		return driver;
 	}
+
+	public static WebDriver getDriver() {
+		return driver;
+	}
+
+	//	private static WebDriver driver;
+//
+//	public synchronized WebDriver createDriver() {
+//		if (driver == null)
+//			driver = new ChromeDriver();
+//		return driver;
+//	}
+//	public static WebDriver getDriver() {
+//		return driver;
+//	}
+//	public static void closeDriver() {
+//		driver.quit();
+//		driver = null;
+//	}
+
 }
