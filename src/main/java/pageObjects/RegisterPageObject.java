@@ -3,7 +3,8 @@ package pageObjects;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class RegisterPageObject {
+public class RegisterPageObject extends  PageObject{
+
     @FindBy(xpath = "//*[@id='formRegisterUser']/div[1]/h2")
     private WebElement ttlRegister;
 
@@ -16,7 +17,7 @@ public class RegisterPageObject {
     @FindBy(xpath = "//input[@id='formRegisterUser_passwordConfirm']")
     private WebElement txtConfirmPassword;
 
-    @FindBy(xpath = "//button[@id='formRegisterUser_btn-submit']")
+    @FindBy(xpath = "//div[contains(@id, 'formRegisterUser_group_submit')]//button[@name='btn-submit']")
     private WebElement btnRegistration;
 
     @FindBy(xpath = "//button[@class='btn btn-secondary btn-small btn-switch-login active']")
@@ -27,6 +28,29 @@ public class RegisterPageObject {
 
     @FindBy(xpath = "//input[@id='formRegisterUser_subscribeNewsletter']")
     private WebElement cbSubscrubing;
+
+    @FindBy(xpath = "//span[@class='field-error']")
+    private WebElement msgError;
+
+    @FindBy(xpath = "//*[@id='formRegisterUser_subscribeNewsletter_field']/label")
+    private WebElement msgcbSubscribing;
+
+    @FindBy(xpath = "//div[@id='formRegisterUser_email_field']//div[@class='field-errors']")
+    private WebElement msgErrorEmail;
+
+    @FindBy(xpath = "//div[@id='formRegisterUser_password_field']//div[@class='field-errors']")
+    private WebElement msgErrorPassword;
+
+    @FindBy(xpath = "//div[@id='formRegisterUser_passwordConfirm_field']//div[@class='field-errors']")
+    private WebElement msgErrorConfirmPassword;
+
+    public WebElement getMsgcbSubscribing() {
+        return msgcbSubscribing;
+    }
+
+    public WebElement getMsgError() {
+        return msgError;
+    }
 
     public WebElement getTtlRegister() {
         return ttlRegister;
@@ -90,5 +114,17 @@ public class RegisterPageObject {
 
     public void setCbSubscrubing(WebElement cbSubscrubing) {
         this.cbSubscrubing = cbSubscrubing;
+    }
+
+    public WebElement getMsgErrorEmail() {
+        return msgErrorEmail;
+    }
+
+    public WebElement getMsgErrorPassword() {
+        return msgErrorPassword;
+    }
+
+    public WebElement getMsgErrorConfirmPassword() {
+        return msgErrorConfirmPassword;
     }
 }
