@@ -3,7 +3,6 @@ package stepDefinition;
 import cucumber.api.java8.En;
 import driverFactory.DriverFactory;
 import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -16,10 +15,10 @@ import pageObjects.HomePage;
 import pageObjects.TicketsPage;
 import stepImplementation.TicketsSteps;
 
+import java.util.List;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-
-import java.util.List;
 
 public class TicketsDefinitions implements En {
 

@@ -1,10 +1,7 @@
 package pageObjects;
 
-import driverFactory.DriverFactory;
-import jdk.nashorn.internal.objects.annotations.Getter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 public class HomePage extends PageObject{
 //    @FindBy(xpath="//a[@href='/ro/bilete']")
@@ -13,6 +10,11 @@ public class HomePage extends PageObject{
 
     @FindBy(xpath = "//a[@href='/ro/evenimente']")
     WebElement eventsMenu;
+
+    @FindBy(xpath = "//*[@class='links']//a//span[text()='Places']")
+    WebElement placesMenu;
+
+    public WebElement getPlacesMenu() { return placesMenu; }
 
     public WebElement getTicketsMenu() {
         return ticketsMenu;
