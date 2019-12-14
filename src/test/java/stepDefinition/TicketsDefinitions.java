@@ -39,7 +39,7 @@ public class TicketsDefinitions implements En  {
         driver.quit();
     }
 
-    @Given("{}  page is displayed")
+    @Given("{} page is displayed")
     public void ticketEventPage(String pageName) throws InterruptedException {
         wait.until(ExpectedConditions.visibilityOf(ticketsPage.getAdBanner()));
         Thread.sleep(2000);
@@ -55,11 +55,13 @@ public class TicketsDefinitions implements En  {
 
     @Given("User is logged in with valid credentials")
     public void userIsLoggedInWithValidCredentials() {
+        WebDriver driver = DriverFactory.getDriver();
+        driver.get("https://www.fest.md/ro/login-register");
         wait.until(ExpectedConditions.visibilityOf(loginRegistrationPage.getEmailLogin()));
         loginRegistrationPage.getEmailLogin().click();
-        loginRegistrationPage.getEmailLogin().sendKeys("doina@gmail.com");
+        loginRegistrationPage.getEmailLogin().sendKeys("whiteangelrabbit@outlook.com");
         loginRegistrationPage.getPasswordLogin().click();
-        loginRegistrationPage.getPasswordLogin().sendKeys("123456");
+        loginRegistrationPage.getPasswordLogin().sendKeys("147258");
         loginRegistrationPage.getBtnLogin().click();
     }
 
@@ -72,12 +74,25 @@ public class TicketsDefinitions implements En  {
             e.click();}
         }
     }
-    @When("User selects {} tickets for an event of the {}")
-    public void userSelectsAnEvent(int nr, String section) throws InterruptedException {
-        ticketsSteps.selectOnRandomEvent(section);
-        ticketsSteps.selectNrOTickets(nr);
-        priceOfTicket = ticketsSteps.submitTicketsNr();
+    @When("User {} {} tickets for an event of the {}")
+    public void userSelectsAnEvent( String submit, int nr, String section) throws InterruptedException {
+        if (submit.equals("submits")) {
+            ticketsSteps.selectOnRandomEvent(section);
+            ticketsSteps.selectNrOTickets(nr);
+            priceOfTicket = ticketsSteps.submitTicketsNr();
+        }
+        else if (submit.equals("selects")){
+            ticketsSteps.selectOnRandomEvent(section);
+            ticketsSteps.selectNrOTickets(nr);
+        }
     }
+
+//    @And("User selects {} tickets for an event of the {}")
+//    public void userSelectsTickets(int nr, String section) throws InterruptedException {
+//        ticketsSteps.selectOnRandomEvent(section);
+//        ticketsSteps.selectNrOTickets(nr);
+//        //  priceOfTicket = ticketsSteps.submitTicketsNr();
+//    }
 
     @And("The total price is displayed correct for {} tickets")
     public void theTotalPriceOfTicketsIsDisplayedCorrect(int ticketsNr) {
@@ -102,45 +117,46 @@ public class TicketsDefinitions implements En  {
         ticketsSteps.verifyBooking();
     }
 
-    @And("Booking is not accepted")
-    public void bookingIsNotAccepted() {
-
-    }
-
     @Then("(.*) occurs under each field$")
     public void aWarningMessageOccursUnderEachField(String errorMessage) {
         ticketsSteps.verifyWarningMessages (errorMessage);
+    }
 
+    @And("User selects {} tickets for the same event")
+    public void userSelectsEmptyTicketsForTheSameEvent(int nr) throws InterruptedException {
+        nr=0;
+        ticketsSteps.selectNrOTickets(nr);
     }
 
     @And("Submit button is (.*)")
-    public void submitButtonIsEnabledDisabled() {
-        //case
-
+    public void submitButtonIsEnabledDisabled(String availability) {
+        ticketsSteps.setSubmitButtonAvailability(availability);
     }
 
-    @And("All events on the page have {string} button")
-    public void allEventsOnThePageHaveButton(String detaliiButton) {
+    @And("All events of {} have \"Detalii\" button")
+    public void allEventsOnThePageHaveDetails(String section) {
+        ticketsSteps.verifyDetailsBtn(section);
     }
 
 
-    @And("User clicks on {string} button of an event")
-    public void userClicksOnButtonOfAnEvent(String detaliiButton) {
+    @And("User clicks on \"Detalii\" button of an event of {}")
+    public void userClicksOnButtonOfAnEvent(String section) {
+        ticketsSteps.clickBtnDetailsRandomEvent(section);
     }
 
     @Then("The information of the event is displayed")
     public void theInformationOfTheEventIsDisplayed() {
+        ticketsSteps.verifyDetailsOfEvent();
     }
 
-
-
-
-//    @When("User select a <section>")
-//    public void userSelectASection() {
-//    }
-
-    @And("User selects a <nr> of tickets for an event")
-    public void userSelectsANrOfTicketsForAnEvent() {
+    @And("{} for alert is selected and submited")
+    public void userSelectsAnOptionForAlertAndSubmit(String option) {
+        ticketsSteps.setAlert(option);
     }
 
+    @Then("The alert is successfully set")
+    public void theAlertIsSuccessfullySet() {
+        ticketsSteps.verifyAlertIsSet();
+        ticketsSteps.deleteAlert();
+    }
 }
