@@ -5,9 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 import pageObjects.HomePage;
 import pageObjects.PlacesPage;
+import sun.jvm.hotspot.utilities.Assert;
 
 import java.util.List;
 import java.util.Random;
@@ -41,7 +41,7 @@ public class PlacesSteps {
     }
 
     public static void checkUserIsOnPlacesPage(){
-         Assert.assertTrue(placesPage.getPageTitle().isDisplayed());
+        Assert.that(placesPage.getPageTitle().isDisplayed(), "The Places page title is wrong");
     }
 
     public static void clickOnCategoryDropdown(String category){
@@ -86,10 +86,10 @@ public class PlacesSteps {
 
         if(places.size() > 0){
             wait.until(ExpectedConditions.visibilityOf(places.get(places.size()-1)));
-            Assert.assertTrue(getRandomElement(places).getText().contains(subcategoryName.substring(0,subcategoryName.length()-1)));
+            Assert.that(getRandomElement(places).getText().contains(subcategoryName.substring(0,subcategoryName.length()-1)), "The subcategory isn't in the type of the place");
         }
         if(places.size() == 0){
-            Assert.assertTrue(true);
+            Assert.that(true, "");
         }
     }
 
