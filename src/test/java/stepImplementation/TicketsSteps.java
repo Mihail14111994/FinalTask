@@ -191,17 +191,15 @@ public class TicketsSteps {
     }
 
     public void verifyAlertIsSet(){
-        //wait
+        wait.until(ExpectedConditions.elementToBeClickable(homePage.getDdUserInformation()));
         homePage.getDdUserInformation().click();
         homePage.getBtnMyAccount().click();
         assertThat("Reminder is not displayed", eventsPage.getBtnDeleteReminder().size()> 0);
-        eventsPage.getBtnDeleteReminder().get(0).click();
-        assertThat("Reminder is not deleted",eventsPage.getBtnDeleteReminder().size() < 1 );
     }
 
     public void deleteAlert(){
+        wait.until(ExpectedConditions.elementToBeClickable(eventsPage.getBtnSaveLanguage()));
         eventsPage.getBtnDeleteReminder().get(0).click();
         assertThat("Reminder is not deleted",eventsPage.getBtnDeleteReminder().size() < 1 );
     }
-
     }

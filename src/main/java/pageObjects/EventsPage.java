@@ -42,6 +42,13 @@ public class EventsPage extends PageObject{
     @FindBy (css= "#section-reminders > div.list > div > button")
     List <WebElement> btnDeleteReminder;
 
+    @FindBy (xpath = "//*[@id='formEventEmail_btn-submit']")
+    WebElement btnSaveLanguage;
+
+    public WebElement getBtnSaveLanguage() {
+        return btnSaveLanguage;
+    }
+
     public List<WebElement> getBtnDeleteReminder() {
         return btnDeleteReminder;
     }

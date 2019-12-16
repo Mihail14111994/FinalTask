@@ -59,9 +59,9 @@ public class TicketsDefinitions implements En  {
         driver.get("https://www.fest.md/ro/login-register");
         wait.until(ExpectedConditions.visibilityOf(loginRegistrationPage.getEmailLogin()));
         loginRegistrationPage.getEmailLogin().click();
-        loginRegistrationPage.getEmailLogin().sendKeys("whiteangelrabbit@outlook.com");
+        loginRegistrationPage.getEmailLogin().sendKeys("frosea123@gmail.com");
         loginRegistrationPage.getPasswordLogin().click();
-        loginRegistrationPage.getPasswordLogin().sendKeys("147258");
+        loginRegistrationPage.getPasswordLogin().sendKeys("147369");
         loginRegistrationPage.getBtnLogin().click();
     }
 
