@@ -36,7 +36,4 @@ public class Borders {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].style.border='0px'", element);
     }
-
-
-
 }

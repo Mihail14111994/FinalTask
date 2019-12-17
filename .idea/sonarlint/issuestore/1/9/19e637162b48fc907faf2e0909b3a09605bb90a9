@@ -1,0 +1,6 @@
+
+rsquid:UselessImportCheck"GRemove this unused import 'io.github.bonigarcia.wdm.DriverManagerType'.(¦æ½ì8ªÑòÿî-
+nsquid:CommentedOutCodeLine9"<This block of commented-out lines of code should be removed.(‚þÆöúÿÿÿÿ8Û¢æ‚ï-
+hsquid:CommentedOutCodeLine7"<This block of commented-out lines of code should be removed.(ÀÙ‡!8Û¢æ‚ï-
+~squid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Òâ³Óøÿÿÿÿ8ªÑòÿî-
+isquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(¨öÎÚ8ëûå‚ï-

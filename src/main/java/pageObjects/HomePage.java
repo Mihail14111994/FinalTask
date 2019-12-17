@@ -30,10 +30,6 @@ public class HomePage extends PageObject{
     @FindBy(xpath = "//a[@href='/ro/evenimente']")
     WebElement eventsMenu;
 
-    @FindBy(xpath = "//*[@class='links']//a//span[text()='Places']")
-    WebElement placesMenu;
-
-
     @FindBy (xpath = "//*[@id='header']/div[2]/a")
     WebElement btnMyBookings;
 
@@ -92,7 +88,10 @@ public class HomePage extends PageObject{
     }
 
     public WebElement getPlacesMenu() {
-        return PlacesMenu;}
+
+        return PlacesMenu;
+    }
+
     public WebElement getBtnMyBookings() {
         return btnMyBookings;
     }

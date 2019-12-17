@@ -7,15 +7,17 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pageObjects.*;
-import sun.jvm.hotspot.utilities.Assert;
 
 import java.util.List;
 import java.util.Random;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+
 public class PlacesSteps {
 
     static DriverFactory driverFactory = new DriverFactory();
-    static WebDriver driver = driverFactory.newDriver();
+//    static WebDriver driver = driverFactory.newDriver();
+    static WebDriver driver = DriverFactory.getDriver();
     static WebDriverWait wait = new WebDriverWait(driver,10);
     static SearchPage searchPage = new SearchPage();
     static PlacesPage placesPage = new PlacesPage();
@@ -26,7 +28,7 @@ public class PlacesSteps {
     static String categoryName;
     static String subcategoryName;
 
-    public static void accessHomePage(){
+    public static void accessHomePage() {
         driver.get(enHomePageURL);
     }
 
@@ -46,11 +48,11 @@ public class PlacesSteps {
     }
 
     public static void checkUserIsOnPlacesPage(){
-        Assert.that(placesPage.getPageTitle().isDisplayed(), "The Places page title is wrong");
+        assertThat("The Places page title is wrong",placesPage.getPageTitle().isDisplayed());
     }
 
     public static void checkUserIsOnHomePage(){
-        Assert.that(homePage.getBtnHome().isDisplayed(), "The Home page title is wrong");
+        assertThat("The Home page title is wrong",homePage.getBtnHome().isDisplayed());
     }
 
     public static void clickOnCategoryDropdown(String category){
@@ -89,7 +91,7 @@ public class PlacesSteps {
         wait.until(ExpectedConditions.visibilityOf(placesPage.getBtnSeeOnMap()));
         List <WebElement> places = getAllThePlacesTypeFromCategory();
         System.out.println(places.size());
-        Assert.that(places.size() != 0, "Nu exista locuri");
+        assertThat("Nu exista locuri",places.size() != 0);
         placesPage.getBtnSeeOnMap().click();
     }
 
@@ -100,8 +102,6 @@ public class PlacesSteps {
             subcategories = placesPage.getDblRestaurants();
         if(categoryName.equalsIgnoreCase("Bars and cafes")) {
             subcategories = placesPage.getDblBarsAndCafes();
-            System.out.println("bars and cafes is clicked");
-
         }
         if(categoryName.equals("Sports/Entertainment")) {
             subcategories = placesPage.getDblSportsEntertainment();
@@ -120,10 +120,10 @@ public class PlacesSteps {
 
         if(places.size() > 0){
             wait.until(ExpectedConditions.visibilityOf(places.get(places.size()-1)));
-            Assert.that(getRandomElement(places).getText().contains(subcategoryName.substring(0,subcategoryName.length()-3)), "The subcategory isn't in the type of the place");
+            assertThat("The subcategory isn't in the type of the place",getRandomElement(places).getText().contains(subcategoryName.substring(0,subcategoryName.length()-3)));
         }
         if(places.size() == 0){
-            Assert.that(true, "");
+            assertThat("No placesElement found",true);
         }
     }
 
@@ -191,12 +191,12 @@ public class PlacesSteps {
             getRandomElement(places).click();
         }
         if(places.size() == 0){
-            Assert.that(true, "");
+            assertThat("No placesElement found",true);
         }
     }
 
     public static void checkPlacesElementDetailsCorrespondence(){
-        wait.until(ExpectedConditions.elementToBeClickable(placesPage.getCategories().get(1)));
+        wait.until(ExpectedConditions.elementToBeClickable(homePage.getBtnSuggestedEvent()));
     }
 
     public static void userTypeTextInSearchbar(String inputText){
@@ -207,7 +207,8 @@ public class PlacesSteps {
 
     public static void checkTheResultOfSearch(String locationName){
         wait.until(ExpectedConditions.visibilityOf(searchPage.getTxaSearchFor()));
-        Assert.that(searchPage.getTxaSearchFor().getText().contains(locationName), "Didn't get to results of search");
+        assertThat("Didn't get to results of search",searchPage.getTxaSearchFor().getText().contains(locationName));
+
         List <WebElement> resultsOfSearch =  placesPage.getPlacesElementType();
         if(resultsOfSearch == null)
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("No results have been found."))).isDisplayed();
