@@ -19,7 +19,7 @@ Feature: 'Places' page
     Examples:
       | category          |
       | Clubs             |
-#      | Cinema            |
+      | Cinema            |
 #      | Theatres          |
 #      | Museums/Galleries |
 
@@ -29,10 +29,10 @@ Feature: 'Places' page
     Then User see the results matching his <locationName> request
     Examples:
       | locationName |
-#      |              |
-#      | restaurants  |
+      |              |
+      | restaurants  |
       | best music   |
-#
+
     Scenario Outline: Places filtering
       Given User is on Places page
       And User clicks Options button

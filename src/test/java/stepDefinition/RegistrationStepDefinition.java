@@ -4,7 +4,6 @@ import actionMethods.Borders;
 import actionMethods.Colours;
 import driverFactory.DriverFactory;
 import io.cucumber.datatable.DataTable;
-import io.cucumber.java.After;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -278,9 +277,9 @@ public class RegistrationStepDefinition {
             System.out.println(i);
         }
     }
-    @After
-    public void teardown() {
-        driver.quit();
-    }
+//    @After
+//    public void teardown() {
+//        driver.quit();
+//    }
 
 }

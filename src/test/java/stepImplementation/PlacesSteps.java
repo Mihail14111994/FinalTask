@@ -15,47 +15,42 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class PlacesSteps {
 
-    static DriverFactory driverFactory = new DriverFactory();
-//    static WebDriver driver = driverFactory.newDriver();
-    static WebDriver driver = DriverFactory.getDriver();
-    static WebDriverWait wait = new WebDriverWait(driver,10);
-    static SearchPage searchPage = new SearchPage();
-    static PlacesPage placesPage = new PlacesPage();
-    static PlacesElementPage placesElementPage = new PlacesElementPage();
-    static OptionsPlacesPage optionsPage = new OptionsPlacesPage();
-    static HomePage homePage = new HomePage();
-    static String enHomePageURL = "https://www.fest.md/en/";
-    static String categoryName;
-    static String subcategoryName;
+    WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(),10);
+    SearchPage searchPage = new SearchPage();
+     PlacesPage placesPage = new PlacesPage();
+     PlacesElementPage placesElementPage = new PlacesElementPage();
+     OptionsPlacesPage optionsPage = new OptionsPlacesPage();
+     HomePage homePage = new HomePage();
+     String enHomePageURL = "https://www.fest.md/en/";
+     String categoryName;
+     String subcategoryName;
 
-    public static void accessHomePage() {
+    public void accessHomePage() {
+        WebDriver driver = DriverFactory.getDriver();
         driver.get(enHomePageURL);
     }
 
-    public  static void maximizeWindow(){
+    public void maximizeWindow(){
+        WebDriver driver = DriverFactory.getDriver();
         driver.manage().window().maximize();
-    }
-
-    public static void teardown(){
-        driver.quit();
     }
 
     //    Scenario Outline: See details of a chosen place
 
-    public static void accessPlacesPage() {
+    public void accessPlacesPage() {
         wait.until(ExpectedConditions.visibilityOf(homePage.getPlacesMenu()));
         homePage.getPlacesMenu().click();
     }
 
-    public static void checkUserIsOnPlacesPage(){
-        assertThat("The Places page title is wrong",placesPage.getPageTitle().isDisplayed());
+    public void checkUserIsOnPlacesPage(){
+        assertThat("The Places page title is wrong",homePage.getPlacesMenu().isDisplayed());
     }
 
-    public static void checkUserIsOnHomePage(){
-        assertThat("The Home page title is wrong",homePage.getBtnHome().isDisplayed());
+    public void checkUserIsOnHomePage(){
+        assertThat("Home page not present",homePage.getPlacesMenu().isDisplayed());
     }
 
-    public static void clickOnCategoryDropdown(String category){
+    public void clickOnCategoryDropdown(String category){
         wait.until(ExpectedConditions.elementToBeClickable(placesPage.getDdlCategories().get(1)));
         categoryName = category;
 
@@ -71,7 +66,7 @@ public class PlacesSteps {
         }
     }
 
-    public static void clickOnCategory(String category){
+    public void clickOnCategory(String category){
         wait.until(ExpectedConditions.elementToBeClickable(placesPage.getCategories().get(1)));
         categoryName = category;
 
@@ -87,7 +82,7 @@ public class PlacesSteps {
         }
     }
 
-    public static void userClicksOnSeeOnMapButton(){
+    public void userClicksOnSeeOnMapButton(){
         wait.until(ExpectedConditions.visibilityOf(placesPage.getBtnSeeOnMap()));
         List <WebElement> places = getAllThePlacesTypeFromCategory();
         System.out.println(places.size());
@@ -95,8 +90,7 @@ public class PlacesSteps {
         placesPage.getBtnSeeOnMap().click();
     }
 
-    public static void clickOnSubcategory(){
-
+    public void clickOnSubcategory(){
         List<WebElement> subcategories = null;
         if(categoryName.equals("Restaurants"))
             subcategories = placesPage.getDblRestaurants();
@@ -114,7 +108,7 @@ public class PlacesSteps {
         }
     }
 
-    public static void checkPlaceBelongsToSubcategory(){
+    public void checkPlaceBelongsToSubcategory(){
         wait.until(ExpectedConditions.elementToBeClickable(placesPage.getCategories().get(1)));
         List<WebElement> places = getAllThePlacesTypeFromCategory();
 
@@ -127,25 +121,25 @@ public class PlacesSteps {
         }
     }
 
-    public static void checkAllThePlacesPresentOnMap(){
+    public void checkAllThePlacesPresentOnMap(){
         wait.until(ExpectedConditions.visibilityOf(placesPage.getMapFromPlacesPage()));
     }
 
-    public static List<WebElement> getAllThePlacesTypeFromCategory(){
+    public List<WebElement> getAllThePlacesTypeFromCategory(){
         return placesPage.getPlacesElementType();
     }
 
-    public static void userClicksOnSearchButton(){
+    public void userClicksOnSearchButton(){
         wait.until(ExpectedConditions.visibilityOf(homePage.getTxtSearchbar()));
         homePage.getTxtSearchbar().click();
     }
 
-    public static void userClicksOnOptionButton() {
+    public void userClicksOnOptionButton() {
         wait.until(ExpectedConditions.visibilityOf(placesPage.getBtnOptions()));
         placesPage.getBtnOptions().click();
     }
 
-    public static void checkThemeValuesFromOptions(String theme){
+    public void checkThemeValuesFromOptions(String theme){
         optionsPage.getDdlTheme().click();
         wait.until(ExpectedConditions.elementToBeClickable(optionsPage.getDblThemes().get(24)));
         for (WebElement element: optionsPage.getDblThemes()) {
@@ -156,7 +150,7 @@ public class PlacesSteps {
         optionsPage.getDdlTheme().click();
     }
 
-    public static void checkPriceValuesFromOptions(String price){
+    public void checkPriceValuesFromOptions(String price){
         switch (price){
             case "2":
                 optionsPage.getChkPriceLevel2().click();
@@ -171,7 +165,7 @@ public class PlacesSteps {
         }
     }
 
-    public static void checkFacilitiesValuesFromOptions(String facilities){
+    public void checkFacilitiesValuesFromOptions(String facilities){
         for (WebElement element: optionsPage.getDblFacilities()) {
             if (facilities.contains(element.getText().substring(0, element.getText().length() - 1))){
                 element.click();
@@ -179,11 +173,11 @@ public class PlacesSteps {
         }
     }
 
-    public static void userClicksOnOptionsSearchButton() {
+    public void userClicksOnOptionsSearchButton() {
         optionsPage.getBtnOptionsSearch().click();
     }
 
-    public static void selectAPlacesElement(){
+    public void selectAPlacesElement(){
         wait.until(ExpectedConditions.elementToBeClickable(homePage.getBtnSuggestedEvent()));
         List<WebElement> places = placesElementPage.getBtnDetailsOfAPlacesElement();
 
@@ -195,17 +189,17 @@ public class PlacesSteps {
         }
     }
 
-    public static void checkPlacesElementDetailsCorrespondence(){
+    public void checkPlacesElementDetailsCorrespondence(){
         wait.until(ExpectedConditions.elementToBeClickable(homePage.getBtnSuggestedEvent()));
     }
 
-    public static void userTypeTextInSearchbar(String inputText){
+    public void userTypeTextInSearchbar(String inputText){
         wait.until(ExpectedConditions.visibilityOf(homePage.getTxtSearchbar()));
         homePage.getTxtSearchbar().sendKeys(inputText);
         homePage.getBtnSearch().click();
     }
 
-    public static void checkTheResultOfSearch(String locationName){
+    public void checkTheResultOfSearch(String locationName){
         wait.until(ExpectedConditions.visibilityOf(searchPage.getTxaSearchFor()));
         assertThat("Didn't get to results of search",searchPage.getTxaSearchFor().getText().contains(locationName));
 
