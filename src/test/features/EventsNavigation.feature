@@ -5,7 +5,7 @@ Feature: Buy/book a ticket and get event information
 
   Scenario Outline: User is able to book a ticket
     Given User is logged in with valid credentials
-    And Tickets page is displayed
+    And Tickets menu page is displayed
     When <section> is selected
     And User submits <nr> tickets for an event of the <section>
     And The total price is displayed correct for <nr> tickets
@@ -19,7 +19,7 @@ Feature: Buy/book a ticket and get event information
 
   Scenario Outline: User is unable to book a ticket after checkout with invalid data
     Given User is logged in with valid credentials
-    And Tickets page is displayed
+    And Tickets menu page is displayed
     When <section> is selected
     And User submits <nr> tickets for an event of the <section>
     And All fields of booking are filled with <firstName>, <lastName>, <phone> and submited
@@ -31,7 +31,7 @@ Feature: Buy/book a ticket and get event information
       | 4  | Conferințe | latinlatinlatinlatinlatinlatinlatinlatinlatinlatinl | latinlatinlatinlatinlatinlatinlatinlatinlatinlatinl | 12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789011234567890 | Acest câmp nu poate avea mai mult de |
 
   Scenario Outline: User is not able to book a empty number of tickets
-    Given Tickets page is displayed
+    Given Tickets menu page is displayed
     When <section> is selected
     And User selects <nr> tickets for an event of the <section>
     And Submit button is enabled
@@ -42,7 +42,7 @@ Feature: Buy/book a ticket and get event information
       | 2  | Conferințe | 0     |
 
   Scenario Outline: User is able to visualise details of any event
-    Given Events page is displayed
+    Given Events menu page is displayed
     When <section> is selected
     And All events of <section> have "Detalii" button
     And User clicks on "Detalii" button of an event of <section>
@@ -55,7 +55,7 @@ Feature: Buy/book a ticket and get event information
 #
   Scenario Outline: User is able to set an alert for an event
     Given User is logged in with valid credentials
-    And Events page is displayed
+    And Events menu page is displayed
     When Sport is selected
     And User clicks on "Detalii" button of an event of <section>
     And <option> for alert is selected and submited

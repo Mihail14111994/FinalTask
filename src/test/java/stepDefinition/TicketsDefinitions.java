@@ -39,7 +39,7 @@ public class TicketsDefinitions implements En  {
         driver.quit();
     }
 
-    @Given("{} page is displayed")
+    @Given("{} menu page is displayed")
     public void ticketEventPage(String pageName) throws InterruptedException {
         wait.until(ExpectedConditions.visibilityOf(ticketsPage.getAdBanner()));
         Thread.sleep(2000);
@@ -86,13 +86,6 @@ public class TicketsDefinitions implements En  {
             ticketsSteps.selectNrOTickets(nr);
         }
     }
-
-//    @And("User selects {} tickets for an event of the {}")
-//    public void userSelectsTickets(int nr, String section) throws InterruptedException {
-//        ticketsSteps.selectOnRandomEvent(section);
-//        ticketsSteps.selectNrOTickets(nr);
-//        //  priceOfTicket = ticketsSteps.submitTicketsNr();
-//    }
 
     @And("The total price is displayed correct for {} tickets")
     public void theTotalPriceOfTicketsIsDisplayedCorrect(int ticketsNr) {
