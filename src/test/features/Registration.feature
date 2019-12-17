@@ -1,9 +1,10 @@
 Feature: Account feature.
+
   Background:
     Given Fest.md page is displayed
 
   Scenario Outline: User is able to register
-    Given Login page is displayed
+    Given Register page is displayed
     When Submit <email>, <password> and confirm password in registration form
     Then Home page is displayed
     And Register is successful
@@ -12,43 +13,46 @@ Feature: Account feature.
       | email        | password |
       | test2@gma.ru | 123123   |
 
-#  Scenario Outline: User make registration negative
-#    When Page is displayed in <language> characters
-#    And Submit <email>, <password> and confirm <password> in registration form
-#    Then <error> message is displayed
-#    And Register is not successful
+  Scenario Outline: User fails to registrate
+    Given Register page is displayed
+    When Submit <email>, <password> and confirm password in registration form
+    Then Registration fails with <error> message
+    Examples:
+      | email        | password               | error                                     |
+      | test         | 123123                 | Adresa de email introdusă nu este validă. |
+      | null         | 123123                 | Acest câmp nu poate fi gol.               |
+      | test2@gma.ru | null                   | Acest câmp nu poate fi gol.               |
+      | num2@ij.md   | PassWithAnotherConfirm | Parolele introduse nu coincid.            |
 #
-#    Examples:
-#    |email|password|error|
-#    |test |123123  |     |
-#    |null |123123  |     |
-#    |test2@gma.ru|null|  |
-#
-#  Scenario: Registration window functionality
-#    When  Click on "Register" header
-#    Then  the following elements are visible
-#      |Register title|
-#      |Email field|
-#      |Password field|
-#      |Confirm password field|
-#      |Register button|
-#      |Login button   |
-#      |Login with facebook button|
-#      |Recieve newletter checkbox|
-#
-#  Scenario: Login window functionality
-#    When  Click on "Login" header
-#    Then  the following elements are visible1
-#      |Login title|
-#      |Email field|
-#      |Password field|
-#      |Register button|
-#      |Login button   |
-#      |Login with facebook button|
-#      |Forgot password link|
+  Scenario: Registration window UI check
+    When  Register page is displayed
+    Then  the following elements are visible on Register page
+      |Register title|
+      |Email field|
+      |Password field|
+      |Confirm password field|
+      |Register button|
+      |Login button   |
+      |Login with facebook button|
+      |Recieve newletter checkbox|
+
 ##
-#  Scenario: User deletes account
-#    When Account was deleted
-#    Then Home page is displayed
-#    And Checked that account was deleted
+  Scenario: Login window UI check
+    When  Login page is displayed
+    Then  the following elements are visible on Login page
+      |Login title|
+      |Email field|
+      |Password field|
+      |Register button|
+      |Login button   |
+      |Login with facebook button|
+      |Forgot password link|
+##
+  Scenario Outline: User deletes account
+    When Account with <email> and <password> was deleted
+    Then Home page is displayed
+    And Checked that account was deleted
+    Examples:
+      | email        | password |
+      | test2@gma.ru | 123123   |
 

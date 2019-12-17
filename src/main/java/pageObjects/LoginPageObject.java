@@ -2,11 +2,10 @@ package pageObjects;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-//@Data
-public class LoginPageObject {
 
-    @FindBy(xpath = "//*[@id='formRegister_email_field']/div/span")
-    private WebElement emailField;
+//@Data
+public class LoginPageObject extends PageObject {
+
 
     @FindBy(xpath = "//form[@id='formLoginUser']")
     private WebElement frmLogin;
@@ -32,9 +31,15 @@ public class LoginPageObject {
     @FindBy(xpath = "//button[@class='btn btn-small btn-auth-facebook']")
     private WebElement btnFacebookLogin;
 
-    public WebElement getEmailField() {
-        return emailField;
+    @FindBy(xpath = "//div[@id='formLoginUser_email_field']//div[@class='field-errors']")
+    private WebElement msgErrorEmail;
+
+
+
+    public WebElement getMsgErrorEmail() {
+        return msgErrorEmail;
     }
+
 
     public WebElement getFrmLogin() {
         return frmLogin;
@@ -68,10 +73,6 @@ public class LoginPageObject {
         return btnFacebookLogin;
     }
 
-    public void setEmailField(WebElement emailField) {
-        this.emailField = emailField;
-    }
-
     public void setFrmLogin(WebElement frmLogin) {
         this.frmLogin = frmLogin;
     }
@@ -103,4 +104,5 @@ public class LoginPageObject {
     public void setBtnFacebookLogin(WebElement btnFacebookLogin) {
         this.btnFacebookLogin = btnFacebookLogin;
     }
+
 }
