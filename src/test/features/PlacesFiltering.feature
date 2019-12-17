@@ -1,45 +1,48 @@
 Feature: 'Places' page
 
-  Scenario Outline: See details of a chosen place
-  Given Use is on Places page
+  Scenario Outline: See details of places from dropdown lists
+  Given User is on Places page
     When User clicks on <category> dropdown
     And User clicks on subcategory
     Then User is able to see the places that belong to subcategories
     Examples:
-    | category |
-    | Restaurants|
-    | Bars and cafes|
+    | category             |
+#    | Restaurants          |
+#    | Bars and cafes       |
     | Sports/Entertainment |
 
-#  Scenario: See a category of places on the map
-#  Given User is on Places page
-#    When User clicks on "Cinema" category
-#    And User clicks on "See on map" button
-#    Then User is able to see all the "Cinema" places on the map
+  Scenario Outline: See a category of places on the map
+    Given User is on Places page
+    When User clicks on <category> category
+    And User clicks on See on map button
+    Then User is able to see all the places on the map
+    Examples:
+      | category          |
+      | Clubs             |
+#      | Cinema            |
+#      | Theatres          |
+#      | Museums/Galleries |
+
+  Scenario Outline: Check Search-bar
+    Given User is on Home page
+    And User type a potential <locationName> location name in Searchbar
+    Then User see the results matching his <locationName> request
+    Examples:
+      | locationName |
+#      |              |
+#      | restaurants  |
+      | best music   |
 #
-#  Scenario Outline: Choose aa place from the map
-#    Given User is on Places page
-#    When User clicks on ""See on map" button
-#    And User checks <category> to be pointed on the map
-#    Then User is able to see <category> places on the map
-#    And User is able to click on a <category> place
-#    And User is able to see details of the <category>
-#    Examples:
-#      | category    |
-#      | Restaurants |
-#      | Pizzerias   |
-#
-#    Scenario Outline: Places filtering
-#      Given User is on Places page
-#      And User clicks "Options" button
-#      And User checks values for <theme>, <priceLevel> and for <facilities>
-#      And User clicks "Search" button
-#      Then User is able to see a list of places corresponding filtering
-#
-#      Examples:
-#      | theme     | priceLevel | facilities |
-#      | Moldavian |   2; 3     | Playground |
-#      | Italian   |   3; 3; 4  | Wi-Fi      |
+    Scenario Outline: Places filtering
+      Given User is on Places page
+      And User clicks Options button
+      And User choose values for <theme>, <priceLevel> and for <facilities>
+      Then User is able to see a list of places corresponding to filters
+
+      Examples:
+      | theme     | priceLevel | facilities |
+      | Moldavian |           | Playground |
+#      | Italian   |   3        | Wi-Fi      |
 #      | German    |   3        | Parking    |
 
 # Scenario: UI checking

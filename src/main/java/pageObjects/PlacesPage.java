@@ -7,14 +7,23 @@ import java.util.List;
 
 public class PlacesPage  extends  PageObject{
 
-    @FindBy(xpath = "'//*[@class='links']//a//span[text()='Places']")
-    WebElement btnPlaces;
-
-    @FindBy(xpath = "//h1[@class='page-title bordered']")
+    @FindBy(xpath = "//h1[@class = 'page-title bordered']")
     WebElement pageTitle;
 
-    @FindBy(xpath="//*[@class=\"dropdown-toggle\"]//h2")
-    List<WebElement> dblCategories;
+    @FindBy(xpath = "//*[@class = 'btn btn-primary toggle-map']")
+    WebElement btnSeeOnMap;
+
+    @FindBy(xpath = "//*[@class = 'btn btn-secondary toggle-places-filter']")
+    WebElement btnOptions;
+
+    @FindBy(xpath = "//*[@class = 'left']")
+    WebElement mapFromPlacesPage;
+
+    @FindBy(xpath="//*[@class='dropdown-toggle']//h2")
+    List<WebElement> ddlCategories;
+
+    @FindBy(xpath="//*[@class = 'tab']")
+    List<WebElement> Categories;
 
     @FindBy(xpath="//*[@data-tabtarget='restaurant']//ul/li/a")
     List<WebElement> dblRestaurants;
@@ -25,12 +34,8 @@ public class PlacesPage  extends  PageObject{
     @FindBy(xpath= "//*[@data-tabtarget='sports']//ul/li/a")
     List<WebElement> dblSportsEntertainment;
 
-    @FindBy(className = "oneline ellipsis")
-    List<WebElement> placesElements;
-
-    public WebElement getBtnTitle() {
-        return btnPlaces;
-    }
+    @FindBy(xpath = "//*[@class = 'oneline ellipsis']")
+    List<WebElement> placesElementType;
 
     public List<WebElement> getDblBarsAndCafes() {
         return dblBarsAndCafes;
@@ -40,19 +45,36 @@ public class PlacesPage  extends  PageObject{
         return dblSportsEntertainment;
     }
 
-    public List<WebElement> getPlacesElements() {
-        return placesElements;
+    public List<WebElement> getPlacesElementType() {
+        return placesElementType;
     }
 
     public WebElement getPageTitle() {
         return pageTitle;
     }
 
-    public List<WebElement> getDblCategories() {
-        return dblCategories;
+    public WebElement getBtnSeeOnMap() {
+        return btnSeeOnMap;
+    }
+
+    public WebElement getBtnOptions() {
+        return btnOptions;
+    }
+
+    public WebElement getMapFromPlacesPage() {
+        return mapFromPlacesPage;
+    }
+
+    public List<WebElement> getDdlCategories() {
+        return ddlCategories;
+    }
+
+    public List<WebElement> getCategories() {
+        return Categories;
     }
 
     public List<WebElement> getDblRestaurants() {
         return dblRestaurants;
     }
+
 }

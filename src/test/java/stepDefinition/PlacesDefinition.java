@@ -12,17 +12,18 @@ public class PlacesDefinition {
 
 
     @Before
-    public void beforeTests(){
+    public void beforeTests() {
         PlacesSteps.accessHomePage();
         PlacesSteps.maximizeWindow();
     }
 
     @After
-    public void quitDriver(){
+    public void quitDriver() {
         PlacesSteps.teardown();
     }
 
-    @Given("Use is on Places page")
+    //    Scenario Outline: See details of a chosen place
+    @Given("User is on Places page")
     public void useIsOnPlacesPage() {
         PlacesSteps.accessPlacesPage();
         PlacesSteps.checkUserIsOnPlacesPage();
@@ -42,46 +43,56 @@ public class PlacesDefinition {
     public void userIsAbleToSeeThePlacesThatBelongToSubcategories() {
         PlacesSteps.checkPlaceBelongsToSubcategory();
     }
-//
-//    @Then("User is able to see details, contact information")
-//    public void userIsAbleToSeeDetailsContactInformationAndFacilitiesOfThatPlaceSelected() {
-//    }
-//
-//    @Given("User is on Places page")
-//    public void userIsOnPlacesPage() {
-//    }
-//
-//    @When("User clicks on {string} category")
-//    public void userClicksOnCategory(String arg0) {
-//    }
-//
-//    @And("User clicks on {string} button")
-//    public void userClicksOnButton(String arg0) {
-//    }
-//
-//    @Then("User is able to see all the {string} places on the map")
-//    public void userIsAbleToSeeAllThePlacesOnTheMap(String arg0) {
-//    }
-//
-//    @When("User clicks on {string}See on map\" button")
-//    public void userClicksOnSeeOnMapButton(String arg0) throws Throwable {    // Write code here that turns the phrase above into concrete actions    throw new cucumber.api.PendingException();}
-//}
-//
-//    @And("User checks <category> to be pointed on the map")
-//    public void userChecksCategoryToBePointedOnTheMap() {
-//    }
-//
-//    @Then("User is able to see <category> places on the map")
-//    public void userIsAbleToSeeCategoryPlacesOnTheMap() {
-//    }
-//
-//    @And("User is able to click on a <category> place")
-//    public void userIsAbleToClickOnACategoryPlace() {
-//    }
-//
-//    @And("User is able to see details of the <category>")
-//    public void userIsAbleToSeeDetailsOfTheCategory() {
-//
-//    }
 
+    //  Scenario Outline: See a category of places on the map
+    @When("User clicks on {} category")
+    public void userClicksOnCategory(String category) {
+        PlacesSteps.clickOnCategory(category);
+    }
+
+    @And("User clicks on See on map button")
+    public void userClicksOnSeeOnMapButton() {
+        PlacesSteps.userClicksOnSeeOnMapButton();
+    }
+
+    @Then("User is able to see all the places on the map")
+    public void userIsAbleToSeeAllThePlacesOnTheMap() {
+        PlacesSteps.checkAllThePlacesPresentOnMap();
+    }
+
+    //  Scenario: Check Search-bar
+    @Given("User is on Home page")
+    public void useIsOnHomePage() {
+        PlacesSteps.checkUserIsOnHomePage();
+    }
+    @And("User type a potential {} location name in Searchbar")
+    public void userClicksSearchButtonAndTipeText(String inputText) {
+        PlacesSteps.userClicksOnSearchButton();
+        PlacesSteps.userTypeTextInSearchbar(inputText);
+    }
+
+    @Then("User see the results matching his {} request")
+    public void userSeeTheResultsMatchingHisRequest(String locationName) {
+        PlacesSteps.checkTheResultOfSearch(locationName);
+    }
+
+    //  Scenario Outline: Places filtering
+    @And("User clicks Options button")
+    public void userClicksOptionButton() {
+        PlacesSteps.userClicksOnOptionButton();
+    }
+
+    @Then("User choose values for {}, {} and for {}")
+    public void userChooseValuesForThemePriceAndForFacilities(String theme, String price, String facilities) {
+        PlacesSteps.checkThemeValuesFromOptions(theme);
+        PlacesSteps.checkPriceValuesFromOptions(price);
+        PlacesSteps.checkFacilitiesValuesFromOptions(facilities);
+        PlacesSteps.userClicksOnOptionsSearchButton();
+    }
+
+    @Then("User is able to see a list of places corresponding to filters")
+    public void userIsAbleToSeeAListOfPlacesCorrespondingToFilters() {
+        PlacesSteps.selectAPlacesElement();
+        PlacesSteps.checkPlacesElementDetailsCorrespondence();
+    }
 }
