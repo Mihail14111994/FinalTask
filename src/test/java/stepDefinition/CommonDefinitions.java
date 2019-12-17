@@ -15,16 +15,11 @@ public class CommonDefinitions {
         driver.get("https://www.fest.md/ro/login-register");
     }
 
-    @Given("Fest.md  page is displayed 2")
+    @Given("Fest.md home page is displayed")
     public void HomePageIsDisplayed() {
         WebDriver driver = DriverFactory.getDriver();
         driver.manage().window().maximize();
         driver.get("https://www.fest.md");
-    }
-
-    @Given("Fest.md/EN page is displayed")
-    public void a(){
-
     }
 
 
