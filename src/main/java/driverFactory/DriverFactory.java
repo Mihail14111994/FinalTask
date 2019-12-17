@@ -26,7 +26,7 @@ public class DriverFactory {
 	static WebDriver driver = null;
 	public synchronized WebDriver newDriver() {
 
-		String browserName = System.getProperty("Browser", DriverType.IE.toString()).toUpperCase();
+		String browserName = System.getProperty("Browser", DriverType.CHROME.toString()).toUpperCase();
 		DriverType driverType = DriverType.valueOf(browserName);
 		switch (driverType) {
 		case CHROME:
