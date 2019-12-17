@@ -24,7 +24,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 
 public class DriverFactory {
 	static WebDriver driver = null;
-	public synchronized WebDriver newDriver() {
+	public static WebDriver newDriver() {
 
 		String browserName = System.getProperty("Browser", DriverType.CHROME.toString()).toUpperCase();
 		DriverType driverType = DriverType.valueOf(browserName);

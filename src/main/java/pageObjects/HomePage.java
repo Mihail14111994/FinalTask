@@ -48,12 +48,6 @@ public class HomePage extends PageObject{
     @FindBy(xpath = "//a[contains(text(),'Suggest Event')]")
     WebElement btnSuggestedEvent;
 
-    @FindBy(xpath = "//div[@class='site-logo']//a")
-    WebElement btnHome;
-
-    public WebElement getBtnHome() {
-        return btnHome;
-    }
 
     public WebElement getTtlCalendar() {
         return ttlCalendar;
@@ -88,7 +82,6 @@ public class HomePage extends PageObject{
     }
 
     public WebElement getPlacesMenu() {
-
         return PlacesMenu;
     }
 
