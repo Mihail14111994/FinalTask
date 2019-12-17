@@ -33,6 +33,8 @@ public class TicketsSteps {
     int totalPrice=0;
     String nameOfBookedEvent;
 
+
+
     public WebElement randomLink(List<WebElement> links) {
         int listSize = links.size();
         Random r = new Random();
@@ -67,7 +69,7 @@ public class TicketsSteps {
             else {
                 eventWithOutTickets=true;
                 homePage.getTicketsMenu().click();
-                //getPageName() - unable to locate
+                wait.until(ExpectedConditions.visibilityOf(ticketsPage.getPageName()));
                 assertThat("Ticket Page is not displayed",ticketsPage.getPageName().getText(),is("Bilete"));
                 wait.until(ExpectedConditions.visibilityOf(ticketsPage.getAdBanner()));
                 List<WebElement> listOfSectionNames = ticketsPage.getSectionNames();
@@ -114,12 +116,6 @@ public class TicketsSteps {
         phone.click();
         phone.clear();
         phone.sendKeys(phoneNr);
-//        eventPage.getBtnContinue().click();
-////        wait.until(ExpectedConditions.visibilityOf(eventPage.getBtnSubmitConfirm()));
-////        String displayedTotalPrice = eventPage.getTotalPriceConfirm().getText().replaceAll("[^0-9]", "");
-//////      assertThat("Total price of tickets in Confirm Booking is not correct", displayedTotalPrice.equals(String.valueOf(totalPrice)));
-////        assertThat("Total price of tickets in Confirm Booking is not correct", displayedTotalPrice, is(String.valueOf(totalPrice)));
-////        eventPage.getBtnSubmitConfirm().click();
     }
 
     public void setSubmitButtonAvailability(String available){
@@ -202,4 +198,4 @@ public class TicketsSteps {
         eventsPage.getBtnDeleteReminder().get(0).click();
         assertThat("Reminder is not deleted",eventsPage.getBtnDeleteReminder().size() < 1 );
     }
-    }
+}
