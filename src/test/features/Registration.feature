@@ -56,3 +56,19 @@ Feature: Account feature.
       | email        | password |
       | test2@gma.ru | 123123   |
 
+  Scenario: Registration/Login page UI check
+    When  Register_Login page is displayed
+    Then  the following elements are visible on Register_Login page
+      |Register title|
+      |Login title|
+      |LoginRegister title|
+      |Email register field|
+      |Email login field|
+      |Password register field|
+      |Password login field|
+      |Confirm password field|
+      |Forgot Password Link  |
+      |Register button|
+      |Login button   |
+      |Facebook login register button|
+      |Recieve newletter checkbox|

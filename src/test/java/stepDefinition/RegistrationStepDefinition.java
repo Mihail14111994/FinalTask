@@ -28,6 +28,7 @@ public class RegistrationStepDefinition {
     RegisterPageObject registerPage = new RegisterPageObject();
     LoginPageObject loginPage= new LoginPageObject();
     DeleteAccountWindowObject deleteAccount = new DeleteAccountWindowObject();
+    LoginRegisterPageObject loginRegisterPage = new LoginRegisterPageObject();
     Borders borders = new Borders();
     public String workingEmail;
     public String workingPassword;
@@ -282,4 +283,77 @@ public class RegistrationStepDefinition {
         driver.quit();
     }
 
+    @When("Register_Login page is displayed")
+    public void registerLoginPageIsDisplayed() {
+
+        driver.get(loginRegisterPage.getLink());
+
+    }
+
+    @Then("the following elements are visible on Register_Login page")
+    public void theFollowingElementsAreVisibleOnRegisterLoginPage(DataTable elements) {
+        List<String> list = elements.asList();
+        wait.until(ExpectedConditions.visibilityOf(loginRegisterPage.getBtnLogin()));
+        for (int i = 0; i < list.size(); i++) {
+            switch (list.get(i)) {
+                case ("Login title"):
+                    MatcherAssert.assertThat(loginRegisterPage.getTtlLogin().isDisplayed(), is(true));
+                    borders.drawBorder(loginRegisterPage.getTtlLogin(), driver, Colours.GREEN);
+                    break;
+                case ("Register title"):
+                    MatcherAssert.assertThat(loginRegisterPage.getTtlRegister().isDisplayed(), is(true));
+                    borders.drawBorder(loginRegisterPage.getTtlRegister(), driver, Colours.GREEN);
+                    break;
+                case ("LoginRegister title"):
+                    MatcherAssert.assertThat(loginRegisterPage.getTtlLoginRegister().isDisplayed(), is(true));
+                    borders.drawBorder(loginRegisterPage.getTtlLoginRegister(), driver, Colours.GREEN);
+                    break;
+                case ("Email register field"):
+                    MatcherAssert.assertThat(loginRegisterPage.getTxtRegisterEmail().isDisplayed(), is(true));
+                    borders.drawBorder(loginRegisterPage.getTxtRegisterEmail(), driver, Colours.RED);
+                    break;
+                case ("Email login field"):
+                    MatcherAssert.assertThat(loginRegisterPage.getTxtLoginEmail().isDisplayed(), is(true));
+                    borders.drawBorder(loginRegisterPage.getTxtLoginEmail(), driver, Colours.RED);
+                    break;
+                case ("Password register field"):
+                    MatcherAssert.assertThat(loginRegisterPage.getTxtRegisterPassword().isDisplayed(), is(true));
+                    borders.drawBorder(loginRegisterPage.getTxtRegisterPassword(), driver, Colours.RED);
+                    break;
+                case ("Password login field"):
+                    MatcherAssert.assertThat(loginRegisterPage.getTxtLoginPassword().isDisplayed(), is(true));
+                    borders.drawBorder(loginRegisterPage.getTxtLoginPassword(), driver, Colours.RED);
+                    break;
+                case ("Confirm password field"):
+                    MatcherAssert.assertThat(loginRegisterPage.getTxtRegisterConfirmPassword().isDisplayed(), is(true));
+                    borders.drawBorder(loginRegisterPage.getTxtRegisterConfirmPassword(), driver, Colours.RED);
+                    break;
+                case ("Forgot Password Link"):
+                    MatcherAssert.assertThat(loginRegisterPage.getLinkForgotPassword().isDisplayed(), is(true));
+                    borders.drawBorder(loginRegisterPage.getLinkForgotPassword(), driver, Colours.BLUE);
+                    break;
+                case ("Facebook login register button"):
+                    MatcherAssert.assertThat(loginRegisterPage.getBtnFacebookLoginRegister().isDisplayed(), is(true));
+                    borders.drawBorder(loginRegisterPage.getBtnFacebookLoginRegister(), driver, Colours.RED);
+                    break;
+                case ("Recieve newletter checkbox"):
+                    MatcherAssert.assertThat(loginRegisterPage.getCbSubscribeNewsletter().isDisplayed(), is(true));
+                    MatcherAssert.assertThat(loginRegisterPage.getTtlCbSubscribe().isDisplayed(), is(true));
+                    borders.drawBorder(loginRegisterPage.getCbSubscribeNewsletter(), driver, Colours.RED);
+                    borders.drawBorder(loginRegisterPage.getTtlCbSubscribe(), driver, Colours.RED);
+                break;
+                case ("Register button"):
+                    MatcherAssert.assertThat(loginRegisterPage.getBtnRegister().isDisplayed(), is(true));
+                    borders.drawBorder(loginRegisterPage.getBtnRegister(), driver, Colours.RED);
+                    break;
+                case ("Login button"):
+                    MatcherAssert.assertThat(loginRegisterPage.getBtnLogin().isDisplayed(), is(true));
+                    borders.drawBorder(loginRegisterPage.getBtnLogin(), driver, Colours.RED);
+                    break;
+
+
+            }
+            System.out.println(i);
+        }
+    }
 }
