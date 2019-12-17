@@ -22,7 +22,8 @@ import static org.hamcrest.CoreMatchers.is;
 
 public class RegistrationStepDefinition {
     DriverFactory driverFactory = new DriverFactory();
-    private WebDriver driver = driverFactory.newDriver();
+//    private WebDriver driver = driverFactory.newDriver();
+    private WebDriver driver = DriverFactory.getDriver();
     MyAccountPage myAccountPage= new MyAccountPage();
     HomePage homePage= new HomePage();
     RegisterPageObject registerPage = new RegisterPageObject();

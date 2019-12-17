@@ -41,38 +41,17 @@ public class TicketsDefinitions implements En  {
 
     @Given("{} menu page is displayed")
     public void ticketEventPage(String pageName) throws InterruptedException {
-        wait.until(ExpectedConditions.visibilityOf(ticketsPage.getAdBanner()));
-        Thread.sleep(2000);
-        if (pageName.equals("Tickets")) {
-            homePage.getTicketsMenu().click();
-            assertThat("Ticket Page is not displayed",ticketsPage.getPageName().getText(),is("Bilete"));
-        }
-        else if (pageName.equals("Events")) {
-            homePage.getEventsMenu().click();
-            assertThat("Ticket Page is not displayed",ticketsPage.getPageName().getText(),is("Evenimente"));
-        }
+        ticketsSteps.eventTicketsPageIsDisplayed (pageName);
     }
 
     @Given("User is logged in with valid credentials")
     public void userIsLoggedInWithValidCredentials() {
-        WebDriver driver = DriverFactory.getDriver();
-        driver.get("https://www.fest.md/ro/login-register");
-        wait.until(ExpectedConditions.visibilityOf(loginRegistrationPage.getEmailLogin()));
-        loginRegistrationPage.getEmailLogin().click();
-        loginRegistrationPage.getEmailLogin().sendKeys("frosea123@gmail.com");
-        loginRegistrationPage.getPasswordLogin().click();
-        loginRegistrationPage.getPasswordLogin().sendKeys("147369");
-        loginRegistrationPage.getBtnLogin().click();
+        ticketsSteps.userIsLoggedIn();
     }
 
     @When("{} is selected")
     public void userSelectsASection(String section) {
-        wait.until(ExpectedConditions.visibilityOf(ticketsPage.getAdBanner()));
-        List<WebElement> listOfSectionNames = ticketsPage.getSectionNames();
-        for (WebElement e:listOfSectionNames) {
-            if (e.getText().equals(section)) {
-            e.click();}
-        }
+        ticketsSteps.sectionIsSelected(section);
     }
     @When("User {} {} tickets for an event of the {}")
     public void userSelectsAnEvent( String submit, int nr, String section) throws InterruptedException {
