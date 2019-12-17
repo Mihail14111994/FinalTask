@@ -7,7 +7,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pageObjects.*;
-import sun.jvm.hotspot.utilities.Assert;
 
 import java.util.List;
 import java.util.Random;
@@ -192,12 +191,12 @@ public class PlacesSteps {
             getRandomElement(places).click();
         }
         if(places.size() == 0){
-            Assert.that(true, "");
+            assertThat("No placesElement found",true);
         }
     }
 
     public static void checkPlacesElementDetailsCorrespondence(){
-        wait.until(ExpectedConditions.elementToBeClickable(placesPage.getCategories().get(1)));
+        wait.until(ExpectedConditions.elementToBeClickable(homePage.getBtnSuggestedEvent()));
     }
 
     public static void userTypeTextInSearchbar(String inputText){
