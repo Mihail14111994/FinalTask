@@ -15,7 +15,8 @@ import java.util.Random;
 public class PlacesSteps {
 
     static DriverFactory driverFactory = new DriverFactory();
-    static WebDriver driver = driverFactory.newDriver();
+//    static WebDriver driver = driverFactory.newDriver();
+    static WebDriver driver = DriverFactory.getDriver();
     static WebDriverWait wait = new WebDriverWait(driver,10);
     static SearchPage searchPage = new SearchPage();
     static PlacesPage placesPage = new PlacesPage();
@@ -26,7 +27,7 @@ public class PlacesSteps {
     static String categoryName;
     static String subcategoryName;
 
-    public static void accessHomePage(){
+    public static void accessHomePage() {
         driver.get(enHomePageURL);
     }
 
