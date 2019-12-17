@@ -89,6 +89,7 @@ public class HomePage extends PageObject{
 
     public WebElement getPlacesMenu() {
         return PlacesMenu;
+    }
     public WebElement getBtnMyBookings() {
         return btnMyBookings;
     }
