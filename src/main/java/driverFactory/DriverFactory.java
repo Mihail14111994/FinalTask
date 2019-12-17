@@ -30,8 +30,10 @@ public class DriverFactory {
 		DriverType driverType = DriverType.valueOf(browserName);
 		switch (driverType) {
 		case CHROME:
+			if(driver == null){
 			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver();
+			}
 			break;
 		case IE:
 			WebDriverManager.iedriver().setup();
