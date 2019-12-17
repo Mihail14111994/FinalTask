@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class HomePage extends PageObject{
+
 //    @FindBy(xpath="//a[@href='/ro/bilete']")
     String linkHomePage = "https://www.fest.md/ro/";
 
@@ -20,6 +21,15 @@ public class HomePage extends PageObject{
     @FindBy(xpath = "//a[@href='/ro/evenimente']")
     WebElement eventsMenu;
 
+    @FindBy (xpath = "//*[@id='header']/div[2]/a")
+    WebElement btnMyBookings;
+
+    @FindBy (css = "div.bar-item.inlined.username > a")
+    WebElement ddUserInformation;
+
+    @FindBy (css = "div.bar-item.inlined.username.open > ul > li:nth-child(2) > a")
+    WebElement btnMyAccount;
+  
     @FindBy(xpath = "//div[contains(@class, 'float-right')]//a[@class='bar-item inlined padded register hidden-on-tablet']" )
     WebElement btnOpenRegistration;
 
@@ -45,13 +55,23 @@ public class HomePage extends PageObject{
         return btnOpenLogin;
     }
 
-
-
     public WebElement getTicketsMenu() {
         return ticketsMenu;
     }
 
     public WebElement getEventsMenu() {
         return eventsMenu;
+    }
+
+    public WebElement getBtnMyBookings() {
+        return btnMyBookings;
+    }
+
+    public WebElement getDdUserInformation() {
+        return ddUserInformation;
+    }
+
+    public WebElement getBtnMyAccount() {
+        return btnMyAccount;
     }
 }
