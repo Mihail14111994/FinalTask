@@ -17,11 +17,10 @@
  */
 package driverFactory;
 
-import io.github.bonigarcia.wdm.DriverManagerType;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class DriverFactory {
 	static WebDriver driver = null;
@@ -61,6 +60,7 @@ public class DriverFactory {
 //	public static WebDriver getDriver() {
 //		return driver;
 //	}
+//	@AfterAll
 //	public static void closeDriver() {
 //		driver.quit();
 //		driver = null;
