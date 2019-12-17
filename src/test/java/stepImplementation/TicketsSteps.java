@@ -25,6 +25,7 @@ public class TicketsSteps {
     HomePage homePage = new HomePage();
     BookingPage bookingPage = new BookingPage();
     EventsPage eventsPage = new EventsPage();
+    LoginRegistrationPage loginRegistrationPage = new LoginRegistrationPage();
     WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(),30);
 
     String info = "INFORMAȚII";
@@ -33,6 +34,39 @@ public class TicketsSteps {
     int totalPrice=0;
     String nameOfBookedEvent;
 
+    public void eventTicketsPageIsDisplayed (String pageName) throws InterruptedException {
+
+        wait.until(ExpectedConditions.visibilityOf(ticketsPage.getAdBanner()));
+        Thread.sleep(2000);
+        if (pageName.equals("Tickets")) {
+            homePage.getTicketsMenu().click();
+            assertThat("Ticket Page is not displayed",ticketsPage.getPageName().getText(),is("Bilete"));
+        }
+        else if (pageName.equals("Events")) {
+            homePage.getEventsMenu().click();
+            assertThat("Ticket Page is not displayed",ticketsPage.getPageName().getText(),is("Evenimente"));
+        }
+    }
+
+    public void userIsLoggedIn(){
+        WebDriver driver = DriverFactory.getDriver();
+        driver.get("https://www.fest.md/ro/login-register");
+        wait.until(ExpectedConditions.visibilityOf(loginRegistrationPage.getEmailLogin()));
+        loginRegistrationPage.getEmailLogin().click();
+        loginRegistrationPage.getEmailLogin().sendKeys("frosea123@gmail.com");
+        loginRegistrationPage.getPasswordLogin().click();
+        loginRegistrationPage.getPasswordLogin().sendKeys("147369");
+        loginRegistrationPage.getBtnLogin().click();
+    }
+
+    public void sectionIsSelected(String section){
+        wait.until(ExpectedConditions.visibilityOf(ticketsPage.getAdBanner()));
+        List<WebElement> listOfSectionNames = ticketsPage.getSectionNames();
+        for (WebElement e:listOfSectionNames) {
+            if (e.getText().equals(section)) {
+                e.click();}
+        }
+    }
 
 
     public WebElement randomLink(List<WebElement> links) {

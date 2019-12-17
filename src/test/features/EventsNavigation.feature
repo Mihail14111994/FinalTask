@@ -1,7 +1,7 @@
 Feature: Buy/book a ticket and get event information
 
   Background:
-    Given Fest.md  page is displayed 2
+    Given Fest.md home page is displayed
 
   Scenario Outline: User is able to book a ticket
     Given User is logged in with valid credentials
@@ -13,9 +13,9 @@ Feature: Buy/book a ticket and get event information
     Then Booking is successfully accepted
 
     Examples:
-      | nr | section    | firstName | lastName | phone     |
-      | 2  | Party      | Ion       | Ion      | 078524163 |
-      | 10 | Conferințe | Ion       | Ion      | 076852146 |
+      | nr | section    | firstName                                          | lastName                                           | phone     |
+      | 2  | Party      | latinlatinlatinlatinlatinlatinlatinlatinlatinlatin | latinlatinlatinlatinlatinlatinlatinlatinlatinlatin | 078524163 |
+      | 10 | Conferințe | Ion                                                | Ion                                                | 076852146 |
 
   Scenario Outline: User is unable to book a ticket after checkout with invalid data
     Given User is logged in with valid credentials
@@ -62,9 +62,7 @@ Feature: Buy/book a ticket and get event information
     Then The alert is successfully set
 #alert is deleted finally
     Examples:
-      | section | option                |
-      | Sport   | сu 1 zi înainte       |
-      | Sport   | În ziua evenimentului |
+      | section | option          |
+      | Sport   | сu 1 zi înainte |
+#      | Sport   | În ziua evenimentului |
 
-#  #alternatives:
-#  #"Voi merge" button
