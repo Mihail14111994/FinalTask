@@ -21,7 +21,7 @@ public class CommonDefinitions {
         driver.get("https://www.fest.md");
     }
 
-    @Given("Fest.md/EN home page is displayed")
+    @Given("\"Fest.md/en\" home page is displayed")
     public void EnPageIsDisplayed() {
         WebDriver driver = DriverFactory.newDriver();
         driver.manage().window().maximize();

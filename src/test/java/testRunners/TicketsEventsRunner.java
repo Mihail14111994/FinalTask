@@ -8,8 +8,8 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/test/features/EventsNavigation.feature",
         glue = "stepDefinition",
-        plugin = {"pretty"}
-//        tags = "@Doina"
+        plugin = {"pretty", "html:target/cucumber-html-report", "json:target/cucumber.json"},
+        tags = "@positive"
 )
 public class TicketsEventsRunner {
 }
