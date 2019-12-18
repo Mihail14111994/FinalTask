@@ -37,6 +37,34 @@ public class LoginRegisterPageObject extends PageObject {
     @FindBy(xpath = "//button[@id='formRegister_btn-submit']")
     private WebElement btnRegister;
 
+    @FindBy(xpath = "//h1[@class='page-title bordered']")
+    private WebElement ttlLoginRegister;
+
+    @FindBy(xpath = "//*[@id='formLogin']/div[1]/h2")
+    private WebElement ttlLogin;
+
+    @FindBy(xpath = "//*[@id='formRegister']/div[1]/h2")
+    private WebElement ttlRegister;
+
+    @FindBy(xpath = "//*[@id='formRegister_subscribeNewsletter_field']/label")
+    private WebElement ttlCbSubscribe;
+
+    public WebElement getTtlCbSubscribe() {
+        return ttlCbSubscribe;
+    }
+
+    public WebElement getTtlLoginRegister() {
+        return ttlLoginRegister;
+    }
+
+    public WebElement getTtlLogin() {
+        return ttlLogin;
+    }
+
+    public WebElement getTtlRegister() {
+        return ttlRegister;
+    }
+
     public String getLink() {
         return link;
     }
