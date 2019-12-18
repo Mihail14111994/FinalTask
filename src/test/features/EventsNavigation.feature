@@ -1,3 +1,4 @@
+@Doina
 Feature: Buy/book a ticket and get event information
 
   Background:
@@ -59,8 +60,8 @@ Feature: Buy/book a ticket and get event information
     When Sport is selected
     And User clicks on "Detalii" button of an event of <section>
     And <option> for alert is selected and submited
-    Then The alert is successfully set
-#alert is deleted finally
+    Then The alert is successfully set and deleted
+
     Examples:
       | section | option          |
       | Sport   | сu 1 zi înainte |

@@ -1,1 +1,12 @@
+reports\DontTouch1.class
 Main.class
+stepDefinition\TicketsDefinitions.class
+stepImplementation\CommonSteps.class
+dataProviders\DontTouch.class
+stepDefinition\RegistrationStepDefinition.class
+stepImplementation\TicketsSteps.class
+stepImplementation\PlacesSteps.class
+testObjects\DontTouch4.class
+stepDefinition\CommonDefinitions.class
+testRunners\DontTouch5.class
+stepDefinition\PlacesDefinition.class
