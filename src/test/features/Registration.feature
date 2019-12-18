@@ -1,7 +1,7 @@
 Feature: Account feature.
 
   Background:
-    Given Fest.md page is displayed
+    Given Fest.md home page is displayed
 
   Scenario Outline: User is able to register
     Given Register page is displayed
