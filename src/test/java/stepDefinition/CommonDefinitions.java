@@ -1,7 +1,6 @@
 package stepDefinition;
 
 import driverFactory.DriverFactory;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import org.openqa.selenium.WebDriver;
 
@@ -17,10 +16,15 @@ public class CommonDefinitions {
 
     @Given("Fest.md home page is displayed")
     public void HomePageIsDisplayed() {
-        WebDriver driver = DriverFactory.getDriver();
+        WebDriver driver = DriverFactory.newDriver();
         driver.manage().window().maximize();
         driver.get("https://www.fest.md");
     }
 
-
+    @Given("Fest.md/EN home page is displayed")
+    public void EnPageIsDisplayed() {
+        WebDriver driver = DriverFactory.newDriver();
+        driver.manage().window().maximize();
+        driver.get("https://www.fest.md/en");
+    }
 }
