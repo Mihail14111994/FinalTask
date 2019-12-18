@@ -26,6 +26,7 @@ public class TicketsDefinitions implements En  {
 
     @After
     public void teardown(){
+        driver.close();
         driver.quit();
     }
 

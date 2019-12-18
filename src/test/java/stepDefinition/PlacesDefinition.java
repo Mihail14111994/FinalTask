@@ -11,16 +11,12 @@ import stepImplementation.PlacesSteps;
 public class PlacesDefinition  {
 
     PlacesSteps placesSteps = new PlacesSteps();
-     DriverFactory driverFactory = new DriverFactory();
-    //    static WebDriver driver = driverFactory.newDriver();
      WebDriver driver = DriverFactory.getDriver();
 //    @Before
 //    public void beforeTests() {
 //        PlacesSteps.accessHomePage();
 //        PlacesSteps.maximizeWindow();
-//    }
-//
-//    @AfterAll
+////    }
 //    static void quitDriver() {
 //        PlacesSteps.teardown();
 //    }
@@ -28,8 +24,6 @@ public class PlacesDefinition  {
     //    Scenario Outline: See details of a chosen place
     @Given("User is on Places page")
     public void useIsOnPlacesPage() {
-        placesSteps.accessHomePage();
-        placesSteps.maximizeWindow();
         placesSteps.accessPlacesPage();
         placesSteps.checkUserIsOnPlacesPage();
     }
@@ -68,8 +62,6 @@ public class PlacesDefinition  {
     //  Scenario: Check Search-bar
     @Given("User is on Home page")
     public void useIsOnHomePage() {
-        placesSteps.accessHomePage();
-        placesSteps.maximizeWindow();
         placesSteps.checkUserIsOnHomePage();
     }
     @And("User type a potential {} location name in Searchbar")
@@ -101,5 +93,11 @@ public class PlacesDefinition  {
     public void userIsAbleToSeeAListOfPlacesCorrespondingToFilters() {
         placesSteps.selectAPlacesElement();
         placesSteps.checkPlacesElementDetailsCorrespondence();
+    }
+
+    @Given("User is on Fest.md page")
+    public void userIsOnFestMdPage() {
+        placesSteps.accessHomePage();
+        placesSteps.maximizeWindow();
     }
 }

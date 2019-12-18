@@ -1,5 +1,8 @@
 Feature: 'Places' page
 
+  Background:
+    Given User is on Fest.md page
+
   Scenario Outline: See details of places from dropdown lists
   Given User is on Places page
     When User clicks on <category> dropdown
@@ -7,11 +10,11 @@ Feature: 'Places' page
     Then User is able to see the places that belong to subcategories
     Examples:
     | category             |
-#    | Restaurants          |
-#    | Bars and cafes       |
+    | Restaurants          |
+    | Bars and cafes       |
     | Sports/Entertainment |
 
-  Scenario Outline: See a category of places on the map
+  Scenario Outline: See a category of Places on the map
     Given User is on Places page
     When User clicks on <category> category
     And User clicks on See on map button
@@ -20,8 +23,8 @@ Feature: 'Places' page
       | category          |
       | Clubs             |
       | Cinema            |
-#      | Theatres          |
-#      | Museums/Galleries |
+      | Theatres          |
+      | Museums/Galleries |
 
   Scenario Outline: Check Search-bar
     Given User is on Home page
@@ -42,7 +45,7 @@ Feature: 'Places' page
       Examples:
       | theme     | priceLevel | facilities |
       | Moldavian |           | Playground |
-#      | Italian   |   3        | Wi-Fi      |
+#      | Italian   |   2        | Wi-Fi      |
 #      | German    |   3        | Parking    |
 
 # Scenario: UI checking

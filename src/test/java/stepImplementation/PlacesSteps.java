@@ -19,6 +19,7 @@ public class PlacesSteps {
     SearchPage searchPage = new SearchPage();
      PlacesPage placesPage = new PlacesPage();
      PlacesElementPage placesElementPage = new PlacesElementPage();
+     MapPlacesPage mapPlacesPage = new MapPlacesPage();
      OptionsPlacesPage optionsPage = new OptionsPlacesPage();
      HomePage homePage = new HomePage();
      String enHomePageURL = "https://www.fest.md/en/";
@@ -83,9 +84,8 @@ public class PlacesSteps {
     }
 
     public void userClicksOnSeeOnMapButton(){
-        wait.until(ExpectedConditions.visibilityOf(placesPage.getBtnSeeOnMap()));
+        wait.until(ExpectedConditions.visibilityOf(placesPage.getAdBanner()));
         List <WebElement> places = getAllThePlacesTypeFromCategory();
-        System.out.println(places.size());
         assertThat("Nu exista locuri",places.size() != 0);
         placesPage.getBtnSeeOnMap().click();
     }
@@ -121,8 +121,14 @@ public class PlacesSteps {
         }
     }
 
-    public void checkAllThePlacesPresentOnMap(){
-        wait.until(ExpectedConditions.visibilityOf(placesPage.getMapFromPlacesPage()));
+    public void checkAllThePlacesPresentOnMap() {
+        wait.until(ExpectedConditions.visibilityOf(mapPlacesPage.getMapFromPlacesPageCheckboxes().get(0)));
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        mapPlacesPage.getMapFromPlacesPageCheckboxes().get(0).click();
     }
 
     public List<WebElement> getAllThePlacesTypeFromCategory(){
@@ -133,7 +139,10 @@ public class PlacesSteps {
         wait.until(ExpectedConditions.visibilityOf(homePage.getTxtSearchbar()));
         homePage.getTxtSearchbar().click();
     }
-
+//    Scenario Outline: Places filtering
+    String productTheme;
+    String productPrice;
+    String productFacility;
     public void userClicksOnOptionButton() {
         wait.until(ExpectedConditions.visibilityOf(placesPage.getBtnOptions()));
         placesPage.getBtnOptions().click();
@@ -148,6 +157,7 @@ public class PlacesSteps {
                 break;}
         }
         optionsPage.getDdlTheme().click();
+        productTheme = theme;
     }
 
     public void checkPriceValuesFromOptions(String price){
@@ -163,6 +173,7 @@ public class PlacesSteps {
                 break;
             default:
         }
+        productPrice = price;
     }
 
     public void checkFacilitiesValuesFromOptions(String facilities){
@@ -171,6 +182,7 @@ public class PlacesSteps {
                 element.click();
                 break;}
         }
+        productFacility = facilities;
     }
 
     public void userClicksOnOptionsSearchButton() {
@@ -179,18 +191,28 @@ public class PlacesSteps {
 
     public void selectAPlacesElement(){
         wait.until(ExpectedConditions.elementToBeClickable(homePage.getBtnSuggestedEvent()));
-        List<WebElement> places = placesElementPage.getBtnDetailsOfAPlacesElement();
+        List<WebElement> placesDetails = placesElementPage.getBtnDetailsOfAPlacesElement();
 
-        if(places.size() > 0){
-            getRandomElement(places).click();
+        if(placesDetails.size() > 0){
+            getRandomElement(placesDetails).click();
         }
-        if(places.size() == 0){
+        if(placesDetails.size() == 0){
             assertThat("No placesElement found",true);
         }
     }
 
     public void checkPlacesElementDetailsCorrespondence(){
-        wait.until(ExpectedConditions.elementToBeClickable(homePage.getBtnSuggestedEvent()));
+        wait.until(ExpectedConditions.elementToBeClickable(placesPage.getAdBanner()));
+        System.out.println(placesElementPage.getTxtPlaceTheme().get(0).getText());
+        for (WebElement element: placesElementPage.getTxtPlaceTheme()) {
+            if ((element.getText().length() != 0)) {
+                System.out.println(element.getText());
+                assertThat("Place Element Theme", element.getText().contains(productTheme));
+                break;
+            }
+        }
+        assertThat("Place Element Price", placesElementPage.getTxtPlacePrice().isDisplayed());
+        assertThat("Place Element Facility", placesElementPage.getTxtPlaceFacilities().getText().contains(productFacility));
     }
 
     public void userTypeTextInSearchbar(String inputText){
