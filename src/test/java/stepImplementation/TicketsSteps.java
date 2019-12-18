@@ -1,19 +1,18 @@
 package stepImplementation;
 
-import com.google.common.base.Predicate;
+import actionMethods.Borders;
+import actionMethods.Scrolling;
 import driverFactory.DriverFactory;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pageObjects.*;
 
-import java.awt.print.Book;
 import java.util.List;
 import java.util.Random;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import static java.util.concurrent.TimeUnit.SECONDS;
+
+import static actionMethods.Colours.RED;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -26,6 +25,9 @@ public class TicketsSteps {
     BookingPage bookingPage = new BookingPage();
     EventsPage eventsPage = new EventsPage();
     LoginRegistrationPage loginRegistrationPage = new LoginRegistrationPage();
+    Scrolling scrolling =new Scrolling();
+    Borders borders = new Borders();
+    WebDriver driver = DriverFactory.getDriver();
     WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(),30);
 
     String info = "INFORMAȚII";
@@ -93,9 +95,10 @@ public class TicketsSteps {
             {
                 randomLink = randomLink(ticketsPage.getListOfParties());
             }
+            scrolling.scrollingUntilElement(randomLink);
+            borders.drawBorder(randomLink, driver, RED);
             randomLink.click();
 
-            //wait.until(ExpectedConditions.visibilityOf(eventPage.getPriceOfTicket()));
             if(ticketSectionsPage.getBoxOfTickets().size()>0){
              nameOfBookedEvent = ticketSectionsPage.getNameOfEvent().getText();
              eventWithOutTickets=false;
@@ -119,8 +122,6 @@ public class TicketsSteps {
         wait.until(ExpectedConditions.visibilityOf(ticketSectionsPage.getBtndetails()));
         ticketSectionsPage.getBoxOfTickets().get(0).click();
         ticketSectionsPage.getTicketsNr().get(nrOfTickets).click();
-        Thread.sleep(3000);
-        System.out.println(ticketSectionsPage.getBtnSubmitNrOfTicketsDisabled()+"ygy");
     }
     public int submitTicketsNr(){
         int price = Integer.parseInt(ticketSectionsPage.getPriceOfTicket().getText().replaceAll("[^0-9]", ""));
@@ -129,14 +130,12 @@ public class TicketsSteps {
     }
 
     public void assertAmmountOfPayment(int nr, int price){
-//        totalPrice=0;
         totalPrice = nr*price;
         String displayedTotalPrice = bookingPage.getAmountToBePaid().getText().replaceAll("[^0-9]", "");
         assertThat("Amount to be paid is not correct displayed", displayedTotalPrice.equals(String.valueOf(totalPrice)));
     }
 
     public void populateBookingFields (String firstName, String lastName, String phoneNr)  {
-
         bookingPage.getRadioBtnTerminal().click();
         WebElement fName = bookingPage.getFldFirstName();
         fName.click();
@@ -172,7 +171,6 @@ public class TicketsSteps {
         public void submitConfirmBooking(){
         wait.until(ExpectedConditions.visibilityOf(bookingPage.getBtnSubmitConfirm()));
         String displayedTotalPrice = bookingPage.getTotalPriceConfirm().getText().replaceAll("[^0-9]", "");
-//      assertThat("Total price of tickets in Confirm Booking is not correct", displayedTotalPrice.equals(String.valueOf(totalPrice)));
         assertThat("Total price of tickets in Confirm Booking is not correct", displayedTotalPrice, is(String.valueOf(totalPrice)));
         bookingPage.getBtnSubmitConfirm().click();
     }
@@ -181,7 +179,6 @@ public class TicketsSteps {
         wait.until(ExpectedConditions.visibilityOf(ticketsPage.getAdBanner()));
         homePage.getBtnMyBookings().click();
         wait.until(ExpectedConditions.visibilityOf(bookingPage.getBtnBookingDetails()));
-//        assertThat("Name of displayed event is not the same as booked", eventPage.getNameOfBookingEvent().equals(nameOfBookedEvent));
         assertThat("Name of displayed event is not the same as booked", ticketSectionsPage.getNameOfBookingEvent().getText(), is(nameOfBookedEvent));
     }
     public void verifyWarningMessages (String warnMessage){
