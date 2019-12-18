@@ -14,12 +14,12 @@ import pageObjects.LoginRegistrationPage;
 import pageObjects.TicketsPage;
 import stepImplementation.TicketsSteps;
 
-public class TicketsDefinitions implements En  {
+public class TicketsDefinitions {
     DriverFactory driverFactory = new DriverFactory();
-    WebDriver driver = driverFactory.newDriver();
-    WebDriverWait wait = new WebDriverWait(driver,30);
-    HomePage homePage=new HomePage();
-    TicketsPage ticketsPage=new TicketsPage();
+    WebDriver driver = DriverFactory.getDriver();
+    WebDriverWait wait = new WebDriverWait(driver, 30);
+    HomePage homePage = new HomePage();
+    TicketsPage ticketsPage = new TicketsPage();
     TicketsSteps ticketsSteps = new TicketsSteps();
     LoginRegistrationPage loginRegistrationPage = new LoginRegistrationPage();
     int priceOfTicket;
@@ -32,7 +32,7 @@ public class TicketsDefinitions implements En  {
 
     @Given("{} menu page is displayed")
     public void ticketEventPage(String pageName) throws InterruptedException {
-        ticketsSteps.eventTicketsPageIsDisplayed (pageName);
+        ticketsSteps.eventTicketsPageIsDisplayed(pageName);
     }
 
     @Given("User is logged in with valid credentials")
@@ -44,14 +44,14 @@ public class TicketsDefinitions implements En  {
     public void userSelectsASection(String section) {
         ticketsSteps.sectionIsSelected(section);
     }
+
     @When("User {} {} tickets for an event of the {}")
-    public void userSelectsAnEvent( String submit, int nr, String section) throws InterruptedException {
+    public void userSelectsAnEvent(String submit, int nr, String section) throws InterruptedException {
         if (submit.equals("submits")) {
             ticketsSteps.selectOnRandomEvent(section);
             ticketsSteps.selectNrOTickets(nr);
             priceOfTicket = ticketsSteps.submitTicketsNr();
-        }
-        else if (submit.equals("selects")){
+        } else if (submit.equals("selects")) {
             ticketsSteps.selectOnRandomEvent(section);
             ticketsSteps.selectNrOTickets(nr);
         }
@@ -59,7 +59,7 @@ public class TicketsDefinitions implements En  {
 
     @And("The total price is displayed correct for {} tickets")
     public void theTotalPriceOfTicketsIsDisplayedCorrect(int ticketsNr) {
-        ticketsSteps.assertAmmountOfPayment(ticketsNr,priceOfTicket);
+        ticketsSteps.assertAmmountOfPayment(ticketsNr, priceOfTicket);
     }
 
     @And("All fields of booking are submited")
@@ -82,12 +82,12 @@ public class TicketsDefinitions implements En  {
 
     @Then("(.*) occurs under each field$")
     public void aWarningMessageOccursUnderEachField(String errorMessage) {
-        ticketsSteps.verifyWarningMessages (errorMessage);
+        ticketsSteps.verifyWarningMessages(errorMessage);
     }
 
     @And("User selects {} tickets for the same event")
     public void userSelectsEmptyTicketsForTheSameEvent(int nr) throws InterruptedException {
-        nr=0;
+        nr = 0;
         ticketsSteps.selectNrOTickets(nr);
     }
 
@@ -117,7 +117,7 @@ public class TicketsDefinitions implements En  {
         ticketsSteps.setAlert(option);
     }
 
-    @Then("The alert is successfully set")
+    @Then("The alert is successfully set and deleted")
     public void theAlertIsSuccessfullySet() {
         ticketsSteps.verifyAlertIsSet();
         ticketsSteps.deleteAlert();
