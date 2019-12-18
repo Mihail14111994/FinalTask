@@ -24,15 +24,16 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 
 public class DriverFactory {
 	static WebDriver driver = null;
-	public synchronized WebDriver newDriver() {
+	public static WebDriver newDriver() {
 
-//		String browserName = System.getProperty("Browser", DriverType.CHROME.toString()).toUpperCase();
-//		DriverType driverType = DriverType.valueOf(browserName);
-		DriverType driverType = DriverType.CHROME;
+		String browserName = System.getProperty("Browser", DriverType.CHROME.toString()).toUpperCase();
+		DriverType driverType = DriverType.valueOf(browserName);
 		switch (driverType) {
 		case CHROME:
+//			if(driver == null){
 			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver();
+//			}
 			break;
 		case IE:
 			WebDriverManager.iedriver().setup();

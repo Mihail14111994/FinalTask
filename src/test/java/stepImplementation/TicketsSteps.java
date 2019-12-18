@@ -25,6 +25,7 @@ public class TicketsSteps {
     HomePage homePage = new HomePage();
     BookingPage bookingPage = new BookingPage();
     EventsPage eventsPage = new EventsPage();
+    LoginRegistrationPage loginRegistrationPage = new LoginRegistrationPage();
     WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(),30);
 
     String info = "INFORMAȚII";
@@ -32,6 +33,41 @@ public class TicketsSteps {
     String PASSWORD = "147258";
     int totalPrice=0;
     String nameOfBookedEvent;
+
+    public void eventTicketsPageIsDisplayed (String pageName) throws InterruptedException {
+
+        wait.until(ExpectedConditions.visibilityOf(ticketsPage.getAdBanner()));
+        Thread.sleep(2000);
+        if (pageName.equals("Tickets")) {
+            homePage.getTicketsMenu().click();
+            assertThat("Ticket Page is not displayed",ticketsPage.getPageName().getText(),is("Bilete"));
+        }
+        else if (pageName.equals("Events")) {
+            homePage.getEventsMenu().click();
+            assertThat("Ticket Page is not displayed",ticketsPage.getPageName().getText(),is("Evenimente"));
+        }
+    }
+
+    public void userIsLoggedIn(){
+        WebDriver driver = DriverFactory.getDriver();
+        driver.get("https://www.fest.md/ro/login-register");
+        wait.until(ExpectedConditions.visibilityOf(loginRegistrationPage.getEmailLogin()));
+        loginRegistrationPage.getEmailLogin().click();
+        loginRegistrationPage.getEmailLogin().sendKeys("frosea123@gmail.com");
+        loginRegistrationPage.getPasswordLogin().click();
+        loginRegistrationPage.getPasswordLogin().sendKeys("147369");
+        loginRegistrationPage.getBtnLogin().click();
+    }
+
+    public void sectionIsSelected(String section){
+        wait.until(ExpectedConditions.visibilityOf(ticketsPage.getAdBanner()));
+        List<WebElement> listOfSectionNames = ticketsPage.getSectionNames();
+        for (WebElement e:listOfSectionNames) {
+            if (e.getText().equals(section)) {
+                e.click();}
+        }
+    }
+
 
     public WebElement randomLink(List<WebElement> links) {
         int listSize = links.size();
@@ -67,7 +103,7 @@ public class TicketsSteps {
             else {
                 eventWithOutTickets=true;
                 homePage.getTicketsMenu().click();
-                //getPageName() - unable to locate
+                wait.until(ExpectedConditions.visibilityOf(ticketsPage.getPageName()));
                 assertThat("Ticket Page is not displayed",ticketsPage.getPageName().getText(),is("Bilete"));
                 wait.until(ExpectedConditions.visibilityOf(ticketsPage.getAdBanner()));
                 List<WebElement> listOfSectionNames = ticketsPage.getSectionNames();
@@ -114,12 +150,6 @@ public class TicketsSteps {
         phone.click();
         phone.clear();
         phone.sendKeys(phoneNr);
-//        eventPage.getBtnContinue().click();
-////        wait.until(ExpectedConditions.visibilityOf(eventPage.getBtnSubmitConfirm()));
-////        String displayedTotalPrice = eventPage.getTotalPriceConfirm().getText().replaceAll("[^0-9]", "");
-//////      assertThat("Total price of tickets in Confirm Booking is not correct", displayedTotalPrice.equals(String.valueOf(totalPrice)));
-////        assertThat("Total price of tickets in Confirm Booking is not correct", displayedTotalPrice, is(String.valueOf(totalPrice)));
-////        eventPage.getBtnSubmitConfirm().click();
     }
 
     public void setSubmitButtonAvailability(String available){
@@ -202,4 +232,4 @@ public class TicketsSteps {
         eventsPage.getBtnDeleteReminder().get(0).click();
         assertThat("Reminder is not deleted",eventsPage.getBtnDeleteReminder().size() < 1 );
     }
-    }
+}

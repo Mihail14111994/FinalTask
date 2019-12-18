@@ -18,6 +18,15 @@ public class HomePage extends PageObject{
     @FindBy(css="body > div.main-nav > div > div.links > ul > li:nth-child(1) > a")
     WebElement ticketsMenu;
 
+    @FindBy(xpath = "//*[@class='links']//a//span[text()='Places']")
+    WebElement PlacesMenu;
+
+    @FindBy(xpath = "//*[@class = 'form-control large searchbar-search']")
+    WebElement txtSearchbar;
+
+    @FindBy(xpath = "//*[@class = 'icon icon-search']")
+    WebElement btnSearch;
+
     @FindBy(xpath = "//a[@href='/ro/evenimente']")
     WebElement eventsMenu;
 
@@ -36,12 +45,9 @@ public class HomePage extends PageObject{
     @FindBy(xpath = "//h2[@id='dateslider-title']")
     WebElement ttlCalendar;
 
-    @FindBy(xpath = "//div[@class='site-logo']//a")
-    WebElement btnHome;
+    @FindBy(xpath = "//a[contains(text(),'Suggest Event')]")
+    WebElement btnSuggestedEvent;
 
-    public WebElement getBtnHome() {
-        return btnHome;
-    }
 
     public WebElement getTtlCalendar() {
         return ttlCalendar;
@@ -59,8 +65,24 @@ public class HomePage extends PageObject{
         return ticketsMenu;
     }
 
+    public WebElement getTxtSearchbar() {
+        return txtSearchbar;
+    }
+
+    public WebElement getBtnSearch() {
+        return btnSearch;
+    }
+
     public WebElement getEventsMenu() {
         return eventsMenu;
+    }
+
+    public WebElement getBtnSuggestedEvent() {
+        return btnSuggestedEvent;
+    }
+
+    public WebElement getPlacesMenu() {
+        return PlacesMenu;
     }
 
     public WebElement getBtnMyBookings() {

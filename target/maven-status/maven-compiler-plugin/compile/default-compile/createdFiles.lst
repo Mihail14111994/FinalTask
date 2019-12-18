@@ -1,7 +1,1 @@
-actionMethods\DontTouch6.class
-driverFactory\DriverFactory$1.class
-driverFactory\DriverFactory.class
-scenarioContext\DontTouch8.class
-pageObjects\DontTouch7.class
-driverFactory\DriverType.class
-utils\DontTouch9.class
+DriverManager.class
