@@ -6,6 +6,8 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import stepImplementation.RegisterSteps;
 
+import java.io.IOException;
+
 public class RegistrationStepDefinition {
 //    DriverFactory driverFactory = new DriverFactory();
 ////    private WebDriver driver = driverFactory.newDriver();
@@ -196,7 +198,7 @@ public class RegistrationStepDefinition {
 //        }
     }
     @Then("the following elements are visible on Register page")
-    public void theFollowingElementsAreVisible(DataTable element) {
+    public void theFollowingElementsAreVisible(DataTable element) throws IOException {
         registerSteps.checkingUIRegister(element);
 //        List<String> list = element.asList();
 //        wait.until(ExpectedConditions.visibilityOf(registerPage.getTtlRegister()));

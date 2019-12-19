@@ -7,11 +7,13 @@ import driverFactory.DriverFactory;
 import io.cucumber.datatable.DataTable;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pageObjects.*;
 
+import java.io.IOException;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -26,6 +28,8 @@ public class RegisterSteps {
     DeleteAccountWindowObject deleteAccount = new DeleteAccountWindowObject();
     LoginRegisterPageObject loginRegisterPage = new LoginRegisterPageObject();
     Borders borders = new Borders();
+    TakesScreenshot scrShot =((TakesScreenshot)driver);
+
     String workingEmail;
     String workingPassword;
 
@@ -159,7 +163,7 @@ public class RegisterSteps {
         }
     }
 
-    public void checkingUIRegister(DataTable element) {
+    public void checkingUIRegister(DataTable element) throws IOException {
         List<String> list = element.asList();
         wait.until(ExpectedConditions.visibilityOf(registerPage.getTtlRegister()));
         for (int i = 0; i < list.size(); i++) {
