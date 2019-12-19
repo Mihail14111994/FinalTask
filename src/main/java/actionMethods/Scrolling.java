@@ -9,4 +9,5 @@ public class Scrolling {
         JavascriptExecutor js = (JavascriptExecutor) DriverFactory.getDriver();
         js.executeScript("arguments[0].scrollIntoView();", element);
     }
+
 }

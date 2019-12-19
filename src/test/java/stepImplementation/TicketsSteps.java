@@ -31,8 +31,8 @@ public class TicketsSteps {
     WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(),30);
 
     String info = "INFORMAȚII";
-    String LOGIN = "whiteangelrabbit@outlook.com";
-    String PASSWORD = "147258";
+    String LOGIN = "frosea1234@gmail.com";
+    String PASSWORD = "147369";
     int totalPrice=0;
     String nameOfBookedEvent;
 
@@ -55,9 +55,9 @@ public class TicketsSteps {
         driver.get("https://www.fest.md/ro/login-register");
         wait.until(ExpectedConditions.visibilityOf(loginRegistrationPage.getEmailLogin()));
         loginRegistrationPage.getEmailLogin().click();
-        loginRegistrationPage.getEmailLogin().sendKeys("frosea123@gmail.com");
+        loginRegistrationPage.getEmailLogin().sendKeys(LOGIN);
         loginRegistrationPage.getPasswordLogin().click();
-        loginRegistrationPage.getPasswordLogin().sendKeys("147369");
+        loginRegistrationPage.getPasswordLogin().sendKeys(PASSWORD);
         loginRegistrationPage.getBtnLogin().click();
     }
 

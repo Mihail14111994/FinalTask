@@ -10,9 +10,9 @@ pageObjects\ChangePasswordPageObject.class
 pageObjects\LoginRegistrationPage.class
 actionMethods\Borders.class
 pageObjects\DeleteAccountWindowObject.class
+actionMethods\Scrolling.class
 driverFactory\DriverType.class
 pageObjects\LoginPageObject.class
-actionMethods\DontTouch6.class
 pageObjects\RegisterPageObject.class
 scenarioContext\DontTouch8.class
 pageObjects\TicketSectionsPage.class
@@ -21,8 +21,10 @@ actionMethods\Colours.class
 pageObjects\LoginRegisterPageObject.class
 utils\DontTouch9.class
 pageObjects\ModifyPersonalDataWindowObject.class
+actionMethods\Random.class
 pageObjects\BookingPage.class
 pageObjects\PlacesElementPage.class
+actionMethods\ScrollingPixels.class
 pageObjects\DontTouch7.class
 pageObjects\SearchPage.class
 pageObjects\PageObject.class
