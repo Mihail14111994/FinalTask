@@ -39,7 +39,7 @@ public class TicketsDefinitions {
     @Given("User is logged in with valid credentials")
     public void userIsLoggedInWithValidCredentials() {
         ticketsSteps.userIsLoggedIn();
-        logger.info("Hello Doina");
+        logger.info("User is logged in with valid credentials");
     }
 
     @When("{} is selected")
