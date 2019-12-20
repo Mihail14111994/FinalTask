@@ -1,27 +1,17 @@
 package stepDefinition;
 
-import driverFactory.DriverFactory;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.WebDriver;
 import stepImplementation.PlacesSteps;
 
 public class PlacesDefinition  {
 
     PlacesSteps placesSteps = new PlacesSteps();
-     WebDriver driver = DriverFactory.getDriver();
-//    @Before
-//    public void beforeTests() {
-//        PlacesSteps.accessHomePage();
-//        PlacesSteps.maximizeWindow();
-////    }
-//    static void quitDriver() {
-//        PlacesSteps.teardown();
-//    }
 
     //    Scenario Outline: See details of a chosen place
+
     @Given("User is on Places page")
     public void useIsOnPlacesPage() {
         placesSteps.accessPlacesPage();
@@ -47,6 +37,7 @@ public class PlacesDefinition  {
     @When("User clicks on {} category")
     public void userClicksOnCategory(String category) {
         placesSteps.clickOnCategory(category);
+        placesSteps.checkPresenceOfPlaces();
     }
 
     @And("User clicks on See on map button")
@@ -54,9 +45,9 @@ public class PlacesDefinition  {
         placesSteps.userClicksOnSeeOnMapButton();
     }
 
-    @Then("User is able to see all the places on the map")
-    public void userIsAbleToSeeAllThePlacesOnTheMap() {
-        placesSteps.checkAllThePlacesPresentOnMap();
+    @Then("User is able to see the places off the chosen {} places on the map")
+    public void userIsAbleToSeeThePlacesOnTheMap(String category) {
+        placesSteps.checkThePlacesPresentOnMap(category);
     }
 
     //  Scenario: Check Search-bar
@@ -89,15 +80,20 @@ public class PlacesDefinition  {
         placesSteps.userClicksOnOptionsSearchButton();
     }
 
-    @Then("User is able to see a list of places corresponding to filters")
-    public void userIsAbleToSeeAListOfPlacesCorrespondingToFilters() {
+    @Then("User is able to see a list of places corresponding to filters {}, {}, {}")
+    public void userIsAbleToSeeAListOfPlacesCorrespondingToFilters(String theme, String price, String facility) {
         placesSteps.selectAPlacesElement();
-        placesSteps.checkPlacesElementDetailsCorrespondence();
+        placesSteps.checkPlacesElementDetailsCorrespondence(theme, price, facility);
     }
 
-    @Given("User is on Fest.md page")
-    public void userIsOnFestMdPage() {
-        placesSteps.accessHomePage();
-        placesSteps.maximizeWindow();
+    @And("Check any Places Category from the checkboxes list")
+    public void checkAnyPlacesCategoryFromTheCheckboxesList() {
+        placesSteps.checkARandomCheckboxFromMapLegend();
     }
+
+    @Then("User can see the places of the chosen category on the Map")
+    public void userCanSeeThePlacesOfTheChosenCategoryOnTheMap() {
+
+    }
+
 }

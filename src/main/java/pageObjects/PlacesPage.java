@@ -31,14 +31,12 @@ public class PlacesPage  extends  PageObject{
     @FindBy(xpath= "//*[@data-tabtarget='sports']//ul/li/a")
     List<WebElement> dblSportsEntertainment;
 
-    @FindBy(xpath = "//*[@class = 'oneline ellipsis']")
-    List<WebElement> placesElementType;
+    @FindBy(xpath = "//*[@id='aswift_1']")
+    WebElement adBanner;
 
     public WebElement getAdBanner() {
         return adBanner;
     }
-    @FindBy(xpath = "//*[@id='aswift_1']")
-    WebElement adBanner;
 
     public List<WebElement> getDblBarsAndCafes() {
         return dblBarsAndCafes;
@@ -46,10 +44,6 @@ public class PlacesPage  extends  PageObject{
 
     public List<WebElement> getDblSportsEntertainment() {
         return dblSportsEntertainment;
-    }
-
-    public List<WebElement> getPlacesElementType() {
-        return placesElementType;
     }
 
     public WebElement getPageTitle() {

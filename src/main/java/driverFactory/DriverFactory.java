@@ -23,48 +23,36 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
 public class DriverFactory {
-	static WebDriver driver = null;
-	public static WebDriver newDriver() {
+    static WebDriver driver = null;
 
-		String browserName = System.getProperty("Browser", DriverType.CHROME.toString()).toUpperCase();
-		DriverType driverType = DriverType.valueOf(browserName);
-		switch (driverType) {
-		case CHROME:
-//			if(driver == null){
-			WebDriverManager.chromedriver().setup();
-			driver = new ChromeDriver();
-//			}
-			break;
-		case IE:
-			WebDriverManager.iedriver().setup();
-			driver = new InternetExplorerDriver();
-			break;
-		default:
-			WebDriverManager.chromedriver().setup();
-			driver = new ChromeDriver();
-			break;
-		}
-		return driver;
-	}
+    public static WebDriver getDriver() {
 
-	public static WebDriver getDriver() {
-		return driver;
-	}
+        String browserName = System.getProperty("Browser", DriverType.CHROME.toString()).toUpperCase();
+        DriverType driverType = DriverType.valueOf(browserName);
+        switch (driverType) {
+            case CHROME:
+                if (driver == null) {
+                    WebDriverManager.chromedriver().setup();
+                    driver = new ChromeDriver();
+                }
+                break;
+            case IE:
+                if (driver == null) {
+                    WebDriverManager.iedriver().setup();
+                    driver = new InternetExplorerDriver();
+                }
+                break;
+            default:
+                if (driver == null) {
+                    WebDriverManager.chromedriver().setup();
+                    driver = new ChromeDriver();
+                }
+                break;
+        }
+        return driver;
+    }
 
-	//	private static WebDriver driver;
-//
-//	public synchronized WebDriver createDriver() {
-//		if (driver == null)
-//			driver = new ChromeDriver();
-//		return driver;
-//	}
-//	public static WebDriver getDriver() {
-//		return driver;
-//	}
-//	@AfterAll
-//	public static void closeDriver() {
-//		driver.quit();
-//		driver = null;
-//	}
-
+    public static void setDriverNull() {
+        driver = null;
+    }
 }

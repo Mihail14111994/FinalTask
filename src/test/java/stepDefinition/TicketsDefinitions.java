@@ -1,13 +1,10 @@
 package stepDefinition;
 
-import cucumber.api.java8.En;
 import driverFactory.DriverFactory;
-import io.cucumber.java.After;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pageObjects.HomePage;
 import pageObjects.LoginRegistrationPage;
@@ -16,19 +13,20 @@ import stepImplementation.TicketsSteps;
 
 public class TicketsDefinitions {
     DriverFactory driverFactory = new DriverFactory();
-    WebDriver driver = DriverFactory.getDriver();
-    WebDriverWait wait = new WebDriverWait(driver, 30);
+//    WebDriver driver = DriverFactory.getDriver();
+    WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), 30);
     HomePage homePage = new HomePage();
     TicketsPage ticketsPage = new TicketsPage();
     TicketsSteps ticketsSteps = new TicketsSteps();
     LoginRegistrationPage loginRegistrationPage = new LoginRegistrationPage();
     int priceOfTicket;
 
-    @After
-    public void teardown(){
-        driver.close();
-        driver.quit();
-    }
+//    @After
+//    public void teardown(){
+//        driver.close();
+//        driver.quit();
+//        DriverFactory.setDriver();
+//    }
 
     @Given("{} menu page is displayed")
     public void ticketEventPage(String pageName) throws InterruptedException {
