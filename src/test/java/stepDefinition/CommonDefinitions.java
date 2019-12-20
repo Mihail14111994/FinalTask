@@ -2,9 +2,14 @@ package stepDefinition;
 
 import driverFactory.DriverFactory;
 import io.cucumber.java.en.Given;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
+
+
 public class CommonDefinitions {
+    final static Logger logger = Logger.getLogger(CommonDefinitions.class);
+
     DriverFactory driverFactory = new DriverFactory();
     @Given("Fest.md login page is displayed")
     public void loginPageIsDisplayed() {
@@ -16,9 +21,14 @@ public class CommonDefinitions {
 
     @Given("Fest.md home page is displayed")
     public void HomePageIsDisplayed() {
-        WebDriver driver = DriverFactory.getDriver();
+
+
+        WebDriver driver = DriverFactory.newDriver();
+        logger.info("Initializing driver...");
+
         driver.manage().window().maximize();
         driver.get("https://www.fest.md");
+        logger.info("jjmynthgrvf");
     }
 
 

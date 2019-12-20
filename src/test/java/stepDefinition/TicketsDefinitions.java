@@ -6,6 +6,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pageObjects.HomePage;
@@ -14,6 +15,8 @@ import pageObjects.TicketsPage;
 import stepImplementation.TicketsSteps;
 
 public class TicketsDefinitions {
+    private static  final Logger logger = Logger.getLogger(TicketsDefinitions.class);
+
     DriverFactory driverFactory = new DriverFactory();
     WebDriver driver = DriverFactory.getDriver();
     WebDriverWait wait = new WebDriverWait(driver, 30);
@@ -42,6 +45,7 @@ public void teardown(){
     @Given("User is logged in with valid credentials")
     public void userIsLoggedInWithValidCredentials() {
         ticketsSteps.userIsLoggedIn();
+        logger.info("User is logged in with valid credentials");
     }
 
     @When("{} is selected")
