@@ -3,6 +3,7 @@ package stepDefinition;
 import driverFactory.DriverFactory;
 import io.cucumber.java.After;
 import io.cucumber.java.en.Given;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -10,10 +11,11 @@ import java.util.List;
 import java.util.Random;
 
 public class CommonDefinitions {
+    final static Logger logger = Logger.getLogger(CommonDefinitions.class);
 
     @Given("Fest.md login page is displayed")
     public void loginPageIsDisplayed() {
-    WebDriver driver = DriverFactory.getDriver();
+        WebDriver driver = DriverFactory.getDriver();
         driver.manage().window().maximize();
         driver.get("https://www.fest.md/ro/login-register");
     }
@@ -21,6 +23,7 @@ public class CommonDefinitions {
     @Given("Fest.md home page is displayed")
     public void HomePageIsDisplayed() {
         WebDriver driver = DriverFactory.getDriver();
+        logger.info("Initializing driver...");
         driver.manage().window().maximize();
         driver.get("https://www.fest.md");
     }
@@ -28,6 +31,7 @@ public class CommonDefinitions {
     @Given("Fest.md english page is displayed")
     public void EnPageIsDisplayed() {
         WebDriver driver = DriverFactory.getDriver();
+        logger.info("Initializing driver...");
         driver.manage().window().maximize();
         driver.get("https://www.fest.md/en");
     }
