@@ -1,17 +1,14 @@
 package stepDefinition;
 
-import driverFactory.DriverFactory;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import pageObjects.HomePage;
 import pageObjects.LoginRegistrationPage;
-import pageObjects.TicketsPage;
 import stepImplementation.TicketsSteps;
+
+import java.io.IOException;
 
 public class TicketsDefinitions {
     private static  final Logger logger = Logger.getLogger(TicketsDefinitions.class);
@@ -22,24 +19,24 @@ public class TicketsDefinitions {
     int priceOfTicket;
 
     @Given("{} menu page is displayed")
-    public void ticketEventPage(String pageName) throws InterruptedException {
+    public void ticketEventPage(String pageName) throws InterruptedException, IOException {
         ticketsSteps.eventTicketsPageIsDisplayed(pageName);
     }
 
     @Given("User is logged in with valid credentials")
-    public void userIsLoggedInWithValidCredentials() {
+    public void userIsLoggedInWithValidCredentials() throws IOException {
         ticketsSteps.userIsLoggedIn();
         logger.info("User is logged in with valid credentials");
     }
 
     @When("{} is selected")
-    public void userSelectsASection(String section) {
+    public void userSelectsASection(String section) throws IOException {
         ticketsSteps.sectionIsSelected(section);
         logger.info(section + " is selected");
     }
 
     @When("User {} {} tickets for an event of the {}")
-    public void userSelectsAnEvent(String submit, int nr, String section) throws InterruptedException {
+    public void userSelectsAnEvent(String submit, int nr, String section) throws InterruptedException, IOException {
         if (submit.equals("submits")) {
             ticketsSteps.selectOnRandomEvent(section);
             ticketsSteps.selectNrOTickets(nr);
@@ -72,7 +69,7 @@ public class TicketsDefinitions {
     }
 
     @Then("Booking is successfully accepted")
-    public void bookingIsSuccessfullyAccepted() {
+    public void bookingIsSuccessfullyAccepted() throws IOException {
         ticketsSteps.submitConfirmBooking();
         ticketsSteps.verifyBooking();
     }
@@ -83,7 +80,7 @@ public class TicketsDefinitions {
     }
 
     @And("User selects {} tickets for the same event")
-    public void userSelectsEmptyTicketsForTheSameEvent(int nr) throws InterruptedException {
+    public void userSelectsEmptyTicketsForTheSameEvent(int nr) throws InterruptedException, IOException {
         nr = 0;
         ticketsSteps.selectNrOTickets(nr);
     }
@@ -100,7 +97,7 @@ public class TicketsDefinitions {
 
 
     @And("User clicks on \"Detalii\" button of an event of {}")
-    public void userClicksOnButtonOfAnEvent(String section) {
+    public void userClicksOnButtonOfAnEvent(String section) throws IOException {
         ticketsSteps.clickBtnDetailsRandomEvent(section);
     }
 
@@ -110,12 +107,12 @@ public class TicketsDefinitions {
     }
 
     @And("{} for alert is selected and submited")
-    public void userSelectsAnOptionForAlertAndSubmit(String option) {
+    public void userSelectsAnOptionForAlertAndSubmit(String option) throws IOException {
         ticketsSteps.setAlert(option);
     }
 
     @Then("The alert is successfully set and deleted")
-    public void theAlertIsSuccessfullySet() {
+    public void theAlertIsSuccessfullySet() throws IOException {
         ticketsSteps.verifyAlertIsSet();
         ticketsSteps.deleteAlert();
     }

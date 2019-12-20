@@ -9,14 +9,17 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pageObjects.*;
 
+import java.io.IOException;
 import java.util.List;
-import static actionMethods.Click.*;
+
+import static actionMethods.Click.click;
+import static actionMethods.RandomLink.randomLink;
+import static actionMethods.Wait.waitFor;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static stepDefinition.CommonDefinitions.getRandomElement;
+
+//import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class PlacesSteps {
-
-    static WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), 20);
 
     SearchPage searchPage = new SearchPage();
     PlacesPage placesPage = new PlacesPage();
@@ -27,13 +30,14 @@ public class PlacesSteps {
     String categoryName;
     String subcategoryName;
     String randomLegendElementText;
-
+    String path ="target\\screenshots\\places\\";
+    WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(),30);
 
     //    Scenario Outline: See details of a chosen place
 
-    public void accessPlacesPage() {
-        wait.until(ExpectedConditions.visibilityOf(homePage.getPlacesMenu()));
-        click(homePage.getPlacesMenu());
+    public void accessPlacesPage() throws IOException {
+        waitFor(homePage.getPlacesMenu());
+        click(homePage.getPlacesMenu(),path);
     }
 
     public void checkUserIsOnPlacesPage() {
@@ -44,8 +48,8 @@ public class PlacesSteps {
         assertThat("Home page not present", homePage.getPlacesMenu().isDisplayed());
     }
 
-    public void clickOnCategoryDropdown(String category) {
-        wait.until(ExpectedConditions.elementToBeClickable(placesPage.getDdlCategories().get(1)));
+    public void clickOnCategoryDropdown(String category) throws IOException {
+        waitFor(placesPage.getDdlCategories().get(1));
         categoryName = category;
 
         List<WebElement> categories = placesPage.getDdlCategories();
@@ -54,14 +58,14 @@ public class PlacesSteps {
             category = category.replaceAll("[\\s|\\u00A0]", "");
             text = text.replaceAll("[\\s|\\u00A0]", "");
             if (text.equalsIgnoreCase(category)) {
-                click(element);
+                click(element, path);
                 break;
             }
         }
     }
 
-    public void clickOnCategory(String category) {
-        wait.until(ExpectedConditions.elementToBeClickable(placesPage.getCategories().get(1)));
+    public void clickOnCategory(String category) throws IOException {
+        waitFor(placesPage.getCategories().get(1));
         categoryName = category;
 
         List<WebElement> categories = placesPage.getCategories();
@@ -70,23 +74,23 @@ public class PlacesSteps {
             category = category.replaceAll("[\\s|\\u00A0]", "");
             text = text.replaceAll("[\\s|\\u00A0]", "");
             if (text.equalsIgnoreCase(category)) {
-                click(element);
+                click(element, path);
                 break;
             }
         }
     }
 
     public void checkPresenceOfPlaces() {
-        wait.until(ExpectedConditions.visibilityOf(placesPage.getAdBanner()));
+        waitFor(placesPage.getAdBanner());
         List<WebElement> places = getAllThePlacesTypeFromCategory();
         assertThat("Nu exista locuri", places.size() != 0);
     }
 
-    public void userClicksOnSeeOnMapButton() {
-        click(placesPage.getBtnSeeOnMap());
+    public void userClicksOnSeeOnMapButton() throws IOException {
+        click(placesPage.getBtnSeeOnMap(), path);
     }
 
-    public void clickOnSubcategory() {
+    public void clickOnSubcategory() throws IOException {
         List<WebElement> subcategories = null;
         if (categoryName.equals("Restaurants"))
             subcategories = placesPage.getDblRestaurants();
@@ -98,20 +102,19 @@ public class PlacesSteps {
             subcategories.remove(0);
         }
         if (subcategories.size() > 0) {
-            WebElement subcategory = getRandomElement(subcategories);
+            WebElement subcategory = randomLink(subcategories);
             subcategoryName = subcategory.getText();
-            click(subcategory);
+            click(subcategory, path);
         }
     }
 
     public void checkPlaceBelongsToSubcategory() {
-        wait.until(ExpectedConditions.elementToBeClickable(placesPage.getCategories().get(1)));
+        waitFor(placesPage.getCategories().get(1));
         List<WebElement> places = getAllThePlacesTypeFromCategory();
 
         if (places.size() > 0) {
-//            waitPageFullyLoaded();
-            wait.until(ExpectedConditions.visibilityOf(places.get(places.size() - 1)));
-            assertThat("The subcategory isn't in the type of the place", getRandomElement(places).getText().contains(subcategoryName.substring(0, subcategoryName.length() - 3)));
+            waitFor(places.get(places.size() - 1));
+            assertThat("The subcategory isn't in the type of the place", randomLink(places).getText().contains(subcategoryName.substring(0, subcategoryName.length() - 3)));
         }
         if (places.size() == 0) {
             assertThat("No placesElement found", true);
@@ -119,7 +122,7 @@ public class PlacesSteps {
     }
 
     public void checkThePlacesPresentOnMap(String category) {
-        wait.until(ExpectedConditions.visibilityOf(mapPlacesPage.getChkMapCheckboxes().get(0)));
+        waitFor(mapPlacesPage.getChkMapCheckboxes().get(0));
         assertThat("The places are not on the map", mapPlacesPage.getChkMapCheckboxes().get(0).getText().equalsIgnoreCase(category));
     }
 
@@ -127,63 +130,61 @@ public class PlacesSteps {
         return placesElementPage.getPlacesElementType();
     }
 
-    public void userClicksOnSearchButton() {
-        wait.until(ExpectedConditions.visibilityOf(homePage.getTxtSearchbar()));
-        click(homePage.getTxtSearchbar());
+    public void userClicksOnSearchButton() throws IOException {
+        click(homePage.getTxtSearchbar(), path);
     }
 
     //    Scenario Outline: Places filtering
 
-    public void userClicksOnOptionButton() {
-        wait.until(ExpectedConditions.visibilityOf(placesPage.getBtnOptions()));
-        click(placesPage.getBtnOptions());
+    public void userClicksOnOptionButton() throws IOException {
+        click(placesPage.getBtnOptions(), path);
     }
 
-    public void checkThemeValuesFromOptions(String theme) {
-        click(optionsPage.getDdlTheme());
-        wait.until(ExpectedConditions.elementToBeClickable(optionsPage.getDblThemes().get(24)));
+    public void checkThemeValuesFromOptions(String theme) throws IOException {
+        click(optionsPage.getDdlTheme(), path);
         for (WebElement element : optionsPage.getDblThemes()) {
             if (element.getText().contains(theme)) {
-                click(element);
+                click(element, path);
                 break;
             }
         }
-        click(optionsPage.getDdlTheme());
+        click(optionsPage.getDdlTheme(), path);
     }
 
-    public void checkPriceValuesFromOptions(String price) {
+    public void checkPriceValuesFromOptions(String price) throws IOException {
         switch (price) {
             case "2":
-                click(optionsPage.getChkPriceLevel2());
+                click(optionsPage.getChkPriceLevel2(), path);
                 break;
             case "3":
-                click(optionsPage.getChkPriceLevel3());
+                click(optionsPage.getChkPriceLevel3(), path);
                 break;
             case "4":
-                click(optionsPage.getChkPriceLevel4());
+                click(optionsPage.getChkPriceLevel4(), path);
                 break;
             default:
         }
     }
 
-    public void checkFacilitiesValuesFromOptions(String facilities) {
+    public void checkFacilitiesValuesFromOptions(String facilities) throws IOException {
         for (WebElement element : optionsPage.getDblFacilities()) {
             if (facilities.contains(element.getText().substring(0, element.getText().length() - 1))) {
-                click(element);
+                click(element, path);
                 break;
             }
         }
     }
 
-    public void userClicksOnOptionsSearchButton() {click(optionsPage.getBtnOptionsSearch());
+    public void userClicksOnOptionsSearchButton() throws IOException {
+        click(optionsPage.getBtnOptionsSearch(), path);
     }
 
-    public void selectAPlacesElement() {
-        wait.until(ExpectedConditions.elementToBeClickable(homePage.getBtnSuggestedEvent()));
+    public void selectAPlacesElement() throws IOException {
+        waitFor(homePage.getBtnSuggestedEvent());
         List<WebElement> places = placesElementPage.getBtnDetailsOfAPlacesElement();
 
         if (places.size() > 0) {
-            click(getRandomElement(places));
+            click(randomLink(places), path);
 
         }
         if (places.size() == 0) {
@@ -192,21 +193,21 @@ public class PlacesSteps {
     }
 
     public void checkPlacesElementDetailsCorrespondence(String theme, String price, String facility) {
-        wait.until(ExpectedConditions.elementToBeClickable(homePage.getBtnSuggestedEvent()));
+        waitFor(homePage.getBtnSuggestedEvent());
         assertThat("Facility corresponds", DriverFactory.getDriver().getPageSource().contains(facility));
         assertThat("Theme corresponds", DriverFactory.getDriver().getPageSource().contains(theme));
         String classEl = placesElementPage.getTxtPlacePrice().get(0).getAttribute("class");
         assertThat("Price corresponds", classEl.contains(price));
     }
 
-    public void userTypeTextInSearchbar(String inputText) {
-        wait.until(ExpectedConditions.visibilityOf(homePage.getTxtSearchbar()));
+    public void userTypeTextInSearchbar(String inputText) throws IOException {
+        waitFor(homePage.getTxtSearchbar());
         homePage.getTxtSearchbar().sendKeys(inputText);
-        click(homePage.getBtnSearch());
+        click(homePage.getBtnSearch(), path);
     }
 
     public void checkTheResultOfSearch(String locationName) {
-        wait.until(ExpectedConditions.visibilityOf(searchPage.getTxaSearchFor()));
+        waitFor(searchPage.getTxaSearchFor());
         assertThat("Didn't get to results of search", searchPage.getTxaSearchFor().getText().contains(locationName));
 
         List<WebElement> resultsOfSearch = placesElementPage.getBtnDetailsOfAPlacesElement();
@@ -214,18 +215,18 @@ public class PlacesSteps {
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("No results have been found."))).isDisplayed();
     }
 
-    public void checkARandomCheckboxFromMapLegend() {
-        wait.until(ExpectedConditions.visibilityOf(mapPlacesPage.getChkMapCheckboxes().get(0)));
+    public void checkARandomCheckboxFromMapLegend() throws IOException {
+        waitFor(mapPlacesPage.getChkMapCheckboxes().get(0));
         List<WebElement> places = mapPlacesPage.getChkMapCheckboxes();
         // uncheck the first 3 checkboxes(checked by default)
-        click(places.get(0));
-        click(places.get(1));
-        click(places.get(2));
+        click(places.get(0), path);
+        click(places.get(1), path);
+        click(places.get(2), path);
 
-        WebElement randomLegendElement = getRandomElement(places);
+        WebElement randomLegendElement = randomLink(places);
         randomLegendElementText = randomLegendElement.getText();
-        click(randomLegendElement);
-        click(mapPlacesPage.getBtnMapCloseLegend());
+        click(randomLegendElement, path);
+        click(mapPlacesPage.getBtnMapCloseLegend(), path);
 
         List<WebElement> pinpoints = mapPlacesPage.getMapPinpoints();
         for (WebElement pinpoint : pinpoints) {
@@ -234,13 +235,13 @@ public class PlacesSteps {
                 actions.moveToElement(pinpoint).perform();
                 actions.moveToElement(pinpoint, 60, 0).perform();
                 try {
-                    click(pinpoint);
+                    click(pinpoint, path);
                     break;
                 } catch (ElementClickInterceptedException e) {
                     e.getLocalizedMessage();
                 }
             }
-            wait.until(ExpectedConditions.elementToBeClickable(homePage.getBtnSuggestedEvent()));
+            waitFor(homePage.getBtnSuggestedEvent());
             assertThat("Facility corresponds", DriverFactory.getDriver().getPageSource().contains(randomLegendElementText));
         }
     }

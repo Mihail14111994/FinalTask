@@ -37,12 +37,13 @@ public class RegisterSteps {
 
 
 
+
     public void openRegisterWindow() throws IOException {
         screenshot.takeScreenshot(driver,screenshotsPath+LocalDateTime.now().format(formatter)+".jpg");
 //        homePage.getBtnOpenRegistration().click();
-        click(homePage.getBtnOpenRegistration());
+        click(homePage.getBtnOpenRegistration(), screenshotsPath);
         wait.until(ExpectedConditions.visibilityOf(registerPage.getTxtEmail()));
-        screenshot.takeScreenshot(driver,screenshotsPath+LocalDateTime.now().format(formatter)+".jpg");
+//        screenshot.takeScreenshot(driver,screenshotsPath+LocalDateTime.now().format(formatter)+".jpg");
 
 
     }
@@ -85,8 +86,8 @@ public class RegisterSteps {
         ScrollingPixels scrollingPixels = new ScrollingPixels();
         scrollingPixels.scrollingPixels(driver, 0, 250);
 //        registerPage.getBtnRegistration().click();
-        click(registerPage.getBtnRegistration());
-        screenshot.takeScreenshot(driver,screenshotsPath+LocalDateTime.now().format(formatter)+".jpg");
+        click(registerPage.getBtnRegistration(), screenshotsPath);
+//        screenshot.takeScreenshot(driver,screenshotsPath+LocalDateTime.now().format(formatter)+".jpg");
     }
 
     public void checkThatHomePageIsDisplayed() throws IOException {
@@ -103,17 +104,17 @@ public class RegisterSteps {
         wait.until(ExpectedConditions.visibilityOf(myAccountPage.getDdUser()));
 //        click(myAccountPage.getDdUser());
         myAccountPage.getDdUser().click();
-        screenshot.takeScreenshot(driver,screenshotsPath+LocalDateTime.now().format(formatter)+".jpg");
+//        screenshot.takeScreenshot(driver,screenshotsPath+LocalDateTime.now().format(formatter)+".jpg");
 //        myAccountPage.getBtnOpenMyAccountPage().click();
-        click(myAccountPage.getBtnOpenMyAccountPage());
-        screenshot.takeScreenshot(driver,screenshotsPath+LocalDateTime.now().format(formatter)+".jpg");
+        click(myAccountPage.getBtnOpenMyAccountPage(), screenshotsPath);
+//        screenshot.takeScreenshot(driver,screenshotsPath+LocalDateTime.now().format(formatter)+".jpg");
         assertThat(driver.getPageSource().contains(workingEmail), is(true));
-        screenshot.takeScreenshot(driver,screenshotsPath+LocalDateTime.now().format(formatter)+".jpg");
+//        screenshot.takeScreenshot(driver,screenshotsPath+LocalDateTime.now().format(formatter)+".jpg");
 //        myAccountPage.getDdUser().click();
-        click(myAccountPage.getDdUser());
-        screenshot.takeScreenshot(driver,screenshotsPath+LocalDateTime.now().format(formatter)+".jpg");
+        click(myAccountPage.getDdUser(), screenshotsPath);
+//        screenshot.takeScreenshot(driver,screenshotsPath+LocalDateTime.now().format(formatter)+".jpg");
 //        myAccountPage.getBtnLogout().click();
-        click(myAccountPage.getBtnLogout());
+        click(myAccountPage.getBtnLogout(), screenshotsPath);
         wait.until(ExpectedConditions.visibilityOf(homePage.getBtnOpenLogin()));
         screenshot.takeScreenshot(driver,screenshotsPath+LocalDateTime.now().format(formatter)+".jpg");
     }
@@ -125,7 +126,7 @@ public class RegisterSteps {
 
     public void openLoginWindow() throws IOException {
 //        homePage.getBtnOpenLogin().click();
-        click(homePage.getBtnOpenLogin());
+        click(homePage.getBtnOpenLogin(), screenshotsPath);
         wait.until(ExpectedConditions.visibilityOf(loginPage.getTxtEmail()));
         screenshot.takeScreenshot(driver,screenshotsPath+LocalDateTime.now().format(formatter)+".jpg");
     }
@@ -144,35 +145,35 @@ public class RegisterSteps {
         ScrollingPixels scrollingPixels = new ScrollingPixels();
         scrollingPixels.scrollingPixels(driver, 0, 250);
 //        loginPage.getBtnLogin().click();
-        click(loginPage.getBtnLogin());
+        click(loginPage.getBtnLogin(), screenshotsPath);
         screenshot.takeScreenshot(driver,screenshotsPath+LocalDateTime.now().format(formatter)+".jpg");
 
     }
 
     public void getMyAccountPage() throws IOException {
         wait.until(ExpectedConditions.visibilityOf(myAccountPage.getDdUser()));
-        screenshot.takeScreenshot(driver,screenshotsPath+LocalDateTime.now().format(formatter)+".jpg");
+//        screenshot.takeScreenshot(driver,screenshotsPath+LocalDateTime.now().format(formatter)+".jpg");
 //        myAccountPage.getDdUser().click();
-        click(myAccountPage.getDdUser());
-        screenshot.takeScreenshot(driver,screenshotsPath+LocalDateTime.now().format(formatter)+".jpg");
+        click(myAccountPage.getDdUser(), screenshotsPath);
+//        screenshot.takeScreenshot(driver,screenshotsPath+LocalDateTime.now().format(formatter)+".jpg");
 //        myAccountPage.getBtnOpenMyAccountPage().click();
-        click(myAccountPage.getBtnOpenMyAccountPage());
+        click(myAccountPage.getBtnOpenMyAccountPage(), screenshotsPath);
         screenshot.takeScreenshot(driver,screenshotsPath+LocalDateTime.now().format(formatter)+".jpg");
         wait.until(ExpectedConditions.visibilityOf(myAccountPage.getBtnDeleteAccount()));
         assertThat(driver.getPageSource().contains(workingEmail), is(true));
     }
 
     public void deleteAccount() throws IOException {
-        screenshot.takeScreenshot(driver,screenshotsPath+LocalDateTime.now().format(formatter)+".jpg");
+//        screenshot.takeScreenshot(driver,screenshotsPath+LocalDateTime.now().format(formatter)+".jpg");
 //        myAccountPage.getBtnDeleteAccount().click();
-        click(myAccountPage.getBtnDeleteAccount());
+        click(myAccountPage.getBtnDeleteAccount(), screenshotsPath);
         screenshot.takeScreenshot(driver,screenshotsPath+LocalDateTime.now().format(formatter)+".jpg");
         deleteAccount.getTxtCurrentPassword().sendKeys(workingPassword);
         screenshot.takeScreenshot(driver,screenshotsPath+LocalDateTime.now().format(formatter)+".jpg");
         ScrollingPixels scrollingPixels = new ScrollingPixels();
         scrollingPixels.scrollingPixels(driver, 0, 250);
 //        deleteAccount.getBtnDeleteAccountSubmit().click();
-        click(deleteAccount.getBtnDeleteAccountSubmit());
+        click(deleteAccount.getBtnDeleteAccountSubmit(), screenshotsPath);
         screenshot.takeScreenshot(driver,screenshotsPath+LocalDateTime.now().format(formatter)+".jpg");
     }
 
@@ -267,7 +268,7 @@ public class RegisterSteps {
 //                    jse.executeScript("window.scrollBy(0,250)", "");
                     scrolling.scrollingPixels(driver,0,250);
 //                    registerPage.getCbSubscrubing().click();
-                    click(registerPage.getCbSubscrubing());
+                    click(registerPage.getCbSubscrubing(), screenshotsPath);
 //                    borders.drawBorder(registerPage.getCbSubscrubing(), driver, Colours.BLUE);
                     assertThat(registerPage.getMsgcbSubscribing().isDisplayed(), is(true));
 //                    borders.drawBorder(registerPage.getMsgcbSubscribing(), driver, Colours.RED);
