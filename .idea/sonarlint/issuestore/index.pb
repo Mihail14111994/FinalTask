@@ -12,22 +12,14 @@ G
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
-[
-+src/main/java/actionMethods/DontTouch6.java,8\0\80419e28c36d9abc552c37ce9667de24729d7d27
 Y
 )src/main/java/pageObjects/DontTouch7.java,9\e\9e6b4a3827c96b64e863803edf939d9f53d0fd2e
 ]
 -src/main/java/scenarioContext/DontTouch8.java,d\b\db0c4937baf517faa809b2f120aaf57fdf36bcee
-Z
-*src/test/java/dataProviders/DontTouch.java,b\8\b8378e108ddbf21969c4c277c98518a60f791e15
 Y
 )src/test/java/testObjects/DontTouch4.java,9\5\951eb6f2b966693d861b0b14fa0c9434506cd16e
-Y
-)src/test/java/testRunners/DontTouch5.java,5\d\5d1d2d334902b74bca99f27b986dd1433752fe12
 S
 #src/main/java/utils/DontTouch9.java,6\d\6d581c5e6abc14f133992df323c8ca8b8ce72511
-U
-%src/test/java/reports/DontTouch1.java,e\7\e7b44fcc724e7505b4463917e611de89f2de13e4
 Z
 *src/test/features/EventsNavigation.feature,1\c\1c228fe181941468f0c7369bcdfed2b2ef12af3a
 Y
@@ -40,14 +32,8 @@ d
 4src/test/java/stepDefinition/TicketsDefinitions.java,e\f\efff35e6107b161e0e30ced26bb565d97d7aa5a5
 b
 2src/test/java/stepImplementation/TicketsSteps.java,9\e\9e22843a5b3fa297650ea40f1f163abe9f918ea4
-T
-$target/maven-archiver/pom.properties,5\a\5acbe6c306dee4498a010b1ca2096853e29e16a4
 €
 Ptarget/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst,3\d\3da01db98b88a8057c03354880f06dba49d3e795
-Š
-Ztarget/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst,a\7\a7fa8b0772ec3c4ca9f2834f568ba1e29fe9750f
-ˆ
-Xtarget/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst,4\0\4032e4ef0f8712e43ff2a568e798808b0d0cb7e9
 ‚
 Rtarget/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst,8\a\8ae396f369da14bb5c0973286facff8fb2c70d56
 X

@@ -16,7 +16,7 @@ public class CommonDefinitions {
 
     @Given("Fest.md home page is displayed")
     public void HomePageIsDisplayed() {
-        WebDriver driver = DriverFactory.newDriver();
+        WebDriver driver = DriverFactory.getDriver();
         driver.manage().window().maximize();
         driver.get("https://www.fest.md");
     }
@@ -24,7 +24,7 @@ public class CommonDefinitions {
 
     @Given("\"Fest.md/en\" home page is displayed")
     public void EnPageIsDisplayed() {
-        WebDriver driver = DriverFactory.newDriver();
+        WebDriver driver = DriverFactory.getDriver();
         driver.manage().window().maximize();
         driver.get("https://www.fest.md/en");
     }

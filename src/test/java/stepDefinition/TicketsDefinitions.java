@@ -23,10 +23,16 @@ public class TicketsDefinitions {
     LoginRegistrationPage loginRegistrationPage = new LoginRegistrationPage();
     int priceOfTicket;
 
-    @After
-    public void teardown() {
-        driver.quit();
-    }
+//    @After
+//    public void teardown() {
+//        driver.quit();
+//    }
+@After
+public void teardown(){
+    DriverFactory.getDriver().close();
+    DriverFactory.getDriver().quit();
+    DriverFactory.setDriver();
+}
 
     @Given("{} menu page is displayed")
     public void ticketEventPage(String pageName) throws InterruptedException {
