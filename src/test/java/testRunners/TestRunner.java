@@ -6,10 +6,11 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/features/Places.feature",
+        features = "src/test/features",
         glue = "stepDefinition",
-        plugin = {"pretty", "html:target/cucumber-html-report", "json:target/cucumber.json"}
-//        tags = "@positive"
+        plugin = {"pretty", "html:target/cucumber-html-report", "json:target/cucumber.json"},
+        tags = "@placesMap"
 )
-public class PlacesRunner {
+public class TestRunner {
+
 }

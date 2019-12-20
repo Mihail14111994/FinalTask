@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import pageObjects.*;
 
 import java.util.List;
-
+import static actionMethods.Click.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static stepDefinition.CommonDefinitions.getRandomElement;
 
@@ -33,7 +33,7 @@ public class PlacesSteps {
 
     public void accessPlacesPage() {
         wait.until(ExpectedConditions.visibilityOf(homePage.getPlacesMenu()));
-        homePage.getPlacesMenu().click();
+        click(homePage.getPlacesMenu());
     }
 
     public void checkUserIsOnPlacesPage() {
@@ -54,7 +54,7 @@ public class PlacesSteps {
             category = category.replaceAll("[\\s|\\u00A0]", "");
             text = text.replaceAll("[\\s|\\u00A0]", "");
             if (text.equalsIgnoreCase(category)) {
-                element.click();
+                click(element);
                 break;
             }
         }
@@ -70,7 +70,7 @@ public class PlacesSteps {
             category = category.replaceAll("[\\s|\\u00A0]", "");
             text = text.replaceAll("[\\s|\\u00A0]", "");
             if (text.equalsIgnoreCase(category)) {
-                element.click();
+                click(element);
                 break;
             }
         }
@@ -83,7 +83,7 @@ public class PlacesSteps {
     }
 
     public void userClicksOnSeeOnMapButton() {
-        placesPage.getBtnSeeOnMap().click();
+        click(placesPage.getBtnSeeOnMap());
     }
 
     public void clickOnSubcategory() {
@@ -100,7 +100,7 @@ public class PlacesSteps {
         if (subcategories.size() > 0) {
             WebElement subcategory = getRandomElement(subcategories);
             subcategoryName = subcategory.getText();
-            subcategory.click();
+            click(subcategory);
         }
     }
 
@@ -129,38 +129,38 @@ public class PlacesSteps {
 
     public void userClicksOnSearchButton() {
         wait.until(ExpectedConditions.visibilityOf(homePage.getTxtSearchbar()));
-        homePage.getTxtSearchbar().click();
+        click(homePage.getTxtSearchbar());
     }
 
     //    Scenario Outline: Places filtering
 
     public void userClicksOnOptionButton() {
         wait.until(ExpectedConditions.visibilityOf(placesPage.getBtnOptions()));
-        placesPage.getBtnOptions().click();
+        click(placesPage.getBtnOptions());
     }
 
     public void checkThemeValuesFromOptions(String theme) {
-        optionsPage.getDdlTheme().click();
+        click(optionsPage.getDdlTheme());
         wait.until(ExpectedConditions.elementToBeClickable(optionsPage.getDblThemes().get(24)));
         for (WebElement element : optionsPage.getDblThemes()) {
             if (element.getText().contains(theme)) {
-                element.click();
+                click(element);
                 break;
             }
         }
-        optionsPage.getDdlTheme().click();
+        click(optionsPage.getDdlTheme());
     }
 
     public void checkPriceValuesFromOptions(String price) {
         switch (price) {
             case "2":
-                optionsPage.getChkPriceLevel2().click();
+                click(optionsPage.getChkPriceLevel2());
                 break;
             case "3":
-                optionsPage.getChkPriceLevel3().click();
+                click(optionsPage.getChkPriceLevel3());
                 break;
             case "4":
-                optionsPage.getChkPriceLevel4().click();
+                click(optionsPage.getChkPriceLevel4());
                 break;
             default:
         }
@@ -169,14 +169,13 @@ public class PlacesSteps {
     public void checkFacilitiesValuesFromOptions(String facilities) {
         for (WebElement element : optionsPage.getDblFacilities()) {
             if (facilities.contains(element.getText().substring(0, element.getText().length() - 1))) {
-                element.click();
+                click(element);
                 break;
             }
         }
     }
 
-    public void userClicksOnOptionsSearchButton() {
-        optionsPage.getBtnOptionsSearch().click();
+    public void userClicksOnOptionsSearchButton() {click(optionsPage.getBtnOptionsSearch());
     }
 
     public void selectAPlacesElement() {
@@ -184,7 +183,7 @@ public class PlacesSteps {
         List<WebElement> places = placesElementPage.getBtnDetailsOfAPlacesElement();
 
         if (places.size() > 0) {
-            getRandomElement(places).click();
+            click(getRandomElement(places));
 
         }
         if (places.size() == 0) {
@@ -203,7 +202,7 @@ public class PlacesSteps {
     public void userTypeTextInSearchbar(String inputText) {
         wait.until(ExpectedConditions.visibilityOf(homePage.getTxtSearchbar()));
         homePage.getTxtSearchbar().sendKeys(inputText);
-        homePage.getBtnSearch().click();
+        click(homePage.getBtnSearch());
     }
 
     public void checkTheResultOfSearch(String locationName) {
@@ -219,28 +218,23 @@ public class PlacesSteps {
         wait.until(ExpectedConditions.visibilityOf(mapPlacesPage.getChkMapCheckboxes().get(0)));
         List<WebElement> places = mapPlacesPage.getChkMapCheckboxes();
         // uncheck the first 3 checkboxes(checked by default)
-        places.get(0).click();
-        places.get(1).click();
-        places.get(2).click();
+        click(places.get(0));
+        click(places.get(1));
+        click(places.get(2));
 
         WebElement randomLegendElement = getRandomElement(places);
         randomLegendElementText = randomLegendElement.getText();
-        randomLegendElement.click();
-        mapPlacesPage.getBtnMapCloseLegend().click();
+        click(randomLegendElement);
+        click(mapPlacesPage.getBtnMapCloseLegend());
 
         List<WebElement> pinpoints = mapPlacesPage.getMapPinpoints();
         for (WebElement pinpoint : pinpoints) {
             if (pinpoint.isDisplayed()) {
-                try {
-                    Thread.sleep(3000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
                 Actions actions = new Actions(DriverFactory.getDriver());
                 actions.moveToElement(pinpoint).perform();
                 actions.moveToElement(pinpoint, 60, 0).perform();
                 try {
-                    pinpoint.click();
+                    click(pinpoint);
                     break;
                 } catch (ElementClickInterceptedException e) {
                     e.getLocalizedMessage();

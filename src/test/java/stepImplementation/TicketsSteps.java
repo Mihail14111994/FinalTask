@@ -1,7 +1,5 @@
 package stepImplementation;
 
-import actionMethods.Borders;
-import actionMethods.Scrolling;
 import driverFactory.DriverFactory;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -14,7 +12,6 @@ import java.util.List;
 import java.util.Random;
 
 import static actionMethods.Click.click;
-import static actionMethods.Colours.RED;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -27,8 +24,6 @@ public class TicketsSteps {
     BookingPage bookingPage = new BookingPage();
     EventsPage eventsPage = new EventsPage();
     LoginRegistrationPage loginRegistrationPage = new LoginRegistrationPage();
-    Scrolling scrolling =new Scrolling();
-    Borders borders = new Borders();
     WebDriver driver = DriverFactory.getDriver();
     WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(),30);
     Logger logger = Logger.getLogger(TicketsSteps.class);
@@ -104,8 +99,6 @@ public class TicketsSteps {
             {
                 randomLink = randomLink(ticketsPage.getListOfParties());
             }
-            scrolling.scrollingUntilElement(randomLink);
-            borders.drawBorder(randomLink, driver, RED);
             randomLink.click();
 
             if(ticketSectionsPage.getBoxOfTickets().size()>0){

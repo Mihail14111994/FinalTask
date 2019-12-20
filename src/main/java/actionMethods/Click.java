@@ -9,9 +9,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 
+import static actionMethods.Colours.RED;
 import static java.time.Duration.ofMillis;
 
 public class Click {
+    static Scrolling scrolling =new Scrolling();
+    static Borders borders = new Borders();
     public static void click(WebElement element) {
         Logger logger = Logger.getLogger(Click.class);
         org.openqa.selenium.support.ui.Wait<WebDriver> wait = new FluentWait<>(DriverFactory.getDriver())
@@ -21,8 +24,10 @@ public class Click {
                 .ignoring(StaleElementReferenceException.class);
 
         wait.until(ExpectedConditions.elementToBeClickable(element));
-        element.click();
-        if(element.getText()!=null){
+        scrolling.scrollingUntilElement(element);
+        borders.drawBorder(element, DriverFactory.getDriver(), RED);
+        if(element.getText().length() > 0){
         logger.info("Clicked " + element.getText());}
+        element.click();
     }
 }
