@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
         features = "src/test/features/EventsNavigation.feature",
         glue = "stepDefinition",
         plugin = {"pretty", "html:target/cucumber-html-report", "json:target/cucumber.json"},
-        tags = "@positive"
+        tags = "@Doina"
 )
 public class TicketsEventsRunner {
 }
