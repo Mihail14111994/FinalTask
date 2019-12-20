@@ -23,7 +23,7 @@ public class CommonDefinitions {
     public void HomePageIsDisplayed() {
 
 
-        WebDriver driver = DriverFactory.newDriver();
+        WebDriver driver = DriverFactory.getDriver();
         logger.info("Initializing driver...");
 
         driver.manage().window().maximize();

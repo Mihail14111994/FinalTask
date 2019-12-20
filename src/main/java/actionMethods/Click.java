@@ -21,8 +21,9 @@ public class Click {
                 .ignoring(StaleElementReferenceException.class);
 
         wait.until(ExpectedConditions.elementToBeClickable(element));
-        element.click();
         if(element.getText()!=null){
-        logger.info("Clicked " + element.getText());}
+            logger.info("Clicked " + element.getText());}
+        element.click();
+
     }
 }

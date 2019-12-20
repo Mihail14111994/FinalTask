@@ -80,7 +80,7 @@ public class RegistrationStepDefinition {
     }
 
     @Then("the following elements are visible on Login page")
-    public void theFollowingElementsAreVisibleOnLoginPage(DataTable elements) {
+    public void theFollowingElementsAreVisibleOnLoginPage(DataTable elements) throws IOException {
         registerSteps.checkinUILogin(elements);
 
     }
@@ -92,7 +92,7 @@ public class RegistrationStepDefinition {
     }
 
     @Then("the following elements are visible on Register_Login page")
-    public void theFollowingElementsAreVisibleOnRegisterLoginPage(DataTable elements) {
+    public void theFollowingElementsAreVisibleOnRegisterLoginPage(DataTable elements) throws IOException {
         registerSteps.checkingUILoginRegisterPage(elements);
     }
 }

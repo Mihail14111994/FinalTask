@@ -14,14 +14,15 @@ public class MyAccountPage extends PageObject{
     @FindBy(xpath = "//a[@class='btn btn-generic btn-tiny']")
     private WebElement linkModifyPassword;
 
-    @FindBy(xpath = "//div[contains(@class, 'float-right')]//div[@class='bar-item inlined username']" )
-    WebElement ddUser;
+    @FindBy(xpath = "//div[contains(@class, 'float-right')]//div[@class='bar-item inlined username']")
+    private WebElement ddUser;
+
 
     @FindBy(xpath = "//*[@id='header']/div[2]/div[1]/ul/li[2]/a" )
-    WebElement btnOpenMyAccountPage;
+    private WebElement btnOpenMyAccountPage;
 
     @FindBy(xpath = "//*[@id='header']/div[2]/div[1]/ul/li[4]/a" )
-    WebElement btnLogout;
+    private WebElement btnLogout;
 
     public WebElement getBtnDeleteAccount() {
         return btnDeleteAccount;
