@@ -3,6 +3,7 @@ package stepImplementation;
 import actionMethods.Borders;
 import actionMethods.Scrolling;
 import driverFactory.DriverFactory;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -12,6 +13,7 @@ import pageObjects.*;
 import java.util.List;
 import java.util.Random;
 
+import static actionMethods.Click.click;
 import static actionMethods.Colours.RED;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
@@ -29,6 +31,8 @@ public class TicketsSteps {
     Borders borders = new Borders();
     WebDriver driver = DriverFactory.getDriver();
     WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(),30);
+    Logger logger = Logger.getLogger(TicketsSteps.class);
+
 
     String info = "INFORMAȚII";
     String LOGIN = "frosea1234@gmail.com";
@@ -53,12 +57,16 @@ public class TicketsSteps {
     public void userIsLoggedIn(){
         WebDriver driver = DriverFactory.getDriver();
         driver.get("https://www.fest.md/ro/login-register");
-        wait.until(ExpectedConditions.visibilityOf(loginRegistrationPage.getEmailLogin()));
-        loginRegistrationPage.getEmailLogin().click();
+        logger.info("Fest.md login-register page is displayed");
+//        wait.until(ExpectedConditions.visibilityOf(loginRegistrationPage.getEmailLogin()));
+//        loginRegistrationPage.getEmailLogin().click();
+        click(loginRegistrationPage.getEmailLogin());
         loginRegistrationPage.getEmailLogin().sendKeys(LOGIN);
-        loginRegistrationPage.getPasswordLogin().click();
+//        loginRegistrationPage.getPasswordLogin().click();
+        click(loginRegistrationPage.getPasswordLogin());
         loginRegistrationPage.getPasswordLogin().sendKeys(PASSWORD);
-        loginRegistrationPage.getBtnLogin().click();
+//        loginRegistrationPage.getBtnLogin().click();
+        click(loginRegistrationPage.getBtnLogin());
     }
 
     public void sectionIsSelected(String section){
@@ -66,7 +74,8 @@ public class TicketsSteps {
         List<WebElement> listOfSectionNames = ticketsPage.getSectionNames();
         for (WebElement e:listOfSectionNames) {
             if (e.getText().equals(section)) {
-                e.click();}
+                e.click();
+            }
         }
     }
 
@@ -131,6 +140,7 @@ public class TicketsSteps {
 
     public void assertAmmountOfPayment(int nr, int price){
         totalPrice = nr*price;
+        wait.until(ExpectedConditions.visibilityOf(bookingPage.getAmountToBePaid()));
         String displayedTotalPrice = bookingPage.getAmountToBePaid().getText().replaceAll("[^0-9]", "");
         assertThat("Amount to be paid is not correct displayed", displayedTotalPrice.equals(String.valueOf(totalPrice)));
     }
