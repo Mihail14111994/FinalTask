@@ -18,26 +18,39 @@
 package driverFactory;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.PageLoadStrategy;
+import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.ie.InternetExplorerOptions;
+
+//import org.openqa.selenium.ie.ElementScrollBehavior;
 
 public class DriverFactory {
 	static WebDriver driver = null;
-	public static WebDriver newDriver() {
+	public static WebDriver getDriver() {
 
 		String browserName = System.getProperty("Browser", DriverType.CHROME.toString()).toUpperCase();
 		DriverType driverType = DriverType.valueOf(browserName);
 		switch (driverType) {
 		case CHROME:
-//			if(driver == null){
+			if(driver == null){
 			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver();
-//			}
+			}
 			break;
 		case IE:
+			InternetExplorerOptions internetExplorerOptions = new InternetExplorerOptions();
+			internetExplorerOptions
+					.requireWindowFocus().usePerProcessProxy()
+					.introduceFlakinessByIgnoringSecurityDomains().ignoreZoomSettings()
+					.setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.ACCEPT)
+					.enablePersistentHovering().setPageLoadStrategy(PageLoadStrategy.EAGER);
+//					.elementScrollTo(ElementScrollBehavior.TOP).setCapability(InternetExplorerDriver.SILENT, true);
 			WebDriverManager.iedriver().setup();
-			driver = new InternetExplorerDriver();
+			driver = new InternetExplorerDriver(internetExplorerOptions);
+
 			break;
 		default:
 			WebDriverManager.chromedriver().setup();
@@ -47,8 +60,13 @@ public class DriverFactory {
 		return driver;
 	}
 
-	public static WebDriver getDriver() {
-		return driver;
+//	public static WebDriver getDriver() {
+//		return driver;
+//	}
+
+	public static void setDriver()
+	{
+		driver=null;
 	}
 
 	//	private static WebDriver driver;
