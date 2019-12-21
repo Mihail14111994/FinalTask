@@ -33,7 +33,7 @@ public class RegistrationStepDefinition {
         registerSteps.checkThatHomePageIsDisplayed();
     }
 
-    @And("Register is successful")
+    @And("User unable to register with the same credentials")
     public void registerIsSuccessful() throws IOException {
         registerSteps.makeLogout();
         registerSteps.openRegisterWindow();

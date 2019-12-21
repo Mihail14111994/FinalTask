@@ -15,6 +15,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import static actionMethods.Click.click;
+import static actionMethods.Screenshot.takeScreenshot;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -27,7 +28,6 @@ public class RegisterSteps {
     private LoginPageObject loginPage = new LoginPageObject();
     private DeleteAccountWindowObject deleteAccount = new DeleteAccountWindowObject();
     private LoginRegisterPageObject loginRegisterPage = new LoginRegisterPageObject();
-    private Screenshot screenshot = new Screenshot();
     private String screenshotsPath = "target\\screenshots\\registration\\"; //change to your folder
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy_MM_dd_HH_mm_ss");
     private BorderScreen borderScreen = new BorderScreen();
@@ -39,7 +39,7 @@ public class RegisterSteps {
 
 
     public void openRegisterWindow() throws IOException {
-        screenshot.takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
+        takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
         click(homePage.getBtnOpenRegistration(), screenshotsPath);
         logger.info("Registration window was opened");
         wait.until(ExpectedConditions.visibilityOf(registerPage.getTxtEmail()));
@@ -55,7 +55,7 @@ public class RegisterSteps {
                 logger.info("In email field was filled " + email);
                 registerPage.getTxtConfirmPassword().sendKeys("OneTwoThree");
                 logger.info("In password field was filled " + password);
-                screenshot.takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
+                takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
                 break;
             }
             case "PassWithAnotherConfirm": {
@@ -65,7 +65,7 @@ public class RegisterSteps {
                 logger.info("In password field was filled " + password);
                 registerPage.getTxtConfirmPassword().sendKeys("anotherPassword");
                 logger.info("In password field was filled another password");
-                screenshot.takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
+                takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
                 break;
             }
             default: {
@@ -74,7 +74,7 @@ public class RegisterSteps {
                     logger.info("In password field was filled " + password);
                     registerPage.getTxtConfirmPassword().sendKeys(password);
                     logger.info("In confirm password field was filled " + password);
-                    screenshot.takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
+                    takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
                     break;
                 } else {
                     registerPage.getTxtEmail().sendKeys(email);
@@ -83,7 +83,7 @@ public class RegisterSteps {
                     logger.info("In password field was filled " + password);
                     registerPage.getTxtConfirmPassword().sendKeys(password);
                     logger.info("In confirm password field was filled " + password);
-                    screenshot.takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
+                    takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
                     break;
                 }
             }
@@ -104,27 +104,27 @@ public class RegisterSteps {
         wait.until(ExpectedConditions.visibilityOf(homePage.getTtlCalendar()));
         logger.info("Home page is displayed ");
         assertThat(homePage.getTtlCalendar().isDisplayed(), is(true));
-        screenshot.takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
+        takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
     }
 
     public void makeLogout() throws IOException {
         wait.until(ExpectedConditions.visibilityOf(myAccountPage.getDdUser()));
         click(myAccountPage.getDdUser(), screenshotsPath);
         logger.info("User drop-down was opened ");
-        screenshot.takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
+        takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
         click(myAccountPage.getBtnOpenMyAccountPage(), screenshotsPath);
         logger.info("My account button was clicked ");
-        screenshot.takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
+        takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
         assertThat(driver.getPageSource().contains(workingEmail), is(true));
-        screenshot.takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
+        takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
         logger.info("My account page was opened ");
         click(myAccountPage.getDdUser(), screenshotsPath);
         logger.info("User drop-down was opened ");
-        screenshot.takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
+        takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
         click(myAccountPage.getBtnLogout(), screenshotsPath);
         logger.info("Logout button was clicked ");
         wait.until(ExpectedConditions.visibilityOf(homePage.getBtnOpenLogin()));
-        screenshot.takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
+        takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
     }
 
     public void checkFailingRegisterWithTheSameCredentials() {
@@ -139,19 +139,19 @@ public class RegisterSteps {
         click(homePage.getBtnOpenLogin(), screenshotsPath);
         wait.until(ExpectedConditions.visibilityOf(loginPage.getTxtEmail()));
         logger.info("Login window is displayed ");
-        screenshot.takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
+        takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
     }
 
     public void fillDataInEmailPasswordFieldsLogin(String email, String password) throws IOException {
         workingEmail = email;
         workingPassword = password;
-        screenshot.takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
+        takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
         loginPage.getTxtEmail().sendKeys(email);
         logger.info("In email field was filled " + email);
-        screenshot.takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
+        takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
         loginPage.getTxtPassword().sendKeys(password);
         logger.info("In password field was filled " + password);
-        screenshot.takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
+        takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
     }
 
     public void clickLoginButton() throws IOException {
@@ -160,7 +160,7 @@ public class RegisterSteps {
         logger.info("Login button was clicked ");
         logger.info("Login successful ");
         click(loginPage.getBtnLogin(), screenshotsPath);
-        screenshot.takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
+        takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
 
     }
 
@@ -168,13 +168,13 @@ public class RegisterSteps {
         wait.until(ExpectedConditions.visibilityOf(myAccountPage.getDdUser()));
         click(myAccountPage.getDdUser(), screenshotsPath);
         logger.info("User drop-down was opened ");
-        screenshot.takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
+        takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
         click(myAccountPage.getBtnOpenMyAccountPage(), screenshotsPath);
         logger.info("My account button was clicked ");
-        screenshot.takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
+        takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
         wait.until(ExpectedConditions.visibilityOf(myAccountPage.getBtnDeleteAccount()));
         assertThat(driver.getPageSource().contains(workingEmail), is(true));
-        screenshot.takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
+        takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
         logger.info("My account page was opened ");
     }
 
@@ -182,16 +182,16 @@ public class RegisterSteps {
         click(myAccountPage.getBtnDeleteAccount(), screenshotsPath);
         logger.info("Delete button was clicked ");
         logger.info("Delete window was opened ");
-        screenshot.takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
+        takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
         deleteAccount.getTxtCurrentPassword().sendKeys(workingPassword);
         logger.info("In current password field filled " + workingPassword);
-        screenshot.takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
+        takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
         ScrollingPixels scrollingPixels = new ScrollingPixels();
         scrollingPixels.scrollingPixels(driver, 0, 250);
         click(deleteAccount.getBtnDeleteAccountSubmit(), screenshotsPath);
         logger.info("Deleting was confirmed ");
         logger.info("Account was deleted");
-        screenshot.takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
+        takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
     }
 
     public void checkThatAccWasDeleted() throws IOException {
@@ -200,7 +200,7 @@ public class RegisterSteps {
         logger.warn("Error message is displayed ");
         logger.warn("Login WITH SAME CREDENTIALS IMPOSSIBLE ");
         logger.warn("Account deleted from DB system ");
-        screenshot.takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
+        takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
     }
 
     public void checkingErrorMessages(String errorMessage) throws IOException {
@@ -211,7 +211,7 @@ public class RegisterSteps {
             assertThat(errorMessage.equals("Acest câmp nu poate fi gol."), is(true));
             logger.warn("Error message is displayed ");
             logger.warn("Login WITH this data IMPOSSIBLE ");
-            screenshot.takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
+            takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
         } else {
             if (!workingEmail.contains("@")) {
                 wait.until(ExpectedConditions.visibilityOf(registerPage.getMsgErrorEmail()));
@@ -219,7 +219,7 @@ public class RegisterSteps {
                 assertThat(errorMessage.equals("Adresa de email introdusă nu este validă."), is(true));
                 logger.warn("Error message is displayed ");
                 logger.warn("Login WITH this data IMPOSSIBLE ");
-                screenshot.takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
+                takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
             }
         }
         if (workingPassword.equals("null")) {
@@ -228,7 +228,7 @@ public class RegisterSteps {
             assertThat(errorMessage.equals("Acest câmp nu poate fi gol."), is(true));
             logger.warn("Error message is displayed ");
             logger.warn("Login WITH this data IMPOSSIBLE ");
-            screenshot.takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
+            takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
         } else {
             if (workingPassword.equals("PassWithAnotherConfirm")) {
                 wait.until(ExpectedConditions.visibilityOf(registerPage.getMsgErrorConfirmPassword()));
@@ -236,7 +236,7 @@ public class RegisterSteps {
                 assertThat(errorMessage.equals("Parolele introduse nu coincid."), is(true));
                 logger.warn("Error message is displayed ");
                 logger.warn("Login WITH this data IMPOSSIBLE ");
-                screenshot.takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
+                takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
             }
         }
     }

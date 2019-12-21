@@ -1,0 +1,1044 @@
+[
+  {
+    "line": 2,
+    "elements": [
+      {
+        "line": 4,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 17458571900,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "Fest.md home page is displayed",
+            "match": {
+              "location": "CommonDefinitions.HomePageIsDisplayed()"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2019-12-21T12:23:02.068Z",
+        "line": 15,
+        "name": "User is able to register",
+        "description": "",
+        "id": "registration;user-is-able-to-register;;2",
+        "after": [
+          {
+            "result": {
+              "duration": 2778600600,
+              "status": "passed"
+            },
+            "match": {
+              "location": "CommonDefinitions.teardown()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 2639173900,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "Register page is displayed",
+            "match": {
+              "location": "RegistrationStepDefinition.registerPageIsDisplayed()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 2966224000,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "Submit test2@gma.ru, 123123 and confirm password in registration form",
+            "match": {
+              "arguments": [
+                {
+                  "val": "test2@gma.ru",
+                  "offset": 7
+                },
+                {
+                  "val": "123123",
+                  "offset": 21
+                }
+              ],
+              "location": "RegistrationStepDefinition.submitEmailPasswordAndConfirmPasswordInRegistrationForm(String,String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 4944874700,
+              "status": "passed"
+            },
+            "line": 10,
+            "name": "Home page is displayed",
+            "match": {
+              "location": "RegistrationStepDefinition.homePageIsDisplayed()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 18824474000,
+              "status": "passed"
+            },
+            "line": 11,
+            "name": "User unable to register with the same credentials",
+            "match": {
+              "location": "RegistrationStepDefinition.registerIsSuccessful()"
+            },
+            "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@Valik"
+          },
+          {
+            "name": "@Registration"
+          },
+          {
+            "name": "@Fest"
+          }
+        ]
+      },
+      {
+        "line": 4,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 12835341900,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "Fest.md home page is displayed",
+            "match": {
+              "location": "CommonDefinitions.HomePageIsDisplayed()"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2019-12-21T12:23:51.770Z",
+        "line": 24,
+        "name": "User fails to registrate",
+        "description": "",
+        "id": "registration;user-fails-to-registrate;;2",
+        "after": [
+          {
+            "result": {
+              "duration": 2782716600,
+              "status": "passed"
+            },
+            "match": {
+              "location": "CommonDefinitions.teardown()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 2333066400,
+              "status": "passed"
+            },
+            "line": 19,
+            "name": "Register page is displayed",
+            "match": {
+              "location": "RegistrationStepDefinition.registerPageIsDisplayed()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 2800128800,
+              "status": "passed"
+            },
+            "line": 20,
+            "name": "Submit test, 123123 and confirm password in registration form",
+            "match": {
+              "arguments": [
+                {
+                  "val": "test",
+                  "offset": 7
+                },
+                {
+                  "val": "123123",
+                  "offset": 13
+                }
+              ],
+              "location": "RegistrationStepDefinition.submitEmailPasswordAndConfirmPasswordInRegistrationForm(String,String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 1178960000,
+              "status": "passed"
+            },
+            "line": 21,
+            "name": "Registration fails with Adresa de email introdusă nu este validă. message",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Adresa de email introdusă nu este validă.",
+                  "offset": 24
+                }
+              ],
+              "location": "RegistrationStepDefinition.registrationFailsWithErrorMessage(String)"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@Valik"
+          },
+          {
+            "name": "@Negative"
+          },
+          {
+            "name": "@Fest"
+          }
+        ]
+      },
+      {
+        "line": 4,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 10354193600,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "Fest.md home page is displayed",
+            "match": {
+              "location": "CommonDefinitions.HomePageIsDisplayed()"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2019-12-21T12:24:13.714Z",
+        "line": 25,
+        "name": "User fails to registrate",
+        "description": "",
+        "id": "registration;user-fails-to-registrate;;3",
+        "after": [
+          {
+            "result": {
+              "duration": 2803922700,
+              "status": "passed"
+            },
+            "match": {
+              "location": "CommonDefinitions.teardown()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 2363317200,
+              "status": "passed"
+            },
+            "line": 19,
+            "name": "Register page is displayed",
+            "match": {
+              "location": "RegistrationStepDefinition.registerPageIsDisplayed()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 2829844000,
+              "status": "passed"
+            },
+            "line": 20,
+            "name": "Submit null, 123123 and confirm password in registration form",
+            "match": {
+              "arguments": [
+                {
+                  "val": "null",
+                  "offset": 7
+                },
+                {
+                  "val": "123123",
+                  "offset": 13
+                }
+              ],
+              "location": "RegistrationStepDefinition.submitEmailPasswordAndConfirmPasswordInRegistrationForm(String,String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 1152553300,
+              "status": "passed"
+            },
+            "line": 21,
+            "name": "Registration fails with Acest câmp nu poate fi gol. message",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Acest câmp nu poate fi gol.",
+                  "offset": 24
+                }
+              ],
+              "location": "RegistrationStepDefinition.registrationFailsWithErrorMessage(String)"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@Valik"
+          },
+          {
+            "name": "@Negative"
+          },
+          {
+            "name": "@Fest"
+          }
+        ]
+      },
+      {
+        "line": 4,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 11480801400,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "Fest.md home page is displayed",
+            "match": {
+              "location": "CommonDefinitions.HomePageIsDisplayed()"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2019-12-21T12:24:33.253Z",
+        "line": 26,
+        "name": "User fails to registrate",
+        "description": "",
+        "id": "registration;user-fails-to-registrate;;4",
+        "after": [
+          {
+            "result": {
+              "duration": 2904743700,
+              "status": "passed"
+            },
+            "match": {
+              "location": "CommonDefinitions.teardown()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 2170515700,
+              "status": "passed"
+            },
+            "line": 19,
+            "name": "Register page is displayed",
+            "match": {
+              "location": "RegistrationStepDefinition.registerPageIsDisplayed()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 2817820300,
+              "status": "passed"
+            },
+            "line": 20,
+            "name": "Submit test2@gma.ru, null and confirm password in registration form",
+            "match": {
+              "arguments": [
+                {
+                  "val": "test2@gma.ru",
+                  "offset": 7
+                },
+                {
+                  "val": "null",
+                  "offset": 21
+                }
+              ],
+              "location": "RegistrationStepDefinition.submitEmailPasswordAndConfirmPasswordInRegistrationForm(String,String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 1155095400,
+              "status": "passed"
+            },
+            "line": 21,
+            "name": "Registration fails with Acest câmp nu poate fi gol. message",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Acest câmp nu poate fi gol.",
+                  "offset": 24
+                }
+              ],
+              "location": "RegistrationStepDefinition.registrationFailsWithErrorMessage(String)"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@Valik"
+          },
+          {
+            "name": "@Negative"
+          },
+          {
+            "name": "@Fest"
+          }
+        ]
+      },
+      {
+        "line": 4,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 10917788100,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "Fest.md home page is displayed",
+            "match": {
+              "location": "CommonDefinitions.HomePageIsDisplayed()"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2019-12-21T12:24:53.788Z",
+        "line": 27,
+        "name": "User fails to registrate",
+        "description": "",
+        "id": "registration;user-fails-to-registrate;;5",
+        "after": [
+          {
+            "result": {
+              "duration": 2812006500,
+              "status": "passed"
+            },
+            "match": {
+              "location": "CommonDefinitions.teardown()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 2262222500,
+              "status": "passed"
+            },
+            "line": 19,
+            "name": "Register page is displayed",
+            "match": {
+              "location": "RegistrationStepDefinition.registerPageIsDisplayed()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 3078521000,
+              "status": "passed"
+            },
+            "line": 20,
+            "name": "Submit num2@ij.md, PassWithAnotherConfirm and confirm password in registration form",
+            "match": {
+              "arguments": [
+                {
+                  "val": "num2@ij.md",
+                  "offset": 7
+                },
+                {
+                  "val": "PassWithAnotherConfirm",
+                  "offset": 19
+                }
+              ],
+              "location": "RegistrationStepDefinition.submitEmailPasswordAndConfirmPasswordInRegistrationForm(String,String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 1168348500,
+              "status": "passed"
+            },
+            "line": 21,
+            "name": "Registration fails with Parolele introduse nu coincid. message",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Parolele introduse nu coincid.",
+                  "offset": 24
+                }
+              ],
+              "location": "RegistrationStepDefinition.registrationFailsWithErrorMessage(String)"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@Valik"
+          },
+          {
+            "name": "@Negative"
+          },
+          {
+            "name": "@Fest"
+          }
+        ]
+      },
+      {
+        "line": 4,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 10470896500,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "Fest.md home page is displayed",
+            "match": {
+              "location": "CommonDefinitions.HomePageIsDisplayed()"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2019-12-21T12:25:14.034Z",
+        "line": 30,
+        "name": "Registration window UI check",
+        "description": "",
+        "id": "registration;registration-window-ui-check",
+        "after": [
+          {
+            "result": {
+              "duration": 2745783800,
+              "status": "passed"
+            },
+            "match": {
+              "location": "CommonDefinitions.teardown()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 2398483300,
+              "status": "passed"
+            },
+            "line": 31,
+            "name": "Register page is displayed",
+            "match": {
+              "location": "RegistrationStepDefinition.registerPageIsDisplayed()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 7369089100,
+              "status": "passed"
+            },
+            "line": 32,
+            "name": "the following elements are visible on Register page",
+            "match": {
+              "location": "RegistrationStepDefinition.theFollowingElementsAreVisible(DataTable)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "Register title"
+                ]
+              },
+              {
+                "cells": [
+                  "Email field"
+                ]
+              },
+              {
+                "cells": [
+                  "Password field"
+                ]
+              },
+              {
+                "cells": [
+                  "Confirm password field"
+                ]
+              },
+              {
+                "cells": [
+                  "Register button"
+                ]
+              },
+              {
+                "cells": [
+                  "Login button"
+                ]
+              },
+              {
+                "cells": [
+                  "Login with facebook button"
+                ]
+              },
+              {
+                "cells": [
+                  "Recieve newletter checkbox"
+                ]
+              }
+            ],
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@Valik"
+          },
+          {
+            "name": "@UI"
+          },
+          {
+            "name": "@Valik"
+          },
+          {
+            "name": "@Fest"
+          }
+        ]
+      },
+      {
+        "line": 4,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 10243805600,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "Fest.md home page is displayed",
+            "match": {
+              "location": "CommonDefinitions.HomePageIsDisplayed()"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2019-12-21T12:25:37.022Z",
+        "line": 43,
+        "name": "Login window UI check",
+        "description": "",
+        "id": "registration;login-window-ui-check",
+        "after": [
+          {
+            "result": {
+              "duration": 2845471000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "CommonDefinitions.teardown()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 2372864300,
+              "status": "passed"
+            },
+            "line": 44,
+            "name": "Login page is displayed",
+            "match": {
+              "location": "RegistrationStepDefinition.loginPageIsDisplayed()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 5370049000,
+              "status": "passed"
+            },
+            "line": 45,
+            "name": "the following elements are visible on Login page",
+            "match": {
+              "location": "RegistrationStepDefinition.theFollowingElementsAreVisibleOnLoginPage(DataTable)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "Login title"
+                ]
+              },
+              {
+                "cells": [
+                  "Email field"
+                ]
+              },
+              {
+                "cells": [
+                  "Password field"
+                ]
+              },
+              {
+                "cells": [
+                  "Register button"
+                ]
+              },
+              {
+                "cells": [
+                  "Login button"
+                ]
+              },
+              {
+                "cells": [
+                  "Login with facebook button"
+                ]
+              },
+              {
+                "cells": [
+                  "Forgot password link"
+                ]
+              }
+            ],
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@Valik"
+          },
+          {
+            "name": "@UI"
+          },
+          {
+            "name": "@Fest"
+          }
+        ]
+      },
+      {
+        "line": 4,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 11033074800,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "Fest.md home page is displayed",
+            "match": {
+              "location": "CommonDefinitions.HomePageIsDisplayed()"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2019-12-21T12:25:57.859Z",
+        "line": 61,
+        "name": "User deletes account",
+        "description": "",
+        "id": "registration;user-deletes-account;;2",
+        "after": [
+          {
+            "result": {
+              "duration": 2881661500,
+              "status": "passed"
+            },
+            "match": {
+              "location": "CommonDefinitions.teardown()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 22110803300,
+              "status": "passed"
+            },
+            "line": 56,
+            "name": "Account with test2@gma.ru and 123123 was deleted",
+            "match": {
+              "arguments": [
+                {
+                  "val": "test2@gma.ru",
+                  "offset": 13
+                },
+                {
+                  "val": "123123",
+                  "offset": 30
+                }
+              ],
+              "location": "RegistrationStepDefinition.accountWasDeleted(String,String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 2587014700,
+              "status": "passed"
+            },
+            "line": 57,
+            "name": "Home page is displayed",
+            "match": {
+              "location": "RegistrationStepDefinition.homePageIsDisplayed()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 6342617900,
+              "status": "passed"
+            },
+            "line": 58,
+            "name": "Checked that account was deleted",
+            "match": {
+              "location": "RegistrationStepDefinition.checkedThatAccountWasDeleted()"
+            },
+            "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@Valik"
+          },
+          {
+            "name": "@Registration"
+          },
+          {
+            "name": "@Deleting"
+          },
+          {
+            "name": "@Fest"
+          }
+        ]
+      },
+      {
+        "line": 4,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 17044933100,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "Fest.md home page is displayed",
+            "match": {
+              "location": "CommonDefinitions.HomePageIsDisplayed()"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2019-12-21T12:26:42.831Z",
+        "line": 64,
+        "name": "Registration/Login page UI check",
+        "description": "",
+        "id": "registration;registration/login-page-ui-check",
+        "after": [
+          {
+            "result": {
+              "duration": 2819427500,
+              "status": "passed"
+            },
+            "match": {
+              "location": "CommonDefinitions.teardown()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 4587614900,
+              "status": "passed"
+            },
+            "line": 65,
+            "name": "Register_Login page is displayed",
+            "match": {
+              "location": "RegistrationStepDefinition.registerLoginPageIsDisplayed()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 7595323200,
+              "status": "passed"
+            },
+            "line": 66,
+            "name": "the following elements are visible on Register_Login page",
+            "match": {
+              "location": "RegistrationStepDefinition.theFollowingElementsAreVisibleOnRegisterLoginPage(DataTable)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "Register title"
+                ]
+              },
+              {
+                "cells": [
+                  "Login title"
+                ]
+              },
+              {
+                "cells": [
+                  "LoginRegister title"
+                ]
+              },
+              {
+                "cells": [
+                  "Email register field"
+                ]
+              },
+              {
+                "cells": [
+                  "Email login field"
+                ]
+              },
+              {
+                "cells": [
+                  "Password register field"
+                ]
+              },
+              {
+                "cells": [
+                  "Password login field"
+                ]
+              },
+              {
+                "cells": [
+                  "Confirm password field"
+                ]
+              },
+              {
+                "cells": [
+                  "Forgot Password Link"
+                ]
+              },
+              {
+                "cells": [
+                  "Register button"
+                ]
+              },
+              {
+                "cells": [
+                  "Login button"
+                ]
+              },
+              {
+                "cells": [
+                  "Facebook login register button"
+                ]
+              },
+              {
+                "cells": [
+                  "Recieve newletter checkbox"
+                ]
+              }
+            ],
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@Valik"
+          },
+          {
+            "name": "@UI"
+          },
+          {
+            "name": "@Fest"
+          }
+        ]
+      }
+    ],
+    "name": "Registration",
+    "description": "",
+    "id": "registration",
+    "keyword": "Feature",
+    "uri": "file:src/test/features/Registration.feature",
+    "tags": [
+      {
+        "name": "@Valik",
+        "type": "Tag",
+        "location": {
+          "line": 1,
+          "column": 1
+        }
+      }
+    ]
+  }
+]
