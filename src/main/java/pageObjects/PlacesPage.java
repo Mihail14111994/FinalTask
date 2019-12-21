@@ -16,9 +16,6 @@ public class PlacesPage  extends  PageObject{
     @FindBy(xpath = "//*[@class = 'btn btn-secondary toggle-places-filter']")
     WebElement btnOptions;
 
-    @FindBy(xpath = "//*[@class = 'left']")
-    WebElement mapFromPlacesPage;
-
     @FindBy(xpath="//*[@class='dropdown-toggle']//h2")
     List<WebElement> ddlCategories;
 
@@ -34,8 +31,12 @@ public class PlacesPage  extends  PageObject{
     @FindBy(xpath= "//*[@data-tabtarget='sports']//ul/li/a")
     List<WebElement> dblSportsEntertainment;
 
-    @FindBy(xpath = "//*[@class = 'oneline ellipsis']")
-    List<WebElement> placesElementType;
+    @FindBy(xpath = "//*[@id='aswift_1']")
+    WebElement adBanner;
+
+    public WebElement getAdBanner() {
+        return adBanner;
+    }
 
     public List<WebElement> getDblBarsAndCafes() {
         return dblBarsAndCafes;
@@ -43,10 +44,6 @@ public class PlacesPage  extends  PageObject{
 
     public List<WebElement> getDblSportsEntertainment() {
         return dblSportsEntertainment;
-    }
-
-    public List<WebElement> getPlacesElementType() {
-        return placesElementType;
     }
 
     public WebElement getPageTitle() {
@@ -59,10 +56,6 @@ public class PlacesPage  extends  PageObject{
 
     public WebElement getBtnOptions() {
         return btnOptions;
-    }
-
-    public WebElement getMapFromPlacesPage() {
-        return mapFromPlacesPage;
     }
 
     public List<WebElement> getDdlCategories() {

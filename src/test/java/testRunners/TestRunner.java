@@ -6,10 +6,11 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/features/EventsNavigation.feature",
+        features = "src/test/features",
         glue = "stepDefinition",
         plugin = {"pretty", "html:target/cucumber-html-report", "json:target/cucumber.json"},
-        tags = "@Doina"
+        tags = "@UI"
 )
-public class TicketsEventsRunner {
+public class TestRunner {
+
 }

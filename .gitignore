@@ -21,4 +21,5 @@
 *.rar
 
 .idea
-target
+target/
+
