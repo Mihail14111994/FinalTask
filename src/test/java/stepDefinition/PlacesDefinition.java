@@ -8,7 +8,7 @@ import stepImplementation.PlacesSteps;
 
 import java.io.IOException;
 
-public class PlacesDefinition  {
+public class PlacesDefinition {
 
     PlacesSteps placesSteps = new PlacesSteps();
 
@@ -57,6 +57,7 @@ public class PlacesDefinition  {
     public void useIsOnHomePage() {
         placesSteps.checkUserIsOnHomePage();
     }
+
     @And("User type a potential {} location name in Searchbar")
     public void userClicksSearchButtonAndTipeText(String inputText) throws IOException {
         placesSteps.userClicksOnSearchButton();

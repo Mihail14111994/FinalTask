@@ -4,19 +4,13 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.apache.log4j.Logger;
-import pageObjects.LoginRegistrationPage;
 import stepImplementation.TicketsSteps;
 
 import java.io.IOException;
 
 public class TicketsDefinitions {
-    private static  final Logger logger = Logger.getLogger(TicketsDefinitions.class);
-
-//    WebDriver driver = DriverFactory.getDriver();
-    TicketsSteps ticketsSteps = new TicketsSteps();
-    LoginRegistrationPage loginRegistrationPage = new LoginRegistrationPage();
-    int priceOfTicket;
+    private TicketsSteps ticketsSteps = new TicketsSteps();
+    private int priceOfTicket;
 
     @Given("{} menu page is displayed")
     public void ticketEventPage(String pageName) throws InterruptedException, IOException {
@@ -26,13 +20,11 @@ public class TicketsDefinitions {
     @Given("User is logged in with valid credentials")
     public void userIsLoggedInWithValidCredentials() throws IOException {
         ticketsSteps.userIsLoggedIn();
-        logger.info("User is logged in with valid credentials");
     }
 
     @When("{} is selected")
     public void userSelectsASection(String section) throws IOException {
         ticketsSteps.sectionIsSelected(section);
-        logger.info(section + " is selected");
     }
 
     @When("User {} {} tickets for an event of the {}")
@@ -40,24 +32,20 @@ public class TicketsDefinitions {
         if (submit.equals("submits")) {
             ticketsSteps.selectOnRandomEvent(section);
             ticketsSteps.selectNrOTickets(nr);
-            logger.info(nr + " Tickets are selected");
             priceOfTicket = ticketsSteps.submitTicketsNr();
-            logger.info(nr + " Tickets are submited");
         } else if (submit.equals("selects")) {
             ticketsSteps.selectOnRandomEvent(section);
             ticketsSteps.selectNrOTickets(nr);
-            logger.info(nr + " Tickets are selected");
         }
     }
 
     @And("The total price is displayed correct for {} tickets")
     public void theTotalPriceOfTicketsIsDisplayedCorrect(int ticketsNr) {
         ticketsSteps.assertAmmountOfPayment(ticketsNr, priceOfTicket);
-        logger.info("The total price of tickets is displayed correct for" + ticketsNr + " tickets");
     }
 
     @And("All fields of booking are submited")
-    public void allFieldsOfBookingAreSubmited() {
+    public void allFieldsOfBookingAreSubmited() throws IOException {
         ticketsSteps.submitBookingFields();
     }
 

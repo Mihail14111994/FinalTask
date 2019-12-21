@@ -8,7 +8,7 @@ import java.util.List;
 public class TicketsPage extends PageObject{
     @FindBy(xpath = "//*[@id='content']/h1")
     WebElement pageName;
-    //*[@id='onsale-tabber']/div/div/h2
+
     @FindBy(xpath="//div[@id='content']/div//div/h2")
     List<WebElement> sectionNames;
 

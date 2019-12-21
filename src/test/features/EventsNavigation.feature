@@ -44,7 +44,7 @@ Feature: Buy/book a ticket and get event information
 
     Examples:
       | section | option                |
-      | Sport   | сu 1 zi înainte       |
+#      | Sport   | сu 1 zi înainte       |
       | Sport   | În ziua evenimentului |
 
   @negative @tickets @Fest

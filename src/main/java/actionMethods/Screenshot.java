@@ -15,6 +15,5 @@ public class Screenshot {
         File DestFile=new File(path);
         File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(SrcFile, DestFile);
-
     }
 }

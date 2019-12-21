@@ -17,8 +17,6 @@ import static actionMethods.RandomLink.randomLink;
 import static actionMethods.Wait.waitFor;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-//import org.openqa.selenium.support.ui.WebDriverWait;
-
 public class PlacesSteps {
 
     SearchPage searchPage = new SearchPage();
@@ -32,8 +30,6 @@ public class PlacesSteps {
     String randomLegendElementText;
     String path ="target\\screenshots\\places\\";
     WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(),30);
-
-    //    Scenario Outline: See details of a chosen place
 
     public void accessPlacesPage() throws IOException {
         waitFor(homePage.getPlacesMenu());
