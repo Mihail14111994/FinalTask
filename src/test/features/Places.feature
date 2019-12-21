@@ -1,9 +1,10 @@
+@all @fest @Mihail @places
 Feature: 'Places' page
 
   Background:
     Given Fest.md english page is displayed
 
-  @places @categories
+  @placesCategories
   Scenario Outline: See details of places from dropdown lists
     Given User is on Places page
     When User clicks on <category> dropdown
@@ -12,10 +13,10 @@ Feature: 'Places' page
     Examples:
       | category       |
       | Restaurants    |
-#      | Bars and cafes |
-#    | Sports/Entertainment |
+      | Bars and cafes |
+    | Sports/Entertainment |
 
-  @places @categories
+  @placesCategories
   Scenario Outline: See a category of Places on the map
     Given User is on Places page
     When User clicks on <category> category
@@ -24,22 +25,22 @@ Feature: 'Places' page
     Examples:
       | category |
       | Clubs    |
-#      | Cinema   |
-#      | Theatres          |
-#      | Museums/Galleries |
+      | Cinema   |
+      | Theatres          |
+      | Museums/Galleries |
 
-  @places @search
+  @search
   Scenario Outline: Check Search-bar
     Given User is on Home page
     And User type a potential <locationName> location name in Searchbar
     Then User see the results matching his <locationName> request
     Examples:
       | locationName |
-#      |              |
-#      | restaurants  |
+      |              |
+      | restaurants  |
       | best music   |
 
-  @places @placesMap
+  @placesMap @placesFiltering
   Scenario Outline: Places filtering
     Given User is on Places page
     And User clicks Options button
@@ -52,7 +53,7 @@ Feature: 'Places' page
       | Italian   | 2          | Wi-Fi      |
       | German    | 3          | Parking    |
 
-  @places @placesMap @map
+  @placesMap @map
   Scenario: Select Places from the  Map
     Given User is on Places page
     And User clicks on See on map button

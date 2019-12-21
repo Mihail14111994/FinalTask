@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class PlacesDefinition {
 
-    PlacesSteps placesSteps = new PlacesSteps();
+    private PlacesSteps placesSteps = new PlacesSteps();
 
     //    Scenario Outline: See details of a chosen place
 
@@ -48,7 +48,7 @@ public class PlacesDefinition {
     }
 
     @Then("User is able to see the places off the chosen {} places on the map")
-    public void userIsAbleToSeeThePlacesOnTheMap(String category) {
+    public void userIsAbleToSeeThePlacesOnTheMap(String category) throws IOException {
         placesSteps.checkThePlacesPresentOnMap(category);
     }
 

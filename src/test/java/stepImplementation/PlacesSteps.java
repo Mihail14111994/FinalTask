@@ -20,8 +20,6 @@ import static actionMethods.Screenshot.takeScreenshot;
 import static actionMethods.Wait.waitFor;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-//import org.openqa.selenium.support.ui.WebDriverWait;
-
 public class PlacesSteps {
 
     private SearchPage searchPage = new SearchPage();
@@ -36,6 +34,7 @@ public class PlacesSteps {
     private String path = "target\\screenshots\\places\\";
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy_MM_dd_HH_mm_ss");
     private WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), 30);
+    Actions actions = new Actions(DriverFactory.getDriver());
 
     //    Scenario Outline: See details of a chosen place
 
@@ -125,9 +124,10 @@ public class PlacesSteps {
         }
     }
 
-    public void checkThePlacesPresentOnMap(String category) {
+    public void checkThePlacesPresentOnMap(String category) throws IOException {
         waitFor(mapPlacesPage.getChkMapCheckboxes().get(0));
         assertThat("The places are not on the map", mapPlacesPage.getChkMapCheckboxes().get(0).getText().equalsIgnoreCase(category));
+        click(mapPlacesPage.getChkMapCheckboxes().get(0), path);
     }
 
     public List<WebElement> getAllThePlacesTypeFromCategory() {
@@ -196,9 +196,11 @@ public class PlacesSteps {
         }
     }
 
-    public void checkPlacesElementDetailsCorrespondence(String theme, String price, String facility) {
+    public void checkPlacesElementDetailsCorrespondence(String theme, String price, String facility) throws IOException {
         waitFor(homePage.getBtnSuggestedEvent());
         assertThat("Facility corresponds", DriverFactory.getDriver().getPageSource().contains(facility));
+        actions.moveToElement(placesElementPage.getTxtPlacePrice().get(0)).perform();
+        takeScreenshot(DriverFactory.getDriver(),path + LocalDateTime.now().format(formatter) + ".jpg");
         assertThat("Theme corresponds", DriverFactory.getDriver().getPageSource().contains(theme));
         String classEl = placesElementPage.getTxtPlacePrice().get(0).getAttribute("class");
         assertThat("Price corresponds", classEl.contains(price));
@@ -224,7 +226,7 @@ public class PlacesSteps {
         waitFor(mapPlacesPage.getChkMapCheckboxes().get(0));
         List<WebElement> places = mapPlacesPage.getChkMapCheckboxes();
         // uncheck the first 3 checkboxes(checked by default)
-//        click(places.get(0), path);
+        click(places.get(0), path);
         click(places.get(1), path);
         click(places.get(2), path);
 
@@ -238,7 +240,6 @@ public class PlacesSteps {
         List<WebElement> pinpoints = mapPlacesPage.getMapPinpoints();
         for (WebElement pinpoint : pinpoints) {
             if (pinpoint.isDisplayed()) {
-                Actions actions = new Actions(DriverFactory.getDriver());
                     actions.moveToElement(pinpoint).moveByOffset(60, 0).perform();
                 takeScreenshot(DriverFactory.getDriver(), path + LocalDateTime.now().format(formatter) + ".jpg");
                 try {
@@ -250,7 +251,7 @@ public class PlacesSteps {
             }
         }
         waitFor(placesPage.getPageTitle());
-        assertThat("Facility corresponds", DriverFactory.getDriver().getPageSource().contains(randomLegendElementText));
+        assertThat("Chosen place is not displayed (from map)", DriverFactory.getDriver().getPageSource().contains(randomLegendElementText));
         takeScreenshot(DriverFactory.getDriver(), path + LocalDateTime.now().format(formatter) + ".jpg");
     }
 }

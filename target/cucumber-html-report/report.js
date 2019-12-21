@@ -73,8 +73,7 @@ formatter.match({
   "location": "PlacesDefinition.userCanSeeThePlacesOfTheChosenCategoryOnTheMap()"
 });
 formatter.result({
-  "error_message": "java.lang.AssertionError: Facility corresponds\n\tat org.hamcrest.MatcherAssert.assertThat(MatcherAssert.java:26)\n\tat stepImplementation.PlacesSteps.userCanSeeThePlacesOnTheMap(PlacesSteps.java:256)\n\tat stepDefinition.PlacesDefinition.userCanSeeThePlacesOfTheChosenCategoryOnTheMap(PlacesDefinition.java:99)\n\tat ✽.User can see the places of the chosen category on the Map(file:src/test/features/Places.feature:60)\n",
-  "status": "failed"
+  "status": "passed"
 });
 formatter.after({
   "status": "passed"

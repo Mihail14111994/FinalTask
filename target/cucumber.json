@@ -1,9 +1,9 @@
 [
   {
-    "line": 2,
+    "line": 1,
     "elements": [
       {
-        "line": 4,
+        "line": 3,
         "name": "",
         "description": "",
         "type": "background",
@@ -11,28 +11,28 @@
         "steps": [
           {
             "result": {
-              "duration": 22961734227,
+              "duration": 10507896723,
               "status": "passed"
             },
-            "line": 5,
-            "name": "Fest.md home page is displayed",
+            "line": 4,
+            "name": "Fest.md english page is displayed",
             "match": {
-              "location": "CommonDefinitions.HomePageIsDisplayed()"
+              "location": "CommonDefinitions.EnPageIsDisplayed()"
             },
             "keyword": "Given "
           }
         ]
       },
       {
-        "start_timestamp": "2019-12-20T14:59:16.590Z",
-        "line": 73,
-        "name": "User is able to visualise details of any event",
+        "start_timestamp": "2019-12-21T13:11:21.327Z",
+        "line": 56,
+        "name": "Select Places from the  Map",
         "description": "",
-        "id": "buy/book-a-ticket-and-get-event-information;user-is-able-to-visualise-details-of-any-event;;2",
+        "id": "-places--page;select-places-from-the--map",
         "after": [
           {
             "result": {
-              "duration": 357469507,
+              "duration": 386583250,
               "status": "passed"
             },
             "match": {
@@ -41,252 +41,75 @@
           }
         ],
         "type": "scenario",
-        "keyword": "Scenario Outline",
+        "keyword": "Scenario",
         "steps": [
           {
             "result": {
-              "duration": 13536867855,
+              "duration": 22202976234,
               "status": "passed"
             },
-            "line": 65,
-            "name": "Events menu page is displayed",
+            "line": 57,
+            "name": "User is on Places page",
             "match": {
-              "arguments": [
-                {
-                  "val": "Events",
-                  "offset": 0
-                }
-              ],
-              "location": "TicketsDefinitions.ticketEventPage(String)"
+              "location": "PlacesDefinition.useIsOnPlacesPage()"
             },
             "keyword": "Given "
           },
           {
             "result": {
-              "duration": 1064969914,
+              "duration": 1254552158,
               "status": "passed"
             },
-            "line": 66,
-            "name": "Expoziții is selected",
+            "line": 58,
+            "name": "User clicks on See on map button",
             "match": {
-              "arguments": [
-                {
-                  "val": "Expoziții",
-                  "offset": 0
-                }
-              ],
-              "location": "TicketsDefinitions.userSelectsASection(String)"
-            },
-            "keyword": "When "
-          },
-          {
-            "result": {
-              "duration": 41502802,
-              "status": "passed"
-            },
-            "line": 67,
-            "name": "All events of Expoziții have \"Detalii\" button",
-            "match": {
-              "arguments": [
-                {
-                  "val": "Expoziții",
-                  "offset": 14
-                }
-              ],
-              "location": "TicketsDefinitions.allEventsOnThePageHaveDetails(String)"
+              "location": "PlacesDefinition.userClicksOnSeeOnMapButton()"
             },
             "keyword": "And "
           },
           {
             "result": {
-              "duration": 10164070980,
+              "duration": 4740853429,
               "status": "passed"
             },
-            "line": 68,
-            "name": "User clicks on \"Detalii\" button of an event of Expoziții",
+            "line": 59,
+            "name": "Check any Places Category from the checkboxes list",
             "match": {
-              "arguments": [
-                {
-                  "val": "Expoziții",
-                  "offset": 47
-                }
-              ],
-              "location": "TicketsDefinitions.userClicksOnButtonOfAnEvent(String)"
+              "location": "PlacesDefinition.checkAnyPlacesCategoryFromTheCheckboxesList()"
             },
             "keyword": "And "
           },
           {
             "result": {
-              "duration": 33956889,
+              "duration": 9717681534,
               "status": "passed"
             },
-            "line": 69,
-            "name": "The information of the event is displayed",
+            "line": 60,
+            "name": "User can see the places of the chosen category on the Map",
             "match": {
-              "location": "TicketsDefinitions.theInformationOfTheEventIsDisplayed()"
+              "location": "PlacesDefinition.userCanSeeThePlacesOfTheChosenCategoryOnTheMap()"
             },
             "keyword": "Then "
           }
         ],
         "tags": [
           {
-            "name": "@Doina"
+            "name": "@places"
           },
           {
-            "name": "@UI"
-          }
-        ]
-      },
-      {
-        "line": 4,
-        "name": "",
-        "description": "",
-        "type": "background",
-        "keyword": "Background",
-        "steps": [
-          {
-            "result": {
-              "duration": 13652163686,
-              "status": "passed"
-            },
-            "line": 5,
-            "name": "Fest.md home page is displayed",
-            "match": {
-              "location": "CommonDefinitions.HomePageIsDisplayed()"
-            },
-            "keyword": "Given "
-          }
-        ]
-      },
-      {
-        "start_timestamp": "2019-12-20T15:00:04.828Z",
-        "line": 74,
-        "name": "User is able to visualise details of any event",
-        "description": "",
-        "id": "buy/book-a-ticket-and-get-event-information;user-is-able-to-visualise-details-of-any-event;;3",
-        "after": [
-          {
-            "result": {
-              "duration": 332279963,
-              "status": "passed"
-            },
-            "match": {
-              "location": "CommonDefinitions.teardown()"
-            }
-          }
-        ],
-        "type": "scenario",
-        "keyword": "Scenario Outline",
-        "steps": [
-          {
-            "result": {
-              "duration": 15108245695,
-              "status": "passed"
-            },
-            "line": 65,
-            "name": "Events menu page is displayed",
-            "match": {
-              "arguments": [
-                {
-                  "val": "Events",
-                  "offset": 0
-                }
-              ],
-              "location": "TicketsDefinitions.ticketEventPage(String)"
-            },
-            "keyword": "Given "
+            "name": "@placesMap"
           },
           {
-            "result": {
-              "duration": 1003285352,
-              "status": "passed"
-            },
-            "line": 66,
-            "name": "Sport is selected",
-            "match": {
-              "arguments": [
-                {
-                  "val": "Sport",
-                  "offset": 0
-                }
-              ],
-              "location": "TicketsDefinitions.userSelectsASection(String)"
-            },
-            "keyword": "When "
-          },
-          {
-            "result": {
-              "duration": 44316211,
-              "status": "passed"
-            },
-            "line": 67,
-            "name": "All events of Sport have \"Detalii\" button",
-            "match": {
-              "arguments": [
-                {
-                  "val": "Sport",
-                  "offset": 14
-                }
-              ],
-              "location": "TicketsDefinitions.allEventsOnThePageHaveDetails(String)"
-            },
-            "keyword": "And "
-          },
-          {
-            "result": {
-              "duration": 8579676727,
-              "status": "passed"
-            },
-            "line": 68,
-            "name": "User clicks on \"Detalii\" button of an event of Sport",
-            "match": {
-              "arguments": [
-                {
-                  "val": "Sport",
-                  "offset": 47
-                }
-              ],
-              "location": "TicketsDefinitions.userClicksOnButtonOfAnEvent(String)"
-            },
-            "keyword": "And "
-          },
-          {
-            "result": {
-              "duration": 48779492,
-              "status": "passed"
-            },
-            "line": 69,
-            "name": "The information of the event is displayed",
-            "match": {
-              "location": "TicketsDefinitions.theInformationOfTheEventIsDisplayed()"
-            },
-            "keyword": "Then "
-          }
-        ],
-        "tags": [
-          {
-            "name": "@Doina"
-          },
-          {
-            "name": "@UI"
+            "name": "@map"
           }
         ]
       }
     ],
-    "name": "Buy/book a ticket and get event information",
+    "name": "\u0027Places\u0027 page",
     "description": "",
-    "id": "buy/book-a-ticket-and-get-event-information",
+    "id": "-places--page",
     "keyword": "Feature",
-    "uri": "file:src/test/features/EventsNavigation.feature",
-    "tags": [
-      {
-        "name": "@Doina",
-        "type": "Tag",
-        "location": {
-          "line": 1,
-          "column": 1
-        }
-      }
-    ]
+    "uri": "file:src/test/features/Places.feature",
+    "tags": []
   }
 ]
