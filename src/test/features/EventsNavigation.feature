@@ -4,7 +4,7 @@ Feature: Buy/book a ticket and get event information
   Background:
     Given Fest.md home page is displayed
 
-  @positive @book
+  @positive @book @Fest
   Scenario Outline: User is able to book a ticket
     Given User is logged in with valid credentials
     And Tickets menu page is displayed
@@ -19,7 +19,7 @@ Feature: Buy/book a ticket and get event information
       | 2  | Party      | latinlatinlatinlatinlatinlatinlatinlatinlatinlatin | latinlatinlatinlatinlatinlatinlatinlatinlatinlatin | 078524163 |
       | 10 | Conferințe | Ion                                                | Ion                                                | 076852146 |
 
-  @negative @book
+  @negative @book @Fest
   Scenario Outline: User is unable to book a ticket after checkout with invalid data
 #    Given User is logged in with valid credentials
     Given Tickets menu page is displayed
@@ -33,7 +33,7 @@ Feature: Buy/book a ticket and get event information
       | 1  | Party      |                                                     |                                                     |                                                                                                       | Acest câmp nu poate fi gol.          |
       | 4  | Conferințe | latinlatinlatinlatinlatinlatinlatinlatinlatinlatinl | latinlatinlatinlatinlatinlatinlatinlatinlatinlatinl | 12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789011234567890 | Acest câmp nu poate avea mai mult de |
 
-  @alert @functional
+  @alert @functional @Fest
   Scenario Outline: User is able to set an alert for an event
     Given User is logged in with valid credentials
     And Events menu page is displayed
@@ -47,7 +47,7 @@ Feature: Buy/book a ticket and get event information
       | Sport   | сu 1 zi înainte       |
       | Sport   | În ziua evenimentului |
 
-  @negative @tickets
+  @negative @tickets @Fest
   Scenario Outline: User is not able to book a empty number of tickets
     Given Tickets menu page is displayed
     When <section> is selected
@@ -60,7 +60,7 @@ Feature: Buy/book a ticket and get event information
       | nr | section    | empty |
       | 2  | Conferințe | 0     |
 
-  @UI
+  @UI @Fest
   Scenario Outline: User is able to visualise details of any event
     Given Events menu page is displayed
     When <section> is selected
