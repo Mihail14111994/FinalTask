@@ -8,7 +8,7 @@ import stepImplementation.PlacesSteps;
 
 import java.io.IOException;
 
-public class PlacesDefinition  {
+public class PlacesDefinition {
 
     PlacesSteps placesSteps = new PlacesSteps();
 
@@ -57,6 +57,7 @@ public class PlacesDefinition  {
     public void useIsOnHomePage() {
         placesSteps.checkUserIsOnHomePage();
     }
+
     @And("User type a potential {} location name in Searchbar")
     public void userClicksSearchButtonAndTipeText(String inputText) throws IOException {
         placesSteps.userClicksOnSearchButton();
@@ -64,7 +65,7 @@ public class PlacesDefinition  {
     }
 
     @Then("User see the results matching his {} request")
-    public void userSeeTheResultsMatchingHisRequest(String locationName) {
+    public void userSeeTheResultsMatchingHisRequest(String locationName) throws IOException {
         placesSteps.checkTheResultOfSearch(locationName);
     }
 
@@ -94,8 +95,8 @@ public class PlacesDefinition  {
     }
 
     @Then("User can see the places of the chosen category on the Map")
-    public void userCanSeeThePlacesOfTheChosenCategoryOnTheMap() {
-
+    public void userCanSeeThePlacesOfTheChosenCategoryOnTheMap() throws IOException {
+        placesSteps.userCanSeeThePlacesOnTheMap();
     }
 
 }

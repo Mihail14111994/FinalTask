@@ -1,65 +1,8 @@
-$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("file:src/test/features/EventsNavigation.feature");
+$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("file:src/test/features/Places.feature");
 formatter.feature({
-  "name": "Buy/book a ticket and get event information",
+  "name": "\u0027Places\u0027 page",
   "description": "",
-  "keyword": "Feature",
-  "tags": [
-    {
-      "name": "@Doina"
-    }
-  ]
-});
-formatter.scenarioOutline({
-  "name": "User is able to visualise details of any event",
-  "description": "",
-  "keyword": "Scenario Outline",
-  "tags": [
-    {
-      "name": "@UI"
-    }
-  ]
-});
-formatter.step({
-  "name": "Events menu page is displayed",
-  "keyword": "Given "
-});
-formatter.step({
-  "name": "\u003csection\u003e is selected",
-  "keyword": "When "
-});
-formatter.step({
-  "name": "All events of \u003csection\u003e have \"Detalii\" button",
-  "keyword": "And "
-});
-formatter.step({
-  "name": "User clicks on \"Detalii\" button of an event of \u003csection\u003e",
-  "keyword": "And "
-});
-formatter.step({
-  "name": "The information of the event is displayed",
-  "keyword": "Then "
-});
-formatter.examples({
-  "name": "",
-  "description": "",
-  "keyword": "Examples",
-  "rows": [
-    {
-      "cells": [
-        "section"
-      ]
-    },
-    {
-      "cells": [
-        "Expoziții"
-      ]
-    },
-    {
-      "cells": [
-        "Sport"
-      ]
-    }
-  ]
+  "keyword": "Feature"
 });
 formatter.background({
   "name": "",
@@ -67,158 +10,71 @@ formatter.background({
   "keyword": "Background"
 });
 formatter.step({
-  "name": "Fest.md home page is displayed",
+  "name": "Fest.md english page is displayed",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "CommonDefinitions.HomePageIsDisplayed()"
+  "location": "CommonDefinitions.EnPageIsDisplayed()"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.scenario({
-  "name": "User is able to visualise details of any event",
+  "name": "Select Places from the  Map",
   "description": "",
-  "keyword": "Scenario Outline",
+  "keyword": "Scenario",
   "tags": [
     {
-      "name": "@Doina"
+      "name": "@places"
     },
     {
-      "name": "@UI"
+      "name": "@placesMap"
+    },
+    {
+      "name": "@map"
     }
   ]
 });
 formatter.step({
-  "name": "Events menu page is displayed",
+  "name": "User is on Places page",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "TicketsDefinitions.ticketEventPage(String)"
+  "location": "PlacesDefinition.useIsOnPlacesPage()"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "Expoziții is selected",
-  "keyword": "When "
-});
-formatter.match({
-  "location": "TicketsDefinitions.userSelectsASection(String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "All events of Expoziții have \"Detalii\" button",
+  "name": "User clicks on See on map button",
   "keyword": "And "
 });
 formatter.match({
-  "location": "TicketsDefinitions.allEventsOnThePageHaveDetails(String)"
+  "location": "PlacesDefinition.userClicksOnSeeOnMapButton()"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "User clicks on \"Detalii\" button of an event of Expoziții",
+  "name": "Check any Places Category from the checkboxes list",
   "keyword": "And "
 });
 formatter.match({
-  "location": "TicketsDefinitions.userClicksOnButtonOfAnEvent(String)"
+  "location": "PlacesDefinition.checkAnyPlacesCategoryFromTheCheckboxesList()"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "The information of the event is displayed",
+  "name": "User can see the places of the chosen category on the Map",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "TicketsDefinitions.theInformationOfTheEventIsDisplayed()"
+  "location": "PlacesDefinition.userCanSeeThePlacesOfTheChosenCategoryOnTheMap()"
 });
 formatter.result({
-  "status": "passed"
-});
-formatter.after({
-  "status": "passed"
-});
-formatter.background({
-  "name": "",
-  "description": "",
-  "keyword": "Background"
-});
-formatter.step({
-  "name": "Fest.md home page is displayed",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "CommonDefinitions.HomePageIsDisplayed()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.scenario({
-  "name": "User is able to visualise details of any event",
-  "description": "",
-  "keyword": "Scenario Outline",
-  "tags": [
-    {
-      "name": "@Doina"
-    },
-    {
-      "name": "@UI"
-    }
-  ]
-});
-formatter.step({
-  "name": "Events menu page is displayed",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "TicketsDefinitions.ticketEventPage(String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "Sport is selected",
-  "keyword": "When "
-});
-formatter.match({
-  "location": "TicketsDefinitions.userSelectsASection(String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "All events of Sport have \"Detalii\" button",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "TicketsDefinitions.allEventsOnThePageHaveDetails(String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "User clicks on \"Detalii\" button of an event of Sport",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "TicketsDefinitions.userClicksOnButtonOfAnEvent(String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "The information of the event is displayed",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "TicketsDefinitions.theInformationOfTheEventIsDisplayed()"
-});
-formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError: Facility corresponds\n\tat org.hamcrest.MatcherAssert.assertThat(MatcherAssert.java:26)\n\tat stepImplementation.PlacesSteps.userCanSeeThePlacesOnTheMap(PlacesSteps.java:256)\n\tat stepDefinition.PlacesDefinition.userCanSeeThePlacesOfTheChosenCategoryOnTheMap(PlacesDefinition.java:99)\n\tat ✽.User can see the places of the chosen category on the Map(file:src/test/features/Places.feature:60)\n",
+  "status": "failed"
 });
 formatter.after({
   "status": "passed"

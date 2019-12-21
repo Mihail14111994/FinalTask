@@ -10,10 +10,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import pageObjects.*;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import static actionMethods.Click.click;
 import static actionMethods.RandomLink.randomLink;
+import static actionMethods.Screenshot.takeScreenshot;
 import static actionMethods.Wait.waitFor;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -21,23 +24,24 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class PlacesSteps {
 
-    SearchPage searchPage = new SearchPage();
-    PlacesPage placesPage = new PlacesPage();
-    PlacesElementPage placesElementPage = new PlacesElementPage();
-    MapPlacesPage mapPlacesPage = new MapPlacesPage();
-    OptionsPlacesPage optionsPage = new OptionsPlacesPage();
-    HomePage homePage = new HomePage();
-    String categoryName;
-    String subcategoryName;
-    String randomLegendElementText;
-    String path ="target\\screenshots\\places\\";
-    WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(),30);
+    private SearchPage searchPage = new SearchPage();
+    private PlacesPage placesPage = new PlacesPage();
+    private PlacesElementPage placesElementPage = new PlacesElementPage();
+    private MapPlacesPage mapPlacesPage = new MapPlacesPage();
+    private OptionsPlacesPage optionsPage = new OptionsPlacesPage();
+    private HomePage homePage = new HomePage();
+    private String categoryName;
+    private String subcategoryName;
+    private String randomLegendElementText;
+    private String path = "target\\screenshots\\places\\";
+    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy_MM_dd_HH_mm_ss");
+    private WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), 30);
 
     //    Scenario Outline: See details of a chosen place
 
     public void accessPlacesPage() throws IOException {
         waitFor(homePage.getPlacesMenu());
-        click(homePage.getPlacesMenu(),path);
+        click(homePage.getPlacesMenu(), path);
     }
 
     public void checkUserIsOnPlacesPage() {
@@ -206,20 +210,21 @@ public class PlacesSteps {
         click(homePage.getBtnSearch(), path);
     }
 
-    public void checkTheResultOfSearch(String locationName) {
+    public void checkTheResultOfSearch(String locationName) throws IOException {
         waitFor(searchPage.getTxaSearchFor());
         assertThat("Didn't get to results of search", searchPage.getTxaSearchFor().getText().contains(locationName));
 
         List<WebElement> resultsOfSearch = placesElementPage.getBtnDetailsOfAPlacesElement();
         if (resultsOfSearch == null)
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("No results have been found."))).isDisplayed();
+        takeScreenshot(DriverFactory.getDriver(), path + LocalDateTime.now().format(formatter) + ".jpg");
     }
 
     public void checkARandomCheckboxFromMapLegend() throws IOException {
         waitFor(mapPlacesPage.getChkMapCheckboxes().get(0));
         List<WebElement> places = mapPlacesPage.getChkMapCheckboxes();
         // uncheck the first 3 checkboxes(checked by default)
-        click(places.get(0), path);
+//        click(places.get(0), path);
         click(places.get(1), path);
         click(places.get(2), path);
 
@@ -227,22 +232,25 @@ public class PlacesSteps {
         randomLegendElementText = randomLegendElement.getText();
         click(randomLegendElement, path);
         click(mapPlacesPage.getBtnMapCloseLegend(), path);
+    }
 
+    public void userCanSeeThePlacesOnTheMap() throws IOException {
         List<WebElement> pinpoints = mapPlacesPage.getMapPinpoints();
         for (WebElement pinpoint : pinpoints) {
             if (pinpoint.isDisplayed()) {
                 Actions actions = new Actions(DriverFactory.getDriver());
-                actions.moveToElement(pinpoint).perform();
-                actions.moveToElement(pinpoint, 60, 0).perform();
+                    actions.moveToElement(pinpoint).moveByOffset(60, 0).perform();
+                takeScreenshot(DriverFactory.getDriver(), path + LocalDateTime.now().format(formatter) + ".jpg");
                 try {
-                    click(pinpoint, path);
+                    actions.moveToElement(pinpoint).moveByOffset(60, 0).click().perform();
                     break;
                 } catch (ElementClickInterceptedException e) {
                     e.getLocalizedMessage();
                 }
             }
-            waitFor(homePage.getBtnSuggestedEvent());
-            assertThat("Facility corresponds", DriverFactory.getDriver().getPageSource().contains(randomLegendElementText));
         }
+        waitFor(placesPage.getPageTitle());
+        assertThat("Facility corresponds", DriverFactory.getDriver().getPageSource().contains(randomLegendElementText));
+        takeScreenshot(DriverFactory.getDriver(), path + LocalDateTime.now().format(formatter) + ".jpg");
     }
 }

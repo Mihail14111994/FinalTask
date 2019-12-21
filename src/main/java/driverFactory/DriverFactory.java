@@ -1,31 +1,13 @@
-/*
- * Classname : com.rxp.realcontrol.serenity.drivers.DriverFactory
- *
- * Created on: 26 Nov 2018
- *
- * Copyright (c) 2000-2018 Realex Payments, Ltd.
- * Realex Payments, The Observatory, 7-11 Sir John Rogerson's Quay, Dublin 2, Ireland
- *
- * All Rights Reserved.
- *
- * This software is the confidential and proprietary information of
- * Realex Payments, Ltd. ("Confidential Information"). You shall not
- * disclose such Confidential Information and shall use it only in
- * accordance with the terms of the license agreement you entered into
- * with Realex Payments.
- *
- */
 package driverFactory;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.PageLoadStrategy;
-import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.ie.InternetExplorerOptions;
+import org.openqa.selenium.ie.InternetExplorerDriverService;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
-//import org.openqa.selenium.ie.ElementScrollBehavior;
+import java.io.IOException;
 
 public class DriverFactory {
     static WebDriver driver = null;
@@ -43,8 +25,19 @@ public class DriverFactory {
                 break;
             case IE:
                 if (driver == null) {
+                    InternetExplorerDriverService ieService;
+                    ieService = new InternetExplorerDriverService.Builder()
+                            .usingAnyFreePort()
+                            .build();
+                    try {
+                        ieService.start();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    DesiredCapabilities ieCap = DesiredCapabilities.internetExplorer();
+                    ieCap.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
                     WebDriverManager.iedriver().setup();
-                    driver = new InternetExplorerDriver();
+                    driver = new InternetExplorerDriver(ieCap);
                 }
                 break;
             default:

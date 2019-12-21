@@ -10,7 +10,7 @@ public class MapPlacesPage extends PageObject{
     @FindBy(css = ".list-wrap label")
     List<WebElement> chkMapCheckboxes;
 
-    @FindBy(css = ".pinpoint")
+    @FindBy(css = "div[class^='marker theme']")
     List<WebElement> mapPinpoints;
 
     @FindBy(css="button[type='button'][class='close']")

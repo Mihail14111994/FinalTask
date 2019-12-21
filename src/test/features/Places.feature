@@ -36,7 +36,7 @@ Feature: 'Places' page
     Examples:
       | locationName |
 #      |              |
-      | restaurants  |
+#      | restaurants  |
       | best music   |
 
   @places @placesMap
@@ -52,7 +52,7 @@ Feature: 'Places' page
       | Italian   | 2          | Wi-Fi      |
       | German    | 3          | Parking    |
 
-  @places @placesMap
+  @places @placesMap @map
   Scenario: Select Places from the  Map
     Given User is on Places page
     And User clicks on See on map button
