@@ -9,7 +9,7 @@ import stepImplementation.TicketsSteps;
 import java.io.IOException;
 
 public class TicketsDefinitions {
-    private TicketsSteps ticketsSteps = new TicketsSteps();
+    TicketsSteps ticketsSteps = new TicketsSteps();
     private int priceOfTicket;
 
     @Given("{} menu page is displayed")

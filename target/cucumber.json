@@ -11,7 +11,7 @@
         "steps": [
           {
             "result": {
-              "duration": 17458571900,
+              "duration": 17758590700,
               "status": "passed"
             },
             "line": 5,
@@ -24,15 +24,15 @@
         ]
       },
       {
-        "start_timestamp": "2019-12-21T12:23:02.068Z",
-        "line": 15,
-        "name": "User is able to register",
+        "start_timestamp": "2019-12-21T13:08:31.943Z",
+        "line": 19,
+        "name": "User is able to book a ticket",
         "description": "",
-        "id": "registration;user-is-able-to-register;;2",
+        "id": "buy/book-a-ticket-and-get-event-information;user-is-able-to-book-a-ticket;;2",
         "after": [
           {
             "result": {
-              "duration": 2778600600,
+              "duration": 2880317200,
               "status": "passed"
             },
             "match": {
@@ -45,175 +45,144 @@
         "steps": [
           {
             "result": {
-              "duration": 2639173900,
-              "status": "passed"
-            },
-            "line": 8,
-            "name": "Register page is displayed",
-            "match": {
-              "location": "RegistrationStepDefinition.registerPageIsDisplayed()"
-            },
-            "keyword": "Given "
-          },
-          {
-            "result": {
-              "duration": 2966224000,
+              "duration": 6213533900,
               "status": "passed"
             },
             "line": 9,
-            "name": "Submit test2@gma.ru, 123123 and confirm password in registration form",
+            "name": "User is logged in with valid credentials",
             "match": {
-              "arguments": [
-                {
-                  "val": "test2@gma.ru",
-                  "offset": 7
-                },
-                {
-                  "val": "123123",
-                  "offset": 21
-                }
-              ],
-              "location": "RegistrationStepDefinition.submitEmailPasswordAndConfirmPasswordInRegistrationForm(String,String)"
+              "location": "TicketsDefinitions.userIsLoggedInWithValidCredentials()"
             },
-            "keyword": "When "
+            "keyword": "Given "
           },
           {
             "result": {
-              "duration": 4944874700,
+              "duration": 21599275400,
               "status": "passed"
             },
             "line": 10,
-            "name": "Home page is displayed",
+            "name": "Tickets menu page is displayed",
             "match": {
-              "location": "RegistrationStepDefinition.homePageIsDisplayed()"
+              "arguments": [
+                {
+                  "val": "Tickets",
+                  "offset": 0
+                }
+              ],
+              "location": "TicketsDefinitions.ticketEventPage(String)"
             },
-            "keyword": "Then "
+            "keyword": "And "
           },
           {
             "result": {
-              "duration": 18824474000,
+              "duration": 934963800,
               "status": "passed"
             },
             "line": 11,
-            "name": "User unable to register with the same credentials",
+            "name": "Party is selected",
             "match": {
-              "location": "RegistrationStepDefinition.registerIsSuccessful()"
+              "arguments": [
+                {
+                  "val": "Party",
+                  "offset": 0
+                }
+              ],
+              "location": "TicketsDefinitions.userSelectsASection(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 6155609800,
+              "status": "passed"
+            },
+            "line": 12,
+            "name": "User submits 2 tickets for an event of the Party",
+            "match": {
+              "arguments": [
+                {
+                  "val": "submits",
+                  "offset": 5
+                },
+                {
+                  "val": "2",
+                  "offset": 13
+                },
+                {
+                  "val": "Party",
+                  "offset": 43
+                }
+              ],
+              "location": "TicketsDefinitions.userSelectsAnEvent(String,int,String)"
             },
             "keyword": "And "
-          }
-        ],
-        "tags": [
-          {
-            "name": "@Valik"
-          },
-          {
-            "name": "@Registration"
-          },
-          {
-            "name": "@Fest"
-          }
-        ]
-      },
-      {
-        "line": 4,
-        "name": "",
-        "description": "",
-        "type": "background",
-        "keyword": "Background",
-        "steps": [
-          {
-            "result": {
-              "duration": 12835341900,
-              "status": "passed"
-            },
-            "line": 5,
-            "name": "Fest.md home page is displayed",
-            "match": {
-              "location": "CommonDefinitions.HomePageIsDisplayed()"
-            },
-            "keyword": "Given "
-          }
-        ]
-      },
-      {
-        "start_timestamp": "2019-12-21T12:23:51.770Z",
-        "line": 24,
-        "name": "User fails to registrate",
-        "description": "",
-        "id": "registration;user-fails-to-registrate;;2",
-        "after": [
-          {
-            "result": {
-              "duration": 2782716600,
-              "status": "passed"
-            },
-            "match": {
-              "location": "CommonDefinitions.teardown()"
-            }
-          }
-        ],
-        "type": "scenario",
-        "keyword": "Scenario Outline",
-        "steps": [
-          {
-            "result": {
-              "duration": 2333066400,
-              "status": "passed"
-            },
-            "line": 19,
-            "name": "Register page is displayed",
-            "match": {
-              "location": "RegistrationStepDefinition.registerPageIsDisplayed()"
-            },
-            "keyword": "Given "
           },
           {
             "result": {
-              "duration": 2800128800,
+              "duration": 74203900,
               "status": "passed"
             },
-            "line": 20,
-            "name": "Submit test, 123123 and confirm password in registration form",
+            "line": 13,
+            "name": "The total price is displayed correct for 2 tickets",
             "match": {
               "arguments": [
                 {
-                  "val": "test",
-                  "offset": 7
+                  "val": "2",
+                  "offset": 41
+                }
+              ],
+              "location": "TicketsDefinitions.theTotalPriceOfTicketsIsDisplayedCorrect(int)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 5026516900,
+              "status": "passed"
+            },
+            "line": 14,
+            "name": "All fields of booking are filled with latinlatinlatinlatinlatinlatinlatinlatinlatinlatin, latinlatinlatinlatinlatinlatinlatinlatinlatinlatin, 078524163 and submited",
+            "match": {
+              "arguments": [
+                {
+                  "val": "latinlatinlatinlatinlatinlatinlatinlatinlatinlatin",
+                  "offset": 38
                 },
                 {
-                  "val": "123123",
-                  "offset": 13
+                  "val": "latinlatinlatinlatinlatinlatinlatinlatinlatinlatin",
+                  "offset": 90
+                },
+                {
+                  "val": "078524163",
+                  "offset": 142
                 }
               ],
-              "location": "RegistrationStepDefinition.submitEmailPasswordAndConfirmPasswordInRegistrationForm(String,String)"
+              "location": "TicketsDefinitions.allFieldsOfBookingAreFilledWithFirstnameLastnamePhoneAndSubmited(String,String,String)"
             },
-            "keyword": "When "
+            "keyword": "And "
           },
           {
             "result": {
-              "duration": 1178960000,
+              "duration": 4878046500,
               "status": "passed"
             },
-            "line": 21,
-            "name": "Registration fails with Adresa de email introdusă nu este validă. message",
+            "line": 15,
+            "name": "Booking is successfully accepted",
             "match": {
-              "arguments": [
-                {
-                  "val": "Adresa de email introdusă nu este validă.",
-                  "offset": 24
-                }
-              ],
-              "location": "RegistrationStepDefinition.registrationFailsWithErrorMessage(String)"
+              "location": "TicketsDefinitions.bookingIsSuccessfullyAccepted()"
             },
             "keyword": "Then "
           }
         ],
         "tags": [
           {
-            "name": "@Valik"
+            "name": "@Doina"
           },
           {
-            "name": "@Negative"
+            "name": "@positive"
+          },
+          {
+            "name": "@book"
           },
           {
             "name": "@Fest"
@@ -229,7 +198,7 @@
         "steps": [
           {
             "result": {
-              "duration": 10354193600,
+              "duration": 17015301600,
               "status": "passed"
             },
             "line": 5,
@@ -242,15 +211,15 @@
         ]
       },
       {
-        "start_timestamp": "2019-12-21T12:24:13.714Z",
-        "line": 25,
-        "name": "User fails to registrate",
+        "start_timestamp": "2019-12-21T13:09:37.555Z",
+        "line": 20,
+        "name": "User is able to book a ticket",
         "description": "",
-        "id": "registration;user-fails-to-registrate;;3",
+        "id": "buy/book-a-ticket-and-get-event-information;user-is-able-to-book-a-ticket;;3",
         "after": [
           {
             "result": {
-              "duration": 2803922700,
+              "duration": 2873521400,
               "status": "passed"
             },
             "match": {
@@ -263,63 +232,307 @@
         "steps": [
           {
             "result": {
-              "duration": 2363317200,
+              "duration": 9363823600,
               "status": "passed"
             },
-            "line": 19,
-            "name": "Register page is displayed",
+            "line": 9,
+            "name": "User is logged in with valid credentials",
             "match": {
-              "location": "RegistrationStepDefinition.registerPageIsDisplayed()"
+              "location": "TicketsDefinitions.userIsLoggedInWithValidCredentials()"
             },
             "keyword": "Given "
           },
           {
             "result": {
-              "duration": 2829844000,
+              "duration": 8361568400,
               "status": "passed"
             },
-            "line": 20,
-            "name": "Submit null, 123123 and confirm password in registration form",
+            "line": 10,
+            "name": "Tickets menu page is displayed",
             "match": {
               "arguments": [
                 {
-                  "val": "null",
-                  "offset": 7
-                },
-                {
-                  "val": "123123",
-                  "offset": 13
+                  "val": "Tickets",
+                  "offset": 0
                 }
               ],
-              "location": "RegistrationStepDefinition.submitEmailPasswordAndConfirmPasswordInRegistrationForm(String,String)"
+              "location": "TicketsDefinitions.ticketEventPage(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 872693900,
+              "status": "passed"
+            },
+            "line": 11,
+            "name": "Conferințe is selected",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Conferințe",
+                  "offset": 0
+                }
+              ],
+              "location": "TicketsDefinitions.userSelectsASection(String)"
             },
             "keyword": "When "
           },
           {
             "result": {
-              "duration": 1152553300,
+              "duration": 6357259400,
               "status": "passed"
             },
-            "line": 21,
-            "name": "Registration fails with Acest câmp nu poate fi gol. message",
+            "line": 12,
+            "name": "User submits 10 tickets for an event of the Conferințe",
+            "match": {
+              "arguments": [
+                {
+                  "val": "submits",
+                  "offset": 5
+                },
+                {
+                  "val": "10",
+                  "offset": 13
+                },
+                {
+                  "val": "Conferințe",
+                  "offset": 44
+                }
+              ],
+              "location": "TicketsDefinitions.userSelectsAnEvent(String,int,String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 78989000,
+              "status": "passed"
+            },
+            "line": 13,
+            "name": "The total price is displayed correct for 10 tickets",
+            "match": {
+              "arguments": [
+                {
+                  "val": "10",
+                  "offset": 41
+                }
+              ],
+              "location": "TicketsDefinitions.theTotalPriceOfTicketsIsDisplayedCorrect(int)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 4732018300,
+              "status": "passed"
+            },
+            "line": 14,
+            "name": "All fields of booking are filled with Ion, Ion, 076852146 and submited",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Ion",
+                  "offset": 38
+                },
+                {
+                  "val": "Ion",
+                  "offset": 43
+                },
+                {
+                  "val": "076852146",
+                  "offset": 48
+                }
+              ],
+              "location": "TicketsDefinitions.allFieldsOfBookingAreFilledWithFirstnameLastnamePhoneAndSubmited(String,String,String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 4468782400,
+              "status": "passed"
+            },
+            "line": 15,
+            "name": "Booking is successfully accepted",
+            "match": {
+              "location": "TicketsDefinitions.bookingIsSuccessfullyAccepted()"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@Doina"
+          },
+          {
+            "name": "@positive"
+          },
+          {
+            "name": "@book"
+          },
+          {
+            "name": "@Fest"
+          }
+        ]
+      },
+      {
+        "line": 4,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 9727737800,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "Fest.md home page is displayed",
+            "match": {
+              "location": "CommonDefinitions.HomePageIsDisplayed()"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2019-12-21T13:10:31.707Z",
+        "line": 33,
+        "name": "User is unable to book a ticket after checkout with invalid data",
+        "description": "",
+        "id": "buy/book-a-ticket-and-get-event-information;user-is-unable-to-book-a-ticket-after-checkout-with-invalid-data;;2",
+        "after": [
+          {
+            "result": {
+              "duration": 2781771700,
+              "status": "passed"
+            },
+            "match": {
+              "location": "CommonDefinitions.teardown()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 7254001700,
+              "status": "passed"
+            },
+            "line": 25,
+            "name": "Tickets menu page is displayed",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Tickets",
+                  "offset": 0
+                }
+              ],
+              "location": "TicketsDefinitions.ticketEventPage(String)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 898956800,
+              "status": "passed"
+            },
+            "line": 26,
+            "name": "Party is selected",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Party",
+                  "offset": 0
+                }
+              ],
+              "location": "TicketsDefinitions.userSelectsASection(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 7380012800,
+              "status": "passed"
+            },
+            "line": 27,
+            "name": "User submits 1 tickets for an event of the Party",
+            "match": {
+              "arguments": [
+                {
+                  "val": "submits",
+                  "offset": 5
+                },
+                {
+                  "val": "1",
+                  "offset": 13
+                },
+                {
+                  "val": "Party",
+                  "offset": 43
+                }
+              ],
+              "location": "TicketsDefinitions.userSelectsAnEvent(String,int,String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 3306743900,
+              "status": "passed"
+            },
+            "line": 28,
+            "name": "All fields of booking are filled with , ,  and submited",
+            "match": {
+              "arguments": [
+                {
+                  "val": "",
+                  "offset": 38
+                },
+                {
+                  "val": "",
+                  "offset": 40
+                },
+                {
+                  "val": "",
+                  "offset": 42
+                }
+              ],
+              "location": "TicketsDefinitions.allFieldsOfBookingAreFilledWithFirstnameLastnamePhoneAndSubmited(String,String,String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 17575500,
+              "status": "passed"
+            },
+            "line": 29,
+            "name": "Acest câmp nu poate fi gol. occurs under each field",
             "match": {
               "arguments": [
                 {
                   "val": "Acest câmp nu poate fi gol.",
-                  "offset": 24
+                  "offset": 0
                 }
               ],
-              "location": "RegistrationStepDefinition.registrationFailsWithErrorMessage(String)"
+              "location": "TicketsDefinitions.aWarningMessageOccursUnderEachField(String)"
             },
             "keyword": "Then "
           }
         ],
         "tags": [
           {
-            "name": "@Valik"
+            "name": "@Doina"
           },
           {
-            "name": "@Negative"
+            "name": "@negative"
+          },
+          {
+            "name": "@book"
           },
           {
             "name": "@Fest"
@@ -335,7 +548,7 @@
         "steps": [
           {
             "result": {
-              "duration": 11480801400,
+              "duration": 9756616400,
               "status": "passed"
             },
             "line": 5,
@@ -348,15 +561,15 @@
         ]
       },
       {
-        "start_timestamp": "2019-12-21T12:24:33.253Z",
-        "line": 26,
-        "name": "User fails to registrate",
+        "start_timestamp": "2019-12-21T13:11:03.105Z",
+        "line": 34,
+        "name": "User is unable to book a ticket after checkout with invalid data",
         "description": "",
-        "id": "registration;user-fails-to-registrate;;4",
+        "id": "buy/book-a-ticket-and-get-event-information;user-is-unable-to-book-a-ticket-after-checkout-with-invalid-data;;3",
         "after": [
           {
             "result": {
-              "duration": 2904743700,
+              "duration": 2818204300,
               "status": "passed"
             },
             "match": {
@@ -369,63 +582,120 @@
         "steps": [
           {
             "result": {
-              "duration": 2170515700,
+              "duration": 8857314900,
               "status": "passed"
             },
-            "line": 19,
-            "name": "Register page is displayed",
+            "line": 25,
+            "name": "Tickets menu page is displayed",
             "match": {
-              "location": "RegistrationStepDefinition.registerPageIsDisplayed()"
+              "arguments": [
+                {
+                  "val": "Tickets",
+                  "offset": 0
+                }
+              ],
+              "location": "TicketsDefinitions.ticketEventPage(String)"
             },
             "keyword": "Given "
           },
           {
             "result": {
-              "duration": 2817820300,
+              "duration": 732414900,
               "status": "passed"
             },
-            "line": 20,
-            "name": "Submit test2@gma.ru, null and confirm password in registration form",
+            "line": 26,
+            "name": "Conferințe is selected",
             "match": {
               "arguments": [
                 {
-                  "val": "test2@gma.ru",
-                  "offset": 7
-                },
-                {
-                  "val": "null",
-                  "offset": 21
+                  "val": "Conferințe",
+                  "offset": 0
                 }
               ],
-              "location": "RegistrationStepDefinition.submitEmailPasswordAndConfirmPasswordInRegistrationForm(String,String)"
+              "location": "TicketsDefinitions.userSelectsASection(String)"
             },
             "keyword": "When "
           },
           {
             "result": {
-              "duration": 1155095400,
+              "duration": 6410542800,
               "status": "passed"
             },
-            "line": 21,
-            "name": "Registration fails with Acest câmp nu poate fi gol. message",
+            "line": 27,
+            "name": "User submits 4 tickets for an event of the Conferințe",
             "match": {
               "arguments": [
                 {
-                  "val": "Acest câmp nu poate fi gol.",
-                  "offset": 24
+                  "val": "submits",
+                  "offset": 5
+                },
+                {
+                  "val": "4",
+                  "offset": 13
+                },
+                {
+                  "val": "Conferințe",
+                  "offset": 43
                 }
               ],
-              "location": "RegistrationStepDefinition.registrationFailsWithErrorMessage(String)"
+              "location": "TicketsDefinitions.userSelectsAnEvent(String,int,String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 4221365400,
+              "status": "passed"
+            },
+            "line": 28,
+            "name": "All fields of booking are filled with latinlatinlatinlatinlatinlatinlatinlatinlatinlatinl, latinlatinlatinlatinlatinlatinlatinlatinlatinlatinl, 12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789011234567890 and submited",
+            "match": {
+              "arguments": [
+                {
+                  "val": "latinlatinlatinlatinlatinlatinlatinlatinlatinlatinl",
+                  "offset": 38
+                },
+                {
+                  "val": "latinlatinlatinlatinlatinlatinlatinlatinlatinlatinl",
+                  "offset": 91
+                },
+                {
+                  "val": "12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789011234567890",
+                  "offset": 144
+                }
+              ],
+              "location": "TicketsDefinitions.allFieldsOfBookingAreFilledWithFirstnameLastnamePhoneAndSubmited(String,String,String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 24138600,
+              "status": "passed"
+            },
+            "line": 29,
+            "name": "Acest câmp nu poate avea mai mult de occurs under each field",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Acest câmp nu poate avea mai mult de",
+                  "offset": 0
+                }
+              ],
+              "location": "TicketsDefinitions.aWarningMessageOccursUnderEachField(String)"
             },
             "keyword": "Then "
           }
         ],
         "tags": [
           {
-            "name": "@Valik"
+            "name": "@Doina"
           },
           {
-            "name": "@Negative"
+            "name": "@negative"
+          },
+          {
+            "name": "@book"
           },
           {
             "name": "@Fest"
@@ -441,7 +711,7 @@
         "steps": [
           {
             "result": {
-              "duration": 10917788100,
+              "duration": 11727574800,
               "status": "passed"
             },
             "line": 5,
@@ -454,15 +724,15 @@
         ]
       },
       {
-        "start_timestamp": "2019-12-21T12:24:53.788Z",
-        "line": 27,
-        "name": "User fails to registrate",
+        "start_timestamp": "2019-12-21T13:11:35.935Z",
+        "line": 48,
+        "name": "User is able to set an alert for an event",
         "description": "",
-        "id": "registration;user-fails-to-registrate;;5",
+        "id": "buy/book-a-ticket-and-get-event-information;user-is-able-to-set-an-alert-for-an-event;;2",
         "after": [
           {
             "result": {
-              "duration": 2812006500,
+              "duration": 2906360200,
               "status": "passed"
             },
             "match": {
@@ -475,186 +745,110 @@
         "steps": [
           {
             "result": {
-              "duration": 2262222500,
+              "duration": 5887498500,
               "status": "passed"
             },
-            "line": 19,
-            "name": "Register page is displayed",
+            "line": 38,
+            "name": "User is logged in with valid credentials",
             "match": {
-              "location": "RegistrationStepDefinition.registerPageIsDisplayed()"
+              "location": "TicketsDefinitions.userIsLoggedInWithValidCredentials()"
             },
             "keyword": "Given "
           },
           {
             "result": {
-              "duration": 3078521000,
+              "duration": 13165715900,
               "status": "passed"
             },
-            "line": 20,
-            "name": "Submit num2@ij.md, PassWithAnotherConfirm and confirm password in registration form",
+            "line": 39,
+            "name": "Events menu page is displayed",
             "match": {
               "arguments": [
                 {
-                  "val": "num2@ij.md",
-                  "offset": 7
-                },
-                {
-                  "val": "PassWithAnotherConfirm",
-                  "offset": 19
+                  "val": "Events",
+                  "offset": 0
                 }
               ],
-              "location": "RegistrationStepDefinition.submitEmailPasswordAndConfirmPasswordInRegistrationForm(String,String)"
+              "location": "TicketsDefinitions.ticketEventPage(String)"
             },
-            "keyword": "When "
+            "keyword": "And "
           },
           {
             "result": {
-              "duration": 1168348500,
+              "duration": 973509600,
               "status": "passed"
             },
-            "line": 21,
-            "name": "Registration fails with Parolele introduse nu coincid. message",
+            "line": 40,
+            "name": "Sport is selected",
             "match": {
               "arguments": [
                 {
-                  "val": "Parolele introduse nu coincid.",
-                  "offset": 24
+                  "val": "Sport",
+                  "offset": 0
                 }
               ],
-              "location": "RegistrationStepDefinition.registrationFailsWithErrorMessage(String)"
-            },
-            "keyword": "Then "
-          }
-        ],
-        "tags": [
-          {
-            "name": "@Valik"
-          },
-          {
-            "name": "@Negative"
-          },
-          {
-            "name": "@Fest"
-          }
-        ]
-      },
-      {
-        "line": 4,
-        "name": "",
-        "description": "",
-        "type": "background",
-        "keyword": "Background",
-        "steps": [
-          {
-            "result": {
-              "duration": 10470896500,
-              "status": "passed"
-            },
-            "line": 5,
-            "name": "Fest.md home page is displayed",
-            "match": {
-              "location": "CommonDefinitions.HomePageIsDisplayed()"
-            },
-            "keyword": "Given "
-          }
-        ]
-      },
-      {
-        "start_timestamp": "2019-12-21T12:25:14.034Z",
-        "line": 30,
-        "name": "Registration window UI check",
-        "description": "",
-        "id": "registration;registration-window-ui-check",
-        "after": [
-          {
-            "result": {
-              "duration": 2745783800,
-              "status": "passed"
-            },
-            "match": {
-              "location": "CommonDefinitions.teardown()"
-            }
-          }
-        ],
-        "type": "scenario",
-        "keyword": "Scenario",
-        "steps": [
-          {
-            "result": {
-              "duration": 2398483300,
-              "status": "passed"
-            },
-            "line": 31,
-            "name": "Register page is displayed",
-            "match": {
-              "location": "RegistrationStepDefinition.registerPageIsDisplayed()"
+              "location": "TicketsDefinitions.userSelectsASection(String)"
             },
             "keyword": "When "
           },
           {
             "result": {
-              "duration": 7369089100,
+              "duration": 8605110500,
               "status": "passed"
             },
-            "line": 32,
-            "name": "the following elements are visible on Register page",
+            "line": 41,
+            "name": "User clicks on \"Detalii\" button of an event of Sport",
             "match": {
-              "location": "RegistrationStepDefinition.theFollowingElementsAreVisible(DataTable)"
+              "arguments": [
+                {
+                  "val": "Sport",
+                  "offset": 47
+                }
+              ],
+              "location": "TicketsDefinitions.userClicksOnButtonOfAnEvent(String)"
             },
-            "rows": [
-              {
-                "cells": [
-                  "Register title"
-                ]
-              },
-              {
-                "cells": [
-                  "Email field"
-                ]
-              },
-              {
-                "cells": [
-                  "Password field"
-                ]
-              },
-              {
-                "cells": [
-                  "Confirm password field"
-                ]
-              },
-              {
-                "cells": [
-                  "Register button"
-                ]
-              },
-              {
-                "cells": [
-                  "Login button"
-                ]
-              },
-              {
-                "cells": [
-                  "Login with facebook button"
-                ]
-              },
-              {
-                "cells": [
-                  "Recieve newletter checkbox"
-                ]
-              }
-            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 2801140400,
+              "status": "passed"
+            },
+            "line": 42,
+            "name": "În ziua evenimentului for alert is selected and submited",
+            "match": {
+              "arguments": [
+                {
+                  "val": "În ziua evenimentului",
+                  "offset": 0
+                }
+              ],
+              "location": "TicketsDefinitions.userSelectsAnOptionForAlertAndSubmit(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 7572562900,
+              "status": "passed"
+            },
+            "line": 43,
+            "name": "The alert is successfully set and deleted",
+            "match": {
+              "location": "TicketsDefinitions.theAlertIsSuccessfullySet()"
+            },
             "keyword": "Then "
           }
         ],
         "tags": [
           {
-            "name": "@Valik"
+            "name": "@Doina"
           },
           {
-            "name": "@UI"
+            "name": "@alert"
           },
           {
-            "name": "@Valik"
+            "name": "@functional"
           },
           {
             "name": "@Fest"
@@ -670,7 +864,7 @@
         "steps": [
           {
             "result": {
-              "duration": 10243805600,
+              "duration": 15213149000,
               "status": "passed"
             },
             "line": 5,
@@ -683,130 +877,15 @@
         ]
       },
       {
-        "start_timestamp": "2019-12-21T12:25:37.022Z",
-        "line": 43,
-        "name": "Login window UI check",
-        "description": "",
-        "id": "registration;login-window-ui-check",
-        "after": [
-          {
-            "result": {
-              "duration": 2845471000,
-              "status": "passed"
-            },
-            "match": {
-              "location": "CommonDefinitions.teardown()"
-            }
-          }
-        ],
-        "type": "scenario",
-        "keyword": "Scenario",
-        "steps": [
-          {
-            "result": {
-              "duration": 2372864300,
-              "status": "passed"
-            },
-            "line": 44,
-            "name": "Login page is displayed",
-            "match": {
-              "location": "RegistrationStepDefinition.loginPageIsDisplayed()"
-            },
-            "keyword": "When "
-          },
-          {
-            "result": {
-              "duration": 5370049000,
-              "status": "passed"
-            },
-            "line": 45,
-            "name": "the following elements are visible on Login page",
-            "match": {
-              "location": "RegistrationStepDefinition.theFollowingElementsAreVisibleOnLoginPage(DataTable)"
-            },
-            "rows": [
-              {
-                "cells": [
-                  "Login title"
-                ]
-              },
-              {
-                "cells": [
-                  "Email field"
-                ]
-              },
-              {
-                "cells": [
-                  "Password field"
-                ]
-              },
-              {
-                "cells": [
-                  "Register button"
-                ]
-              },
-              {
-                "cells": [
-                  "Login button"
-                ]
-              },
-              {
-                "cells": [
-                  "Login with facebook button"
-                ]
-              },
-              {
-                "cells": [
-                  "Forgot password link"
-                ]
-              }
-            ],
-            "keyword": "Then "
-          }
-        ],
-        "tags": [
-          {
-            "name": "@Valik"
-          },
-          {
-            "name": "@UI"
-          },
-          {
-            "name": "@Fest"
-          }
-        ]
-      },
-      {
-        "line": 4,
-        "name": "",
-        "description": "",
-        "type": "background",
-        "keyword": "Background",
-        "steps": [
-          {
-            "result": {
-              "duration": 11033074800,
-              "status": "passed"
-            },
-            "line": 5,
-            "name": "Fest.md home page is displayed",
-            "match": {
-              "location": "CommonDefinitions.HomePageIsDisplayed()"
-            },
-            "keyword": "Given "
-          }
-        ]
-      },
-      {
-        "start_timestamp": "2019-12-21T12:25:57.859Z",
+        "start_timestamp": "2019-12-21T13:12:29.607Z",
         "line": 61,
-        "name": "User deletes account",
+        "name": "User is not able to book a empty number of tickets",
         "description": "",
-        "id": "registration;user-deletes-account;;2",
+        "id": "buy/book-a-ticket-and-get-event-information;user-is-not-able-to-book-a-empty-number-of-tickets;;2",
         "after": [
           {
             "result": {
-              "duration": 2881661500,
+              "duration": 2849756700,
               "status": "passed"
             },
             "match": {
@@ -819,60 +898,130 @@
         "steps": [
           {
             "result": {
-              "duration": 22110803300,
+              "duration": 7084775800,
+              "status": "passed"
+            },
+            "line": 52,
+            "name": "Tickets menu page is displayed",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Tickets",
+                  "offset": 0
+                }
+              ],
+              "location": "TicketsDefinitions.ticketEventPage(String)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 911270000,
+              "status": "passed"
+            },
+            "line": 53,
+            "name": "Conferințe is selected",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Conferințe",
+                  "offset": 0
+                }
+              ],
+              "location": "TicketsDefinitions.userSelectsASection(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 12565957600,
+              "status": "passed"
+            },
+            "line": 54,
+            "name": "User selects 2 tickets for an event of the Conferințe",
+            "match": {
+              "arguments": [
+                {
+                  "val": "selects",
+                  "offset": 5
+                },
+                {
+                  "val": "2",
+                  "offset": 13
+                },
+                {
+                  "val": "Conferințe",
+                  "offset": 43
+                }
+              ],
+              "location": "TicketsDefinitions.userSelectsAnEvent(String,int,String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 34885900,
+              "status": "passed"
+            },
+            "line": 55,
+            "name": "Submit button is enabled",
+            "match": {
+              "arguments": [
+                {
+                  "val": "enabled",
+                  "offset": 17
+                }
+              ],
+              "location": "TicketsDefinitions.submitButtonIsEnabledDisabled(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 855193900,
               "status": "passed"
             },
             "line": 56,
-            "name": "Account with test2@gma.ru and 123123 was deleted",
+            "name": "User selects 0 tickets for the same event",
             "match": {
               "arguments": [
                 {
-                  "val": "test2@gma.ru",
+                  "val": "0",
                   "offset": 13
-                },
-                {
-                  "val": "123123",
-                  "offset": 30
                 }
               ],
-              "location": "RegistrationStepDefinition.accountWasDeleted(String,String)"
+              "location": "TicketsDefinitions.userSelectsEmptyTicketsForTheSameEvent(int)"
             },
-            "keyword": "When "
+            "keyword": "And "
           },
           {
             "result": {
-              "duration": 2587014700,
+              "duration": 62007700,
               "status": "passed"
             },
             "line": 57,
-            "name": "Home page is displayed",
+            "name": "Submit button is disabled",
             "match": {
-              "location": "RegistrationStepDefinition.homePageIsDisplayed()"
+              "arguments": [
+                {
+                  "val": "disabled",
+                  "offset": 17
+                }
+              ],
+              "location": "TicketsDefinitions.submitButtonIsEnabledDisabled(String)"
             },
             "keyword": "Then "
-          },
-          {
-            "result": {
-              "duration": 6342617900,
-              "status": "passed"
-            },
-            "line": 58,
-            "name": "Checked that account was deleted",
-            "match": {
-              "location": "RegistrationStepDefinition.checkedThatAccountWasDeleted()"
-            },
-            "keyword": "And "
           }
         ],
         "tags": [
           {
-            "name": "@Valik"
+            "name": "@Doina"
           },
           {
-            "name": "@Registration"
+            "name": "@negative"
           },
           {
-            "name": "@Deleting"
+            "name": "@tickets"
           },
           {
             "name": "@Fest"
@@ -888,7 +1037,7 @@
         "steps": [
           {
             "result": {
-              "duration": 17044933100,
+              "duration": 15537734600,
               "status": "passed"
             },
             "line": 5,
@@ -901,15 +1050,15 @@
         ]
       },
       {
-        "start_timestamp": "2019-12-21T12:26:42.831Z",
-        "line": 64,
-        "name": "Registration/Login page UI check",
+        "start_timestamp": "2019-12-21T13:13:09.218Z",
+        "line": 73,
+        "name": "User is able to visualise details of any event",
         "description": "",
-        "id": "registration;registration/login-page-ui-check",
+        "id": "buy/book-a-ticket-and-get-event-information;user-is-able-to-visualise-details-of-any-event;;2",
         "after": [
           {
             "result": {
-              "duration": 2819427500,
+              "duration": 2924262000,
               "status": "passed"
             },
             "match": {
@@ -918,103 +1067,234 @@
           }
         ],
         "type": "scenario",
-        "keyword": "Scenario",
+        "keyword": "Scenario Outline",
         "steps": [
           {
             "result": {
-              "duration": 4587614900,
+              "duration": 11209099200,
               "status": "passed"
             },
             "line": 65,
-            "name": "Register_Login page is displayed",
+            "name": "Events menu page is displayed",
             "match": {
-              "location": "RegistrationStepDefinition.registerLoginPageIsDisplayed()"
+              "arguments": [
+                {
+                  "val": "Events",
+                  "offset": 0
+                }
+              ],
+              "location": "TicketsDefinitions.ticketEventPage(String)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 936416700,
+              "status": "passed"
+            },
+            "line": 66,
+            "name": "Expoziții is selected",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Expoziții",
+                  "offset": 0
+                }
+              ],
+              "location": "TicketsDefinitions.userSelectsASection(String)"
             },
             "keyword": "When "
           },
           {
             "result": {
-              "duration": 7595323200,
+              "duration": 37210300,
               "status": "passed"
             },
-            "line": 66,
-            "name": "the following elements are visible on Register_Login page",
+            "line": 67,
+            "name": "All events of Expoziții have \"Detalii\" button",
             "match": {
-              "location": "RegistrationStepDefinition.theFollowingElementsAreVisibleOnRegisterLoginPage(DataTable)"
+              "arguments": [
+                {
+                  "val": "Expoziții",
+                  "offset": 14
+                }
+              ],
+              "location": "TicketsDefinitions.allEventsOnThePageHaveDetails(String)"
             },
-            "rows": [
-              {
-                "cells": [
-                  "Register title"
-                ]
-              },
-              {
-                "cells": [
-                  "Login title"
-                ]
-              },
-              {
-                "cells": [
-                  "LoginRegister title"
-                ]
-              },
-              {
-                "cells": [
-                  "Email register field"
-                ]
-              },
-              {
-                "cells": [
-                  "Email login field"
-                ]
-              },
-              {
-                "cells": [
-                  "Password register field"
-                ]
-              },
-              {
-                "cells": [
-                  "Password login field"
-                ]
-              },
-              {
-                "cells": [
-                  "Confirm password field"
-                ]
-              },
-              {
-                "cells": [
-                  "Forgot Password Link"
-                ]
-              },
-              {
-                "cells": [
-                  "Register button"
-                ]
-              },
-              {
-                "cells": [
-                  "Login button"
-                ]
-              },
-              {
-                "cells": [
-                  "Facebook login register button"
-                ]
-              },
-              {
-                "cells": [
-                  "Recieve newletter checkbox"
-                ]
-              }
-            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 13530450000,
+              "status": "passed"
+            },
+            "line": 68,
+            "name": "User clicks on \"Detalii\" button of an event of Expoziții",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Expoziții",
+                  "offset": 47
+                }
+              ],
+              "location": "TicketsDefinitions.userClicksOnButtonOfAnEvent(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 37055100,
+              "status": "passed"
+            },
+            "line": 69,
+            "name": "The information of the event is displayed",
+            "match": {
+              "location": "TicketsDefinitions.theInformationOfTheEventIsDisplayed()"
+            },
             "keyword": "Then "
           }
         ],
         "tags": [
           {
-            "name": "@Valik"
+            "name": "@Doina"
+          },
+          {
+            "name": "@UI"
+          },
+          {
+            "name": "@Fest"
+          }
+        ]
+      },
+      {
+        "line": 4,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 27139280600,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "Fest.md home page is displayed",
+            "match": {
+              "location": "CommonDefinitions.HomePageIsDisplayed()"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2019-12-21T13:13:53.452Z",
+        "line": 74,
+        "name": "User is able to visualise details of any event",
+        "description": "",
+        "id": "buy/book-a-ticket-and-get-event-information;user-is-able-to-visualise-details-of-any-event;;3",
+        "after": [
+          {
+            "result": {
+              "duration": 1091209700,
+              "status": "passed"
+            },
+            "match": {
+              "location": "CommonDefinitions.teardown()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 10730748900,
+              "status": "passed"
+            },
+            "line": 65,
+            "name": "Events menu page is displayed",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Events",
+                  "offset": 0
+                }
+              ],
+              "location": "TicketsDefinitions.ticketEventPage(String)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 941019800,
+              "status": "passed"
+            },
+            "line": 66,
+            "name": "Sport is selected",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Sport",
+                  "offset": 0
+                }
+              ],
+              "location": "TicketsDefinitions.userSelectsASection(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 38894500,
+              "status": "passed"
+            },
+            "line": 67,
+            "name": "All events of Sport have \"Detalii\" button",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Sport",
+                  "offset": 14
+                }
+              ],
+              "location": "TicketsDefinitions.allEventsOnThePageHaveDetails(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 7434237500,
+              "status": "passed"
+            },
+            "line": 68,
+            "name": "User clicks on \"Detalii\" button of an event of Sport",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Sport",
+                  "offset": 47
+                }
+              ],
+              "location": "TicketsDefinitions.userClicksOnButtonOfAnEvent(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 50358900,
+              "status": "passed"
+            },
+            "line": 69,
+            "name": "The information of the event is displayed",
+            "match": {
+              "location": "TicketsDefinitions.theInformationOfTheEventIsDisplayed()"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@Doina"
           },
           {
             "name": "@UI"
@@ -1025,14 +1305,14 @@
         ]
       }
     ],
-    "name": "Registration",
+    "name": "Buy/book a ticket and get event information",
     "description": "",
-    "id": "registration",
+    "id": "buy/book-a-ticket-and-get-event-information",
     "keyword": "Feature",
-    "uri": "file:src/test/features/Registration.feature",
+    "uri": "file:src/test/features/EventsNavigation.feature",
     "tags": [
       {
-        "name": "@Valik",
+        "name": "@Doina",
         "type": "Tag",
         "location": {
           "line": 1,
