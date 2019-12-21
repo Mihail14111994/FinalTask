@@ -33,7 +33,6 @@ public class Click {
         scrolling.scrollingUntilElement(element);
         borders.drawBorder(element, DriverFactory.getDriver(), RED);
         takeScreenshot(DriverFactory.getDriver(),path+ LocalDateTime.now().format(formatter)+".jpg");
-
         if(element.getText().length() > 0){
         logger.info("Clicked " + element.getText());}
         element.click();

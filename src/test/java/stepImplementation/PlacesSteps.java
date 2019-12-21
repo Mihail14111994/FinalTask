@@ -36,8 +36,6 @@ public class PlacesSteps {
     private WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), 30);
     Actions actions = new Actions(DriverFactory.getDriver());
 
-    //    Scenario Outline: See details of a chosen place
-
     public void accessPlacesPage() throws IOException {
         waitFor(homePage.getPlacesMenu());
         click(homePage.getPlacesMenu(), path);

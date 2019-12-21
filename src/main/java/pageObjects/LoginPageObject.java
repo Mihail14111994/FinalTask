@@ -73,36 +73,5 @@ public class LoginPageObject extends PageObject {
         return btnFacebookLogin;
     }
 
-    public void setFrmLogin(WebElement frmLogin) {
-        this.frmLogin = frmLogin;
-    }
-
-    public void setTtlLogin(WebElement ttlLogin) {
-        this.ttlLogin = ttlLogin;
-    }
-
-    public void setTxtEmail(WebElement txtEmail) {
-        this.txtEmail = txtEmail;
-    }
-
-    public void setTxtPassword(WebElement txtPassword) {
-        this.txtPassword = txtPassword;
-    }
-
-    public void setLnkForgot(WebElement lnkForgot) {
-        this.lnkForgot = lnkForgot;
-    }
-
-    public void setBtnLogin(WebElement btnLogin) {
-        this.btnLogin = btnLogin;
-    }
-
-    public void setBtnRegisterswitch(WebElement btnRegisterswitch) {
-        this.btnRegisterswitch = btnRegisterswitch;
-    }
-
-    public void setBtnFacebookLogin(WebElement btnFacebookLogin) {
-        this.btnFacebookLogin = btnFacebookLogin;
-    }
 
 }

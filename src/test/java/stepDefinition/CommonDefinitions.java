@@ -7,13 +7,11 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
 
-
 public class CommonDefinitions {
     final static Logger logger = Logger.getLogger(CommonDefinitions.class);
 
     @Given("Fest.md login page is displayed")
     public void loginPageIsDisplayed() {
-
         WebDriver driver = DriverFactory.getDriver();
         driver.manage().window().maximize();
         driver.get("https://www.fest.md/ro/login-register");
@@ -36,10 +34,11 @@ public class CommonDefinitions {
     }
 
     @After
-    public void teardown(){
+    public void teardown() {
         DriverFactory.getDriver().close();
         DriverFactory.getDriver().quit();
         DriverFactory.setDriverNull();
+        logger.info("Driver is closed");
     }
 
 }

@@ -8,7 +8,7 @@ import java.util.List;
 public class EventsPage extends PageObject{
     @FindBy(xpath = "//*[@id='events-exhibition']/div/div[2]/div/div[2]/div/div[1]/a")
     List<WebElement> listExhibitions;
-//#events-party div.display-tr.oneline.buttons > a.btn.btn-tiny.btn-generic.btn-fixed
+
     @FindBy(xpath = "//*[@id='events-party']/div/div[2]/div/div[2]/div/div[1]/a")
     List<WebElement> listParties;
 

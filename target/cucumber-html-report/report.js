@@ -1,8 +1,65 @@
-$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("file:src/test/features/Places.feature");
+$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("file:src/test/features/EventsNavigation.feature");
 formatter.feature({
-  "name": "\u0027Places\u0027 page",
+  "name": "Buy/book a ticket and get event information",
   "description": "",
-  "keyword": "Feature"
+  "keyword": "Feature",
+  "tags": [
+    {
+      "name": "@Doina"
+    }
+  ]
+});
+formatter.scenarioOutline({
+  "name": "User is able to visualise details of any event",
+  "description": "",
+  "keyword": "Scenario Outline",
+  "tags": [
+    {
+      "name": "@UI"
+    }
+  ]
+});
+formatter.step({
+  "name": "Events menu page is displayed",
+  "keyword": "Given "
+});
+formatter.step({
+  "name": "\u003csection\u003e is selected",
+  "keyword": "When "
+});
+formatter.step({
+  "name": "All events of \u003csection\u003e have \"Detalii\" button",
+  "keyword": "And "
+});
+formatter.step({
+  "name": "User clicks on \"Detalii\" button of an event of \u003csection\u003e",
+  "keyword": "And "
+});
+formatter.step({
+  "name": "The information of the event is displayed",
+  "keyword": "Then "
+});
+formatter.examples({
+  "name": "",
+  "description": "",
+  "keyword": "Examples",
+  "rows": [
+    {
+      "cells": [
+        "section"
+      ]
+    },
+    {
+      "cells": [
+        "Expoziții"
+      ]
+    },
+    {
+      "cells": [
+        "Sport"
+      ]
+    }
+  ]
 });
 formatter.background({
   "name": "",
@@ -10,67 +67,155 @@ formatter.background({
   "keyword": "Background"
 });
 formatter.step({
-  "name": "Fest.md english page is displayed",
+  "name": "Fest.md home page is displayed",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "CommonDefinitions.EnPageIsDisplayed()"
+  "location": "CommonDefinitions.HomePageIsDisplayed()"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.scenario({
-  "name": "Select Places from the  Map",
+  "name": "User is able to visualise details of any event",
   "description": "",
-  "keyword": "Scenario",
+  "keyword": "Scenario Outline",
   "tags": [
     {
-      "name": "@places"
+      "name": "@Doina"
     },
     {
-      "name": "@placesMap"
-    },
-    {
-      "name": "@map"
+      "name": "@UI"
     }
   ]
 });
 formatter.step({
-  "name": "User is on Places page",
+  "name": "Events menu page is displayed",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "PlacesDefinition.useIsOnPlacesPage()"
+  "location": "TicketsDefinitions.ticketEventPage(String)"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "User clicks on See on map button",
+  "name": "Expoziții is selected",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "TicketsDefinitions.userSelectsASection(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "All events of Expoziții have \"Detalii\" button",
   "keyword": "And "
 });
 formatter.match({
-  "location": "PlacesDefinition.userClicksOnSeeOnMapButton()"
+  "location": "TicketsDefinitions.allEventsOnThePageHaveDetails(String)"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "Check any Places Category from the checkboxes list",
+  "name": "User clicks on \"Detalii\" button of an event of Expoziții",
   "keyword": "And "
 });
 formatter.match({
-  "location": "PlacesDefinition.checkAnyPlacesCategoryFromTheCheckboxesList()"
+  "location": "TicketsDefinitions.userClicksOnButtonOfAnEvent(String)"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "User can see the places of the chosen category on the Map",
+  "name": "The information of the event is displayed",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "PlacesDefinition.userCanSeeThePlacesOfTheChosenCategoryOnTheMap()"
+  "location": "TicketsDefinitions.theInformationOfTheEventIsDisplayed()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.after({
+  "status": "passed"
+});
+formatter.background({
+  "name": "",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "Fest.md home page is displayed",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "CommonDefinitions.HomePageIsDisplayed()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "User is able to visualise details of any event",
+  "description": "",
+  "keyword": "Scenario Outline",
+  "tags": [
+    {
+      "name": "@Doina"
+    },
+    {
+      "name": "@UI"
+    }
+  ]
+});
+formatter.step({
+  "name": "Events menu page is displayed",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "TicketsDefinitions.ticketEventPage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "Sport is selected",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "TicketsDefinitions.userSelectsASection(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "All events of Sport have \"Detalii\" button",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "TicketsDefinitions.allEventsOnThePageHaveDetails(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "User clicks on \"Detalii\" button of an event of Sport",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "TicketsDefinitions.userClicksOnButtonOfAnEvent(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "The information of the event is displayed",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "TicketsDefinitions.theInformationOfTheEventIsDisplayed()"
 });
 formatter.result({
   "status": "passed"

@@ -14,20 +14,17 @@ public class RegistrationStepDefinition {
     public String workingPassword;
     RegisterSteps registerSteps = new RegisterSteps();
 
-
-
     @When("Register page is displayed")
     public void registerPageIsDisplayed() throws InterruptedException, IOException {
         registerSteps.openRegisterWindow();
     }
 
-
     @When("Submit (.*), (.*) and confirm password in registration form")
     public void submitEmailPasswordAndConfirmPasswordInRegistrationForm(String email, String password) throws InterruptedException, IOException {
-        workingEmail=email;
-        workingPassword=password;
+        workingEmail = email;
+        workingPassword = password;
         Thread.sleep(1000);
-        registerSteps.fillDataInEmailPasswordFieldsRegister(email,password);
+        registerSteps.fillDataInEmailPasswordFieldsRegister(email, password);
         registerSteps.clickRegisterButton();
     }
 
@@ -36,19 +33,19 @@ public class RegistrationStepDefinition {
         registerSteps.checkThatHomePageIsDisplayed();
     }
 
-    @And("Register is successful")
+    @And("User unable to register with the same credentials")
     public void registerIsSuccessful() throws IOException {
         registerSteps.makeLogout();
         registerSteps.openRegisterWindow();
-        registerSteps.fillDataInEmailPasswordFieldsRegister(workingEmail,workingPassword);
+        registerSteps.fillDataInEmailPasswordFieldsRegister(workingEmail, workingPassword);
         registerSteps.clickRegisterButton();
         registerSteps.checkFailingRegisterWithTheSameCredentials();
     }
 
     @When("Account with (.*) and (.*) was deleted")
     public void accountWasDeleted(String email, String password) throws IOException {
-        workingEmail=email;
-        workingPassword=password;
+        workingEmail = email;
+        workingPassword = password;
         registerSteps.openLoginWindow();
         registerSteps.fillDataInEmailPasswordFieldsLogin(email, password);
         registerSteps.clickLoginButton();
@@ -60,7 +57,7 @@ public class RegistrationStepDefinition {
     @And("Checked that account was deleted")
     public void checkedThatAccountWasDeleted() throws IOException {
         registerSteps.openLoginWindow();
-        registerSteps.fillDataInEmailPasswordFieldsLogin(workingEmail,workingPassword);
+        registerSteps.fillDataInEmailPasswordFieldsLogin(workingEmail, workingPassword);
         registerSteps.clickLoginButton();
         registerSteps.checkThatAccWasDeleted();
     }
@@ -69,6 +66,7 @@ public class RegistrationStepDefinition {
     public void registrationFailsWithErrorMessage(String errorMessage) throws IOException {
         registerSteps.checkingErrorMessages(errorMessage);
     }
+
     @Then("the following elements are visible on Register page")
     public void theFollowingElementsAreVisible(DataTable element) throws IOException {
         registerSteps.checkingUIRegister(element);
@@ -84,7 +82,6 @@ public class RegistrationStepDefinition {
         registerSteps.checkinUILogin(elements);
 
     }
-
 
     @When("Register_Login page is displayed")
     public void registerLoginPageIsDisplayed() {
