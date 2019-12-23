@@ -10,12 +10,12 @@ import java.io.IOException;
 
 public class RegistrationStepDefinition {
 
-    public String workingEmail;
-    public String workingPassword;
-    RegisterSteps registerSteps = new RegisterSteps();
+    private String workingEmail;
+    private String workingPassword;
+    private RegisterSteps registerSteps = new RegisterSteps();
 
     @When("Register page is displayed")
-    public void registerPageIsDisplayed() throws InterruptedException, IOException {
+    public void registerPageIsDisplayed() throws IOException {
         registerSteps.openRegisterWindow();
     }
 

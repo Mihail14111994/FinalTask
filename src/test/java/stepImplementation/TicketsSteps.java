@@ -19,18 +19,18 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class TicketsSteps {
     private TicketsPage ticketsPage = new TicketsPage();
-    private TicketSectionsPage ticketSectionsPage = new TicketSectionsPage();
+    private TicketDetailsPage ticketDetailsPage = new TicketDetailsPage();
     private HomePage homePage = new HomePage();
     private BookingPage bookingPage = new BookingPage();
     private EventsPage eventsPage = new EventsPage();
-    private LoginRegistrationPage loginRegistrationPage = new LoginRegistrationPage();
+    private RegistrationPage registrationPage = new RegistrationPage();
     private static final Logger logger = Logger.getLogger(TicketsSteps.class);
 
-    private String INFO = "INFORMAȚII";
-    private String LOGIN = "doina12345@gmail.com";
-    private String PASSWORD = "147369";
-    private String TICKETS = "Bilete";
-    private String EVENTS = "Evenimente";
+    private final String INFO = "INFORMAȚII";
+    private final String LOGIN = "doina123456@gmail.com";
+    private final String PASSWORD = "147369";
+    private final String TICKETS = "Bilete";
+    private final String EVENTS = "Evenimente";
     private int totalPrice = 0;
     private String nameOfBookedEvent;
     private String path = "target\\screenshots\\tickets\\";
@@ -51,11 +51,11 @@ public class TicketsSteps {
         WebDriver driver = DriverFactory.getDriver();
         driver.get("https://www.fest.md/ro/login-register");
         logger.info("Fest.md login-register page is displayed");
-        click(loginRegistrationPage.getEmailLogin(), path);
-        loginRegistrationPage.getEmailLogin().sendKeys(LOGIN);
-        click(loginRegistrationPage.getPasswordLogin(), path);
-        loginRegistrationPage.getPasswordLogin().sendKeys(PASSWORD);
-        click(loginRegistrationPage.getBtnLogin(), path);
+        click(registrationPage.getEmailLogin(), path);
+        registrationPage.getEmailLogin().sendKeys(LOGIN);
+        click(registrationPage.getPasswordLogin(), path);
+        registrationPage.getPasswordLogin().sendKeys(PASSWORD);
+        click(registrationPage.getBtnLogin(), path);
         logger.info("User is logged in with valid credentials");
     }
 
@@ -71,21 +71,25 @@ public class TicketsSteps {
     }
 
     public void selectOnRandomEvent(String section) throws IOException {
-        boolean eventWithOutTickets = false;
+        boolean eventWithOutTickets;
 
         do {
             WebElement randomLink = null;
-            if (section.equals("Concerte")) {
-                randomLink = randomLink(ticketsPage.getListOfConcerts());
-            } else if (section.equals("Conferințe")) {
-                randomLink = randomLink(ticketsPage.getListOfConferences());
-            } else if (section.equals("Party")) {
-                randomLink = randomLink(ticketsPage.getListOfParties());
+            switch (section) {
+                case "Concerte":
+                    randomLink = randomLink(ticketsPage.getListOfConcerts());
+                    break;
+                case "Conferințe":
+                    randomLink = randomLink(ticketsPage.getListOfConferences());
+                    break;
+                case "Party":
+                    randomLink = randomLink(ticketsPage.getListOfParties());
+                    break;
             }
             click(randomLink, path);
 
-            if (ticketSectionsPage.getBoxOfTickets().size() > 0) {
-                nameOfBookedEvent = ticketSectionsPage.getNameOfEvent().getText();
+            if (ticketDetailsPage.getBoxOfTickets().size() > 0) {
+                nameOfBookedEvent = ticketDetailsPage.getNameOfEvent().getText();
                 eventWithOutTickets = false;
                 logger.info(nameOfBookedEvent + " event is chosen");
 
@@ -108,17 +112,17 @@ public class TicketsSteps {
     }
 
     public void selectNrOTickets(int nrOfTickets) throws IOException {
-        waitFor(ticketSectionsPage.getBtndetails());
+        waitFor(ticketDetailsPage.getBtndetails());
         logger.info("Clicked Tickets DropDown");
-        ticketSectionsPage.getBoxOfTickets().get(0).click();
-        click(ticketSectionsPage.getTicketsNr().get(nrOfTickets), path);
+        ticketDetailsPage.getBoxOfTickets().get(0).click();
+        click(ticketDetailsPage.getTicketsNr().get(nrOfTickets), path);
         logger.info(nrOfTickets + " Tickets are selected");
     }
 
     public int submitTicketsNr() throws IOException {
-        waitFor(ticketSectionsPage.getPriceOfTicket());
-        int price = Integer.parseInt(ticketSectionsPage.getPriceOfTicket().getText().replaceAll("[^0-9]", ""));
-        click(ticketSectionsPage.getBtnSubmitNrOfTickets(), path);
+        waitFor(ticketDetailsPage.getPriceOfTicket());
+        int price = Integer.parseInt(ticketDetailsPage.getPriceOfTicket().getText().replaceAll("[^0-9]", ""));
+        click(ticketDetailsPage.getBtnSubmitNrOfTickets(), path);
         logger.info("Tickets are submited");
         return price;
     }
@@ -150,11 +154,10 @@ public class TicketsSteps {
 
     public void setSubmitButtonAvailability(String available) {
         if (available.equals("enabled")) {
-            assertThat("Submit button is disabled instead of enabled", ticketSectionsPage.getBtnSubmitNrOfTickets().isDisplayed());
+            assertThat("Submit button is disabled instead of enabled", ticketDetailsPage.getBtnSubmitNrOfTickets().isDisplayed());
             logger.info("Submit button is enabled");
         } else if (available.equals("disabled")) {
-            boolean a = ticketSectionsPage.getBtnSubmitNrOfTicketsDisabled().isDisplayed();
-            assertThat("Submit button is enabled instead of disabled", ticketSectionsPage.getBtnSubmitNrOfTicketsDisabled().isDisplayed());
+            assertThat("Submit button is enabled instead of disabled", ticketDetailsPage.getBtnSubmitNrOfTicketsDisabled().isDisplayed());
             logger.info("Submit button is disabled");
         }
     }
@@ -175,7 +178,7 @@ public class TicketsSteps {
         waitFor(ticketsPage.getAdBanner());
         click(homePage.getBtnMyBookings(), path);
         waitFor(bookingPage.getBtnBookingDetails());
-        assertThat("Name of displayed event is not the same as booked", ticketSectionsPage.getNameOfBookingEvent().getText(), is(nameOfBookedEvent));
+        assertThat("Name of displayed event is not the same as booked", ticketDetailsPage.getNameOfBookingEvent().getText(), is(nameOfBookedEvent));
         logger.info("Booking is successfully accepted");
     }
 

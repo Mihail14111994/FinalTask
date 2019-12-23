@@ -1,6 +1,7 @@
 package driverFactory;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -12,9 +13,8 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class DriverFactory {
-
     static WebDriver driver = null;
-
+    static Logger logger = Logger.getLogger(DriverFactory.class);
     public static WebDriver getDriver() {
         InputStream inputStream;
         try {
@@ -30,7 +30,7 @@ public class DriverFactory {
             }
             String browserName = prop.getProperty("browserName");
 
-            switch (browserName) {
+            switch (browserName.toUpperCase()) {
                 case "CHROME":
                     if (driver == null) {
                         WebDriverManager.chromedriver().setup();
@@ -52,7 +52,7 @@ public class DriverFactory {
                     throw new NullPointerException("Wrong Browser Name!");
             }
         } catch (Exception e) {
-            System.out.println(e);
+            logger.error(e);
         }
         return driver;
     }

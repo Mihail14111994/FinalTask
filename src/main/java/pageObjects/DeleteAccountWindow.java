@@ -3,7 +3,7 @@ package pageObjects;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class DeleteAccountWindowObject extends PageObject {
+public class DeleteAccountWindow extends PageObject {
 
     @FindBy(xpath = "//input[@id='formDeleteAccount_currentPassword']")
     private WebElement txtCurrentPassword;

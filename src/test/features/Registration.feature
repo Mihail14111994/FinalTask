@@ -1,9 +1,9 @@
-@Valik @All
+@Valik @All @Fest
 Feature: Registration
 
   Background:
     Given Fest.md home page is displayed
-@Registration @Fest
+@Registration
   Scenario Outline: User is able to register
     Given Register page is displayed
     When Submit <email>, <password> and confirm password in registration form
@@ -14,7 +14,7 @@ Feature: Registration
       | email        | password |
       | test2@gma.ru | 123123   |
 
-@Negative @Fest
+@Negative
   Scenario Outline: User fails to registrate
     Given Register page is displayed
     When Submit <email>, <password> and confirm password in registration form
@@ -26,7 +26,7 @@ Feature: Registration
       | test2@gma.ru | null                   | Acest câmp nu poate fi gol.               |
       | num2@ij.md   | PassWithAnotherConfirm | Parolele introduse nu coincid.            |
 
-@UI @Valik @Fest
+@UI
   Scenario: Registration window UI check
     When  Register page is displayed
     Then  the following elements are visible on Register page
@@ -39,7 +39,7 @@ Feature: Registration
       |Login with facebook button|
       |Recieve newletter checkbox|
 
-  @UI @Fest
+  @UI
   Scenario: Login window UI check
     When  Login page is displayed
     Then  the following elements are visible on Login page
@@ -51,7 +51,7 @@ Feature: Registration
       |Login with facebook button|
       |Forgot password link|
 
-    @Registration @Deleting @Fest
+    @Registration @Deleting
   Scenario Outline: User deletes account
     When Account with <email> and <password> was deleted
     Then Home page is displayed
@@ -60,7 +60,7 @@ Feature: Registration
       | email        | password |
       | test2@gma.ru | 123123   |
 
-      @UI @Fest
+      @UI
   Scenario: Registration/Login page UI check
     When  Register_Login page is displayed
     Then  the following elements are visible on Register_Login page

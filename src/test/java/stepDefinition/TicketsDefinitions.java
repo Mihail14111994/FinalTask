@@ -9,7 +9,7 @@ import stepImplementation.TicketsSteps;
 import java.io.IOException;
 
 public class TicketsDefinitions {
-    TicketsSteps ticketsSteps = new TicketsSteps();
+    private TicketsSteps ticketsSteps = new TicketsSteps();
     private int priceOfTicket;
 
     @Given("{} menu page is displayed")
@@ -39,18 +39,18 @@ public class TicketsDefinitions {
         }
     }
 
-    @And("The total price is displayed correct for {} tickets")
+    @When("The total price is displayed correct for {} tickets")
     public void theTotalPriceOfTicketsIsDisplayedCorrect(int ticketsNr) {
         ticketsSteps.assertAmmountOfPayment(ticketsNr, priceOfTicket);
     }
 
-    @And("All fields of booking are submited")
+    @When("All fields of booking are submited")
     public void allFieldsOfBookingAreSubmited() throws IOException {
         ticketsSteps.submitBookingFields();
     }
 
 
-    @And("^All fields of booking are filled with (.*), (.*), (.*) and submited$")
+    @When("^All fields of booking are filled with (.*), (.*), (.*) and submited$")
     public void allFieldsOfBookingAreFilledWithFirstnameLastnamePhoneAndSubmited(String firstName, String lastName, String phone) throws Exception {
         ticketsSteps.populateBookingFields(firstName, lastName, phone);
         ticketsSteps.submitBookingFields();
@@ -67,8 +67,8 @@ public class TicketsDefinitions {
         ticketsSteps.verifyWarningMessages(errorMessage);
     }
 
-    @And("User selects {} tickets for the same event")
-    public void userSelectsEmptyTicketsForTheSameEvent(int nr) throws InterruptedException, IOException {
+    @When("User selects {} tickets for the same event")
+    public void userSelectsEmptyTicketsForTheSameEvent(int nr) throws IOException {
         nr = 0;
         ticketsSteps.selectNrOTickets(nr);
     }
@@ -78,13 +78,13 @@ public class TicketsDefinitions {
         ticketsSteps.setSubmitButtonAvailability(availability);
     }
 
-    @And("All events of {} have \"Detalii\" button")
+    @When("All events of {} have \"Detalii\" button")
     public void allEventsOnThePageHaveDetails(String section) {
         ticketsSteps.verifyDetailsBtn(section);
     }
 
 
-    @And("User clicks on \"Detalii\" button of an event of {}")
+    @When("User clicks on \"Detalii\" button of an event of {}")
     public void userClicksOnButtonOfAnEvent(String section) throws IOException {
         ticketsSteps.clickBtnDetailsRandomEvent(section);
     }
@@ -94,7 +94,7 @@ public class TicketsDefinitions {
         ticketsSteps.verifyDetailsOfEvent();
     }
 
-    @And("{} for alert is selected and submited")
+    @When("{} for alert is selected and submited")
     public void userSelectsAnOptionForAlertAndSubmit(String option) throws IOException {
         ticketsSteps.setAlert(option);
     }

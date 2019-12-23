@@ -3,7 +3,7 @@ package pageObjects;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class ChangePasswordPageObject extends PageObject {
+public class ChangePasswordPage extends PageObject {
     @FindBy(xpath = "//input[@id='formChangePassword_currentPassword']")
     private WebElement txtCurrentPasswordField;
 

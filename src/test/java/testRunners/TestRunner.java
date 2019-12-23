@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
         features = "src/test/features",
         glue = "stepDefinition",
         plugin = {"pretty", "html:target/cucumber-html-report", "json:target/cucumber.json"},
-        tags = "@Doina"
+        tags = {"@Fest"}
 )
 public class TestRunner {
 

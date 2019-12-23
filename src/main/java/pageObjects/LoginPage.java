@@ -4,7 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 //@Data
-public class LoginPageObject extends PageObject {
+public class LoginPage extends PageObject {
 
 
     @FindBy(xpath = "//form[@id='formLoginUser']")

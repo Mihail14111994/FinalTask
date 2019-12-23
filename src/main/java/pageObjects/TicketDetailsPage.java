@@ -5,7 +5,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-public class TicketSectionsPage extends PageObject {
+public class TicketDetailsPage extends PageObject {
     @FindBy(xpath = "//*[@id='content']/div[3]/div[1]/div[2]/div/div[1]/span")
     private WebElement nameOfEvent;
 

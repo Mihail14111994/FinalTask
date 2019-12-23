@@ -3,7 +3,7 @@ package pageObjects;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class LoginRegisterPageObject extends PageObject {
+public class LoginRegisterPage extends PageObject {
 
     String link = "https://www.fest.md/ro/login-register";
 

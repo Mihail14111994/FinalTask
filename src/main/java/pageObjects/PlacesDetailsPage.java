@@ -5,13 +5,12 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-public class PlacesElementPage extends PageObject {
-
-    @FindBy(xpath="//*[@class = 'btn btn-tiny btn-generic btn-fixed']")
-    private List <WebElement> btnDetailsOfAPlacesElement;
+public class PlacesDetailsPage extends PageObject {
+    @FindBy(xpath = "//*[@class = 'btn btn-tiny btn-generic btn-fixed']")
+    private List<WebElement> btnDetailsOfAPlacesElement;
 
     @FindBy(xpath = "//div[@class = 'term-data']//div")
-    private List<WebElement>  txtPlacePrice;
+    private List<WebElement> txtPlacePrice;
 
     @FindBy(xpath = "//*[@class = 'oneline ellipsis']")
     private List<WebElement> placesElementType;
@@ -27,4 +26,5 @@ public class PlacesElementPage extends PageObject {
 
     public List<WebElement> getPlacesElementType() {
         return placesElementType;
-    }}
+    }
+}

@@ -1,10 +1,10 @@
-@All @fest @Mihail @places
-Feature: 'Places' page
+@All @Fest @Mihail @places
+Feature: 'Places' page navigation
 
   Background:
     Given Fest.md english page is displayed
 
-  @placesCategories
+  @placesCategories @UI
   Scenario Outline: See details of places from dropdown lists
     Given User is on Places page
     When User clicks on <category> dropdown

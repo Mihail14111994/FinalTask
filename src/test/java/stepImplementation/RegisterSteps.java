@@ -22,13 +22,13 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class RegisterSteps {
     private HomePage homePage = new HomePage();
-    private RegisterPageObject registerPage = new RegisterPageObject();
+    private RegisterPageModal registerPage = new RegisterPageModal();
     private WebDriver driver = DriverFactory.getDriver();
     private WebDriverWait wait = new WebDriverWait(driver, 30);
     private MyAccountPage myAccountPage = new MyAccountPage();
-    private LoginPageObject loginPage = new LoginPageObject();
-    private DeleteAccountWindowObject deleteAccount = new DeleteAccountWindowObject();
-    private LoginRegisterPageObject loginRegisterPage = new LoginRegisterPageObject();
+    private LoginPage loginPage = new LoginPage();
+    private DeleteAccountWindow deleteAccount = new DeleteAccountWindow();
+    private LoginRegisterPage loginRegisterPage = new LoginRegisterPage();
     private String screenshotsPath = "target\\screenshots\\registration\\"; //change to your folder
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy_MM_dd_HH_mm_ss");
     private Logger logger = Logger.getLogger(RegisterSteps.class);

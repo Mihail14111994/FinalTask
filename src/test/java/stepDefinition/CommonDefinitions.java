@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 
 
 public class CommonDefinitions {
-    final static Logger logger = Logger.getLogger(CommonDefinitions.class);
+    private final static Logger logger = Logger.getLogger(CommonDefinitions.class);
 
     @Given("Fest.md login page is displayed")
     public void loginPageIsDisplayed() {

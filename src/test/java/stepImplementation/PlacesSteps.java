@@ -25,7 +25,7 @@ public class PlacesSteps {
 
     private SearchPage searchPage = new SearchPage();
     private PlacesPage placesPage = new PlacesPage();
-    private PlacesElementPage placesElementPage = new PlacesElementPage();
+    private PlacesDetailsPage placesDetailsPage = new PlacesDetailsPage();
     private MapPlacesPage mapPlacesPage = new MapPlacesPage();
     private OptionsPlacesPage optionsPage = new OptionsPlacesPage();
     private HomePage homePage = new HomePage();
@@ -34,7 +34,7 @@ public class PlacesSteps {
     private String randomLegendElementText;
     private String path = "target\\screenshots\\places\\";
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy_MM_dd_HH_mm_ss");
-    private WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), 30);
+    private static final WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), 30);
     Actions actions = new Actions(DriverFactory.getDriver());
 
     public void accessPlacesPage() throws IOException {
@@ -137,8 +137,8 @@ public class PlacesSteps {
         click(mapPlacesPage.getChkMapCheckboxes().get(0), path);
     }
 
-    public List<WebElement> getAllThePlacesTypeFromCategory() {
-        return placesElementPage.getPlacesElementType();
+    private List<WebElement> getAllThePlacesTypeFromCategory() {
+        return placesDetailsPage.getPlacesElementType();
     }
 
     public void userClicksOnSearchButton() throws IOException {
@@ -190,7 +190,7 @@ public class PlacesSteps {
 
     public void selectAPlacesElement() throws IOException {
         waitFor(homePage.getBtnSuggestedEvent());
-        List<WebElement> places = placesElementPage.getBtnDetailsOfAPlacesElement();
+        List<WebElement> places = placesDetailsPage.getBtnDetailsOfAPlacesElement();
 
         if (places.size() > 0) {
             click(randomLink(places), path);
@@ -204,10 +204,10 @@ public class PlacesSteps {
     public void checkPlacesElementDetailsCorrespondence(String theme, String price, String facility) throws IOException {
         waitFor(homePage.getBtnSuggestedEvent());
         assertThat("Facility corresponds", DriverFactory.getDriver().getPageSource().contains(facility));
-        actions.moveToElement(placesElementPage.getTxtPlacePrice().get(0)).perform();
+        actions.moveToElement(placesDetailsPage.getTxtPlacePrice().get(0)).perform();
         takeScreenshot(DriverFactory.getDriver(), path + LocalDateTime.now().format(formatter) + ".jpg");
         assertThat("Theme corresponds", DriverFactory.getDriver().getPageSource().contains(theme));
-        String classEl = placesElementPage.getTxtPlacePrice().get(0).getAttribute("class");
+        String classEl = placesDetailsPage.getTxtPlacePrice().get(0).getAttribute("class");
         assertThat("Price corresponds", classEl.contains(price));
     }
 
@@ -221,7 +221,7 @@ public class PlacesSteps {
         waitFor(searchPage.getTxaSearchFor());
         assertThat("Didn't get to results of search", searchPage.getTxaSearchFor().getText().contains(locationName));
 
-        List<WebElement> resultsOfSearch = placesElementPage.getBtnDetailsOfAPlacesElement();
+        List<WebElement> resultsOfSearch = placesDetailsPage.getBtnDetailsOfAPlacesElement();
         if (resultsOfSearch == null)
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("No results have been found."))).isDisplayed();
         takeScreenshot(DriverFactory.getDriver(), path + LocalDateTime.now().format(formatter) + ".jpg");

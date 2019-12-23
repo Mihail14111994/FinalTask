@@ -3,7 +3,7 @@ package pageObjects;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class RegisterPageObject extends  PageObject{
+public class RegisterPageModal extends  PageObject{
 
     @FindBy(xpath = "//*[@id='formRegisterUser']/div[1]/h2")
     private WebElement ttlRegister;

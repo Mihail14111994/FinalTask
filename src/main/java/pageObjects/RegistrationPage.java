@@ -3,7 +3,7 @@ package pageObjects;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class LoginRegistrationPage extends PageObject{
+public class RegistrationPage extends PageObject{
     @FindBy(id = "formLogin_email")
     private WebElement emailLogin;
 
