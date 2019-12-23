@@ -5,36 +5,37 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-public class BookingPage extends PageObject{
-    @FindBy(xpath = "//*[@id='content']/div[4]/table/tbody/tr/td[4]")
-    WebElement amountToBePaid;
+public class BookingPage extends PageObject {
 
-    @FindBy (xpath="//*[@id='formCheckout_paymentMethod_1']")
-    WebElement radioBtnTerminal;
+    @FindBy(xpath = "//*[@id='content']/div[4]/table/tbody/tr/td[4]")
+    private WebElement amountToBePaid;
+
+    @FindBy(xpath = "//*[@id='formCheckout_paymentMethod_1']")
+    private WebElement radioBtnTerminal;
 
     @FindBy(xpath = "//*[@id='formCheckout_firstName']")
-    WebElement fldFirstName;
+    private WebElement fldFirstName;
 
-    @FindBy (xpath = "//*[@id='formCheckout_lastName']")
-    WebElement fldLastName;
+    @FindBy(xpath = "//*[@id='formCheckout_lastName']")
+    private WebElement fldLastName;
 
-    @FindBy (xpath = "//*[@id='formCheckout_phone']")
-    WebElement fldPhoneNr;
+    @FindBy(xpath = "//*[@id='formCheckout_phone']")
+    private WebElement fldPhoneNr;
 
-    @FindBy (xpath = "//*[@id='formCheckout_btn-submit']")
-    WebElement btnContinue;
+    @FindBy(xpath = "//*[@id='formCheckout_btn-submit']")
+    private WebElement btnContinue;
 
-    @FindBy (xpath = "//*[@id='order']/table/tbody/tr/td[4]")
-    WebElement totalPriceConfirm;
+    @FindBy(xpath = "//*[@id='order']/table/tbody/tr/td[4]")
+    private WebElement totalPriceConfirm;
 
-    @FindBy (id = "formConfirmOrder_btn-submit")
-    WebElement btnSubmitConfirm;
+    @FindBy(id = "formConfirmOrder_btn-submit")
+    private WebElement btnSubmitConfirm;
 
-    @FindBy (xpath = "//*[@id='orders']/div[1]/div[2]/div/div[2]/button ")
-    WebElement btnBookingDetails;
+    @FindBy(xpath = "//*[@id='orders']/div[1]/div[2]/div/div[2]/button ")
+    private WebElement btnBookingDetails;
 
-    @FindBy (className = "field-error")
-    List<WebElement> lblError;
+    @FindBy(className = "field-error")
+    private List<WebElement> lblError;
 
     public WebElement getAmountToBePaid() {
         return amountToBePaid;
@@ -67,7 +68,6 @@ public class BookingPage extends PageObject{
     public WebElement getBtnSubmitConfirm() {
         return btnSubmitConfirm;
     }
-
 
     public WebElement getBtnBookingDetails() {
         return btnBookingDetails;

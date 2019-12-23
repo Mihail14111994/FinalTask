@@ -5,48 +5,47 @@ import org.openqa.selenium.support.FindBy;
 
 public class HomePage extends PageObject{
 
-//    @FindBy(xpath="//a[@href='/ro/bilete']")
-    String linkHomePage = "https://www.fest.md/ro/";
+    private static final String LINK_HOME_PAGE = "https://www.fest.md/ro/";
 
     public String getLinkHomePage() {
-        return linkHomePage;
+        return LINK_HOME_PAGE;
     }
 
     @FindBy(xpath = "//div[contains(@class, 'float-right')]//a[@class='bar-item inlined padded login']")
-    WebElement btnOpenLogin;
+    private WebElement btnOpenLogin;
 
     @FindBy(css="body > div.main-nav > div > div.links > ul > li:nth-child(1) > a")
-    WebElement ticketsMenu;
+    private WebElement ticketsMenu;
 
     @FindBy(xpath = "//*[@class='links']//a//span[text()='Places']")
-    WebElement PlacesMenu;
+    private WebElement placesMenu;
 
     @FindBy(xpath = "//*[@class = 'form-control large searchbar-search']")
-    WebElement txtSearchbar;
+    private WebElement txtSearchbar;
 
     @FindBy(xpath = "//*[@class = 'icon icon-search']")
-    WebElement btnSearch;
+    private WebElement btnSearch;
 
     @FindBy(xpath = "//a[@href='/ro/evenimente']")
-    WebElement eventsMenu;
+    private WebElement eventsMenu;
 
     @FindBy (xpath = "//*[@id='header']/div[2]/a")
-    WebElement btnMyBookings;
+    private WebElement btnMyBookings;
 
     @FindBy (css = "div.bar-item.inlined.username > a")
-    WebElement ddUserInformation;
+    private WebElement ddUserInformation;
 
     @FindBy (css = "div.bar-item.inlined.username.open > ul > li:nth-child(2) > a")
-    WebElement btnMyAccount;
+    private WebElement btnMyAccount;
   
     @FindBy(xpath = "//div[contains(@class, 'float-right')]//a[@class='bar-item inlined padded register hidden-on-tablet']" )
-    WebElement btnOpenRegistration;
+    private WebElement btnOpenRegistration;
 
     @FindBy(xpath = "//h2[@id='dateslider-title']")
-    WebElement ttlCalendar;
+    private WebElement ttlCalendar;
 
     @FindBy(xpath = "//a[contains(text(),'Suggest Event')]")
-    WebElement btnSuggestedEvent;
+    private WebElement btnSuggestedEvent;
 
 
     public WebElement getTtlCalendar() {
@@ -82,7 +81,7 @@ public class HomePage extends PageObject{
     }
 
     public WebElement getPlacesMenu() {
-        return PlacesMenu;
+        return placesMenu;
     }
 
     public WebElement getBtnMyBookings() {
