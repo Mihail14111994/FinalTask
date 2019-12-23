@@ -10,6 +10,10 @@ import java.io.IOException;
 
 public class Screenshot {
 
+    private Screenshot(){
+        throw new IllegalStateException("Utility class");
+    }
+
     public static void takeScreenshot(WebDriver driver, String path) throws IOException {
         TakesScreenshot scrShot =((TakesScreenshot)driver);
         File DestFile=new File(path);

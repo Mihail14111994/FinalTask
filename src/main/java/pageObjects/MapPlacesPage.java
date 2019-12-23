@@ -8,13 +8,13 @@ import java.util.List;
 public class MapPlacesPage extends PageObject{
 
     @FindBy(css = ".list-wrap label")
-    List<WebElement> chkMapCheckboxes;
+    private List<WebElement> chkMapCheckboxes;
 
     @FindBy(css = "div[class^='marker theme']")
-    List<WebElement> mapPinpoints;
+    private List<WebElement> mapPinpoints;
 
     @FindBy(css="button[type='button'][class='close']")
-    WebElement  btnMapCloseLegend;
+    private WebElement  btnMapCloseLegend;
 
     public List<WebElement> getChkMapCheckboxes() {
         return chkMapCheckboxes;

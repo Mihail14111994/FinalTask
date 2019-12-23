@@ -8,31 +8,31 @@ import java.util.List;
 public class PlacesPage  extends  PageObject{
 
     @FindBy(xpath = "//h1[@class = 'page-title bordered']")
-    WebElement pageTitle;
+    private WebElement pageTitle;
 
     @FindBy(xpath = "//*[@class = 'btn btn-primary toggle-map']")
-    WebElement btnSeeOnMap;
+    private WebElement btnSeeOnMap;
 
     @FindBy(xpath = "//*[@class = 'btn btn-secondary toggle-places-filter']")
-    WebElement btnOptions;
+    private WebElement btnOptions;
 
     @FindBy(xpath="//*[@class='dropdown-toggle']//h2")
-    List<WebElement> ddlCategories;
+    private List<WebElement> ddlCategories;
 
     @FindBy(xpath="//*[@class = 'tab']")
-    List<WebElement> Categories;
+    private List<WebElement> Categories;
 
     @FindBy(xpath="//*[@data-tabtarget='restaurant']//ul/li/a")
-    List<WebElement> dblRestaurants;
+    private List<WebElement> dblRestaurants;
 
     @FindBy(xpath="//*[@data-tabtarget='bars-and-cafe']//ul/li/a")
-    List<WebElement> dblBarsAndCafes;
+    private List<WebElement> dblBarsAndCafes;
 
     @FindBy(xpath= "//*[@data-tabtarget='sports']//ul/li/a")
-    List<WebElement> dblSportsEntertainment;
+    private List<WebElement> dblSportsEntertainment;
 
     @FindBy(xpath = "//*[@id='aswift_1']")
-    WebElement adBanner;
+    private WebElement adBanner;
 
     public WebElement getAdBanner() {
         return adBanner;

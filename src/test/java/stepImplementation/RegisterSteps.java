@@ -2,6 +2,7 @@ package stepImplementation;
 
 import actionMethods.*;
 import driverFactory.DriverFactory;
+import enums.Colours;
 import io.cucumber.datatable.DataTable;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -30,9 +31,6 @@ public class RegisterSteps {
     private LoginRegisterPageObject loginRegisterPage = new LoginRegisterPageObject();
     private String screenshotsPath = "target\\screenshots\\registration\\"; //change to your folder
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy_MM_dd_HH_mm_ss");
-    private BorderScreen borderScreen = new BorderScreen();
-    private ScrollingPixels scrolling = new ScrollingPixels();
-    private Scrolling scrollingToElement = new Scrolling();
     private Logger logger = Logger.getLogger(RegisterSteps.class);
     private String workingEmail;
     private String workingPassword;
@@ -91,8 +89,7 @@ public class RegisterSteps {
     }
 
     public void clickRegisterButton() throws IOException {
-        ScrollingPixels scrollingPixels = new ScrollingPixels();
-        scrollingPixels.scrollingPixels(driver, 0, 250);
+        ScrollingPixels.scrollingPixels(driver, 0, 250);
         click(registerPage.getBtnRegistration(), screenshotsPath);
         logger.info("Register button was clicked ");
     }
@@ -155,8 +152,7 @@ public class RegisterSteps {
     }
 
     public void clickLoginButton() throws IOException {
-        ScrollingPixels scrollingPixels = new ScrollingPixels();
-        scrollingPixels.scrollingPixels(driver, 0, 250);
+        ScrollingPixels.scrollingPixels(driver, 0, 250);
         logger.info("Login button was clicked ");
         logger.info("Login successful ");
         click(loginPage.getBtnLogin(), screenshotsPath);
@@ -186,8 +182,7 @@ public class RegisterSteps {
         deleteAccount.getTxtCurrentPassword().sendKeys(workingPassword);
         logger.info("In current password field filled " + workingPassword);
         takeScreenshot(driver, screenshotsPath + LocalDateTime.now().format(formatter) + ".jpg");
-        ScrollingPixels scrollingPixels = new ScrollingPixels();
-        scrollingPixels.scrollingPixels(driver, 0, 250);
+        ScrollingPixels.scrollingPixels(driver, 0, 250);
         click(deleteAccount.getBtnDeleteAccountSubmit(), screenshotsPath);
         logger.info("Deleting was confirmed ");
         logger.info("Account was deleted");
@@ -248,47 +243,47 @@ public class RegisterSteps {
             switch (list.get(i)) {
                 case ("Register title"):
                     assertThat(registerPage.getTtlRegister().isDisplayed(), is(true));
-                    borderScreen.safeBorderScreen(registerPage.getTtlRegister(), Colours.GREEN, screenshotsPath);
+                    BorderScreen.safeBorderScreen(registerPage.getTtlRegister(), Colours.GREEN, screenshotsPath);
                     logger.info(list.get(i) + "is displayed ");
                     break;
                 case ("Email field"):
                     assertThat(registerPage.getTxtEmail().isDisplayed(), is(true));
                     logger.info(list.get(i) + "is displayed ");
-                    borderScreen.safeBorderScreen(registerPage.getTxtEmail(), Colours.BLUE, screenshotsPath);
+                    BorderScreen.safeBorderScreen(registerPage.getTxtEmail(), Colours.BLUE, screenshotsPath);
                     break;
                 case ("Password field"):
                     assertThat(registerPage.getTxtPassword().isDisplayed(), is(true));
                     logger.info(list.get(i) + "is displayed ");
-                    borderScreen.safeBorderScreen(registerPage.getTxtPassword(), Colours.BLUE, screenshotsPath);
+                    BorderScreen.safeBorderScreen(registerPage.getTxtPassword(), Colours.BLUE, screenshotsPath);
                     break;
                 case ("Confirm password field"):
                     assertThat(registerPage.getTxtConfirmPassword().isDisplayed(), is(true));
                     logger.info(list.get(i) + "is displayed ");
-                    borderScreen.safeBorderScreen(registerPage.getTxtConfirmPassword(), Colours.BLUE, screenshotsPath);
+                    BorderScreen.safeBorderScreen(registerPage.getTxtConfirmPassword(), Colours.BLUE, screenshotsPath);
                     break;
                 case ("Register button"):
                     assertThat(registerPage.getBtnRegistration().isDisplayed(), is(true));
                     logger.info(list.get(i) + "is displayed ");
-                    borderScreen.safeBorderScreen(registerPage.getBtnRegistration(), Colours.RED, screenshotsPath);
+                    BorderScreen.safeBorderScreen(registerPage.getBtnRegistration(), Colours.RED, screenshotsPath);
                     break;
                 case ("Login button"):
                     assertThat(registerPage.getBtnLoginSwitch().isDisplayed(), is(true));
                     logger.info(list.get(i) + "is displayed ");
-                    borderScreen.safeBorderScreen(registerPage.getBtnLoginSwitch(), Colours.RED, screenshotsPath);
+                    BorderScreen.safeBorderScreen(registerPage.getBtnLoginSwitch(), Colours.RED, screenshotsPath);
                     break;
                 case ("Login with facebook button"):
                     assertThat(registerPage.getBtnFacebookLogin().isDisplayed(), is(true));
                     logger.info(list.get(i) + "is displayed ");
-                    borderScreen.safeBorderScreen(registerPage.getBtnFacebookLogin(), Colours.RED, screenshotsPath);
+                    BorderScreen.safeBorderScreen(registerPage.getBtnFacebookLogin(), Colours.RED, screenshotsPath);
                     break;
                 case ("Recieve newletter checkbox"):
                     assertThat(registerPage.getCbSubscrubing().isDisplayed(), is(true));
                     logger.info(list.get(i) + "is displayed ");
-                    scrolling.scrollingPixels(driver, 0, 250);
+                    ScrollingPixels.scrollingPixels(driver, 0, 250);
                     click(registerPage.getCbSubscrubing(), screenshotsPath);
                     assertThat(registerPage.getMsgcbSubscribing().isDisplayed(), is(true));
-                    borderScreen.safeBorderScreen(registerPage.getMsgcbSubscribing(), Colours.RED, screenshotsPath);
-                    borderScreen.safeBorderScreen(registerPage.getCbSubscrubing(), Colours.RED, screenshotsPath);
+                    BorderScreen.safeBorderScreen(registerPage.getMsgcbSubscribing(), Colours.RED, screenshotsPath);
+                    BorderScreen.safeBorderScreen(registerPage.getCbSubscrubing(), Colours.RED, screenshotsPath);
                     logger.info("Checkbox is displayed");
                     break;
             }
@@ -304,37 +299,37 @@ public class RegisterSteps {
                 case ("Login title"):
                     assertThat(loginPage.getTtlLogin().isDisplayed(), is(true));
                     logger.info(list.get(i) + "is displayed ");
-                    borderScreen.safeBorderScreen(loginPage.getTtlLogin(), Colours.GREEN, screenshotsPath);
+                    BorderScreen.safeBorderScreen(loginPage.getTtlLogin(), Colours.GREEN, screenshotsPath);
                     break;
                 case ("Email field"):
                     assertThat(loginPage.getTxtEmail().isDisplayed(), is(true));
                     logger.info(list.get(i) + "is displayed ");
-                    borderScreen.safeBorderScreen(loginPage.getTxtEmail(), Colours.BLUE, screenshotsPath);
+                    BorderScreen.safeBorderScreen(loginPage.getTxtEmail(), Colours.BLUE, screenshotsPath);
                     break;
                 case ("Password field"):
                     assertThat(loginPage.getTxtPassword().isDisplayed(), is(true));
                     logger.info(list.get(i) + "is displayed ");
-                    borderScreen.safeBorderScreen(loginPage.getTxtPassword(), Colours.BLUE, screenshotsPath);
+                    BorderScreen.safeBorderScreen(loginPage.getTxtPassword(), Colours.BLUE, screenshotsPath);
                     break;
                 case ("Register button"):
                     assertThat(loginPage.getBtnRegisterswitch().isDisplayed(), is(true));
                     logger.info(list.get(i) + "is displayed ");
-                    borderScreen.safeBorderScreen(loginPage.getBtnRegisterswitch(), Colours.RED, screenshotsPath);
+                    BorderScreen.safeBorderScreen(loginPage.getBtnRegisterswitch(), Colours.RED, screenshotsPath);
                     break;
                 case ("Login button"):
                     assertThat(loginPage.getBtnLogin().isDisplayed(), is(true));
                     logger.info(list.get(i) + "is displayed ");
-                    borderScreen.safeBorderScreen(loginPage.getBtnLogin(), Colours.RED, screenshotsPath);
+                    BorderScreen.safeBorderScreen(loginPage.getBtnLogin(), Colours.RED, screenshotsPath);
                     break;
                 case ("Login with facebook button"):
                     assertThat(loginPage.getBtnFacebookLogin().isDisplayed(), is(true));
                     logger.info(list.get(i) + "is displayed ");
-                    borderScreen.safeBorderScreen(loginPage.getBtnFacebookLogin(), Colours.RED, screenshotsPath);
+                    BorderScreen.safeBorderScreen(loginPage.getBtnFacebookLogin(), Colours.RED, screenshotsPath);
                     break;
                 case ("Forgot password link"):
                     assertThat(loginPage.getLnkForgot().isDisplayed(), is(true));
                     logger.info(list.get(i) + "is displayed ");
-                    borderScreen.safeBorderScreen(loginPage.getLnkForgot(), Colours.RED, screenshotsPath);
+                    BorderScreen.safeBorderScreen(loginPage.getLnkForgot(), Colours.RED, screenshotsPath);
                     break;
             }
         }
@@ -353,81 +348,80 @@ public class RegisterSteps {
                 case ("Login title"):
                     assertThat(loginRegisterPage.getTtlLogin().isDisplayed(), is(true));
                     logger.info(list.get(i) + "is displayed ");
-                    scrollingToElement.scrollingUntilElement(loginRegisterPage.getTtlLogin());
-                    borderScreen.safeBorderScreen(loginRegisterPage.getTtlLogin(), Colours.GREEN, screenshotsPath);
+                    Scrolling.scrollingUntilElement(loginRegisterPage.getTtlLogin());
+                    BorderScreen.safeBorderScreen(loginRegisterPage.getTtlLogin(), Colours.GREEN, screenshotsPath);
                     break;
                 case ("Register title"):
                     assertThat(loginRegisterPage.getTtlRegister().isDisplayed(), is(true));
                     logger.info(list.get(i) + "is displayed ");
-                    scrollingToElement.scrollingUntilElement(loginRegisterPage.getTtlRegister());
-                    borderScreen.safeBorderScreen(loginRegisterPage.getTtlRegister(), Colours.GREEN, screenshotsPath);
+                    Scrolling.scrollingUntilElement(loginRegisterPage.getTtlRegister());
+                    BorderScreen.safeBorderScreen(loginRegisterPage.getTtlRegister(), Colours.GREEN, screenshotsPath);
                     break;
                 case ("LoginRegister title"):
                     assertThat(loginRegisterPage.getTtlLoginRegister().isDisplayed(), is(true));
                     logger.info(list.get(i) + "is displayed ");
-                    scrollingToElement.scrollingUntilElement(loginRegisterPage.getTtlLoginRegister());
-                    borderScreen.safeBorderScreen(loginRegisterPage.getTtlLoginRegister(), Colours.GREEN, screenshotsPath);
+                    Scrolling.scrollingUntilElement(loginRegisterPage.getTtlLoginRegister());
+                    BorderScreen.safeBorderScreen(loginRegisterPage.getTtlLoginRegister(), Colours.GREEN, screenshotsPath);
                     break;
                 case ("Email register field"):
                     assertThat(loginRegisterPage.getTxtRegisterEmail().isDisplayed(), is(true));
                     logger.info(list.get(i) + "is displayed ");
-                    scrollingToElement.scrollingUntilElement(loginRegisterPage.getTxtRegisterEmail());
-                    borderScreen.safeBorderScreen(loginRegisterPage.getTxtRegisterEmail(), Colours.BLUE, screenshotsPath);
+                    Scrolling.scrollingUntilElement(loginRegisterPage.getTxtRegisterEmail());
+                    BorderScreen.safeBorderScreen(loginRegisterPage.getTxtRegisterEmail(), Colours.BLUE, screenshotsPath);
                     break;
                 case ("Email login field"):
                     assertThat(loginRegisterPage.getTxtLoginEmail().isDisplayed(), is(true));
                     logger.info(list.get(i) + "is displayed ");
-                    scrollingToElement.scrollingUntilElement(loginRegisterPage.getTxtLoginEmail());
-                    borderScreen.safeBorderScreen(loginRegisterPage.getTxtLoginEmail(), Colours.BLUE, screenshotsPath);
+                    Scrolling.scrollingUntilElement(loginRegisterPage.getTxtLoginEmail());
+                    BorderScreen.safeBorderScreen(loginRegisterPage.getTxtLoginEmail(), Colours.BLUE, screenshotsPath);
                     break;
                 case ("Password register field"):
                     assertThat(loginRegisterPage.getTxtRegisterPassword().isDisplayed(), is(true));
-                    scrollingToElement.scrollingUntilElement(loginRegisterPage.getTxtRegisterPassword());
-                    borderScreen.safeBorderScreen(loginRegisterPage.getTxtRegisterPassword(), Colours.BLUE, screenshotsPath);
+                    Scrolling.scrollingUntilElement(loginRegisterPage.getTxtRegisterPassword());
+                    BorderScreen.safeBorderScreen(loginRegisterPage.getTxtRegisterPassword(), Colours.BLUE, screenshotsPath);
                     break;
                 case ("Password login field"):
                     assertThat(loginRegisterPage.getTxtLoginPassword().isDisplayed(), is(true));
                     logger.info(list.get(i) + "is displayed ");
-                    scrollingToElement.scrollingUntilElement(loginRegisterPage.getTxtLoginPassword());
-                    borderScreen.safeBorderScreen(loginRegisterPage.getTxtLoginPassword(), Colours.BLUE, screenshotsPath);
+                    Scrolling.scrollingUntilElement(loginRegisterPage.getTxtLoginPassword());
+                    BorderScreen.safeBorderScreen(loginRegisterPage.getTxtLoginPassword(), Colours.BLUE, screenshotsPath);
                     break;
                 case ("Confirm password field"):
                     assertThat(loginRegisterPage.getTxtRegisterConfirmPassword().isDisplayed(), is(true));
                     logger.info(list.get(i) + "is displayed ");
-                    scrollingToElement.scrollingUntilElement(loginRegisterPage.getTxtRegisterConfirmPassword());
-                    borderScreen.safeBorderScreen(loginRegisterPage.getTxtRegisterConfirmPassword(), Colours.BLUE, screenshotsPath);
+                    Scrolling.scrollingUntilElement(loginRegisterPage.getTxtRegisterConfirmPassword());
+                    BorderScreen.safeBorderScreen(loginRegisterPage.getTxtRegisterConfirmPassword(), Colours.BLUE, screenshotsPath);
                     break;
                 case ("Forgot Password Link"):
                     assertThat(loginRegisterPage.getLinkForgotPassword().isDisplayed(), is(true));
                     logger.info(list.get(i) + "is displayed ");
-                    scrollingToElement.scrollingUntilElement(loginRegisterPage.getLinkForgotPassword());
-                    borderScreen.safeBorderScreen(loginRegisterPage.getLinkForgotPassword(), Colours.RED, screenshotsPath);
+                    Scrolling.scrollingUntilElement(loginRegisterPage.getLinkForgotPassword());
+                    BorderScreen.safeBorderScreen(loginRegisterPage.getLinkForgotPassword(), Colours.RED, screenshotsPath);
                     break;
                 case ("Facebook login register button"):
                     assertThat(loginRegisterPage.getBtnFacebookLoginRegister().isDisplayed(), is(true));
                     logger.info(list.get(i) + "is displayed ");
-                    scrollingToElement.scrollingUntilElement(loginRegisterPage.getBtnFacebookLoginRegister());
-                    borderScreen.safeBorderScreen(loginRegisterPage.getBtnFacebookLoginRegister(), Colours.RED, screenshotsPath);
+                    Scrolling.scrollingUntilElement(loginRegisterPage.getBtnFacebookLoginRegister());
+                    BorderScreen.safeBorderScreen(loginRegisterPage.getBtnFacebookLoginRegister(), Colours.RED, screenshotsPath);
                     break;
                 case ("Recieve newletter checkbox"):
                     assertThat(loginRegisterPage.getCbSubscribeNewsletter().isDisplayed(), is(true));
                     assertThat(loginRegisterPage.getTtlCbSubscribe().isDisplayed(), is(true));
                     logger.info(list.get(i) + "is displayed ");
-                    scrollingToElement.scrollingUntilElement(loginRegisterPage.getTtlCbSubscribe());
-                    borderScreen.safeBorderScreen(loginRegisterPage.getCbSubscribeNewsletter(), Colours.RED, screenshotsPath);
-                    borderScreen.safeBorderScreen(loginRegisterPage.getTtlCbSubscribe(), Colours.RED, screenshotsPath);
+                    Scrolling.scrollingUntilElement(loginRegisterPage.getTtlCbSubscribe());
+                    BorderScreen.safeBorderScreen(loginRegisterPage.getCbSubscribeNewsletter(), Colours.RED, screenshotsPath);
                     break;
                 case ("Register button"):
                     assertThat(loginRegisterPage.getBtnRegister().isDisplayed(), is(true));
                     logger.info(list.get(i) + "is displayed ");
-                    scrollingToElement.scrollingUntilElement(loginRegisterPage.getBtnRegister());
-                    borderScreen.safeBorderScreen(loginRegisterPage.getBtnRegister(), Colours.RED, screenshotsPath);
+                    Scrolling.scrollingUntilElement(loginRegisterPage.getBtnRegister());
+                    BorderScreen.safeBorderScreen(loginRegisterPage.getBtnRegister(), Colours.RED, screenshotsPath);
                     break;
                 case ("Login button"):
                     assertThat(loginRegisterPage.getBtnLogin().isDisplayed(), is(true));
                     logger.info(list.get(i) + "is displayed ");
-                    scrollingToElement.scrollingUntilElement(loginRegisterPage.getBtnLogin());
-                    borderScreen.safeBorderScreen(loginRegisterPage.getBtnLogin(), Colours.RED, screenshotsPath);
+                    Scrolling.scrollingUntilElement(loginRegisterPage.getBtnLogin());
+                    BorderScreen.safeBorderScreen(loginRegisterPage.getBtnLogin(), Colours.RED, screenshotsPath);
                     break;
             }
         }

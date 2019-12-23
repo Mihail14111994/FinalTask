@@ -10,8 +10,6 @@
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
-Y
-)src/main/java/pageObjects/DontTouch7.java,9\e\9e6b4a3827c96b64e863803edf939d9f53d0fd2e
 Z
 *src/test/features/EventsNavigation.feature,1\c\1c228fe181941468f0c7369bcdfed2b2ef12af3a
 Y

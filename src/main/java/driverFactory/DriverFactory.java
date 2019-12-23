@@ -4,14 +4,13 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.ie.InternetExplorerDriverService;
-import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Properties;
 
 public class DriverFactory {
+
     static WebDriver driver = null;
 
     public static WebDriver getDriver() {
@@ -45,23 +44,22 @@ public class DriverFactory {
 //                                .enablePersistentHovering()
 //                                .destructivelyEnsureCleanSession()
 //                                .setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.ACCEPT);
-                        InternetExplorerDriverService ieService;
-                        ieService = new InternetExplorerDriverService.Builder()
-                                .usingAnyFreePort()
-                                .build();
-                        ieService.start();
-                        DesiredCapabilities ieCap = DesiredCapabilities.internetExplorer();
-                        ieCap.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
+//                        InternetExplorerDriverService ieService;
+//                        ieService = new InternetExplorerDriverService.Builder()
+//                                .usingAnyFreePort()
+//                                .build();
+//                        ieService.start();
+//                        DesiredCapabilities ieCap = DesiredCapabilities.internetExplorer();
+//                        ieCap.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
                         WebDriverManager.iedriver().setup();
-                        driver = new InternetExplorerDriver(ieCap);
+                        driver = new InternetExplorerDriver();
                     }
                     break;
                 default:
                     throw new NullPointerException("Wrong Browser Name!");
             }
-
         } catch (Exception e) {
-            System.out.println("Exception: " + e);
+            System.out.println(e);
         }
         return driver;
     }

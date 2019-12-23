@@ -1,4 +1,4 @@
-package actionMethods;
+package enums;
 
 public enum Colours {
     RED,

@@ -6,6 +6,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Wait {
+
+    private Wait(){
+        throw new IllegalStateException("Utility class");
+    }
     public static void waitFor (WebElement element){
         WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(),30);
         wait.until(ExpectedConditions.visibilityOf(element));

@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Objects;
 
 import static actionMethods.Click.click;
 import static actionMethods.RandomLink.randomLink;
@@ -92,19 +93,27 @@ public class PlacesSteps {
     }
 
     public void clickOnSubcategory() throws IOException {
-        List<WebElement> subcategories = null;
-        if (categoryName.equals("Restaurants"))
-            subcategories = placesPage.getDblRestaurants();
-        if (categoryName.equalsIgnoreCase("Bars and cafes")) {
-            subcategories = placesPage.getDblBarsAndCafes();
-        }
+        List<WebElement> subcategories = categoryName.equalsIgnoreCase("Restaurants")
+                ? placesPage.getDblRestaurants()
+                : (categoryName.equalsIgnoreCase("Bars and cafes")
+                ? placesPage.getDblBarsAndCafes()
+                : placesPage.getDblSportsEntertainment());
         if (categoryName.equals("Sports/Entertainment")) {
-            subcategories = placesPage.getDblSportsEntertainment();
             subcategories.remove(0);
         }
-        if (subcategories.size() > 0) {
-            WebElement subcategory = randomLink(subcategories);
-            subcategoryName = subcategory.getText();
+
+//        if (categoryName.equalsIgnoreCase("Restaurants"))
+//            subcategories = placesPage.getDblRestaurants();
+//        if (categoryName.equalsIgnoreCase("Bars and cafes")) {
+//            subcategories = placesPage.getDblBarsAndCafes();
+//        }
+//        if (categoryName.equals("Sports/Entertainment")) {
+//            subcategories = placesPage.getDblSportsEntertainment();
+//            subcategories.remove(0);
+//        }
+        if (Objects.nonNull(subcategories) && subcategories.size() > 0) {
+            final WebElement subcategory = randomLink(subcategories);
+            subcategoryName = Objects.requireNonNull(subcategory).getText();
             click(subcategory, path);
         }
     }
@@ -115,7 +124,7 @@ public class PlacesSteps {
 
         if (places.size() > 0) {
             waitFor(places.get(places.size() - 1));
-            assertThat("The subcategory isn't in the type of the place", randomLink(places).getText().contains(subcategoryName.substring(0, subcategoryName.length() - 3)));
+            assertThat("The subcategory isn't in the type of the place", Objects.requireNonNull(randomLink(places)).getText().contains(subcategoryName.substring(0, subcategoryName.length() - 3)));
         }
         if (places.size() == 0) {
             assertThat("No placesElement found", true);
@@ -135,8 +144,6 @@ public class PlacesSteps {
     public void userClicksOnSearchButton() throws IOException {
         click(homePage.getTxtSearchbar(), path);
     }
-
-    //    Scenario Outline: Places filtering
 
     public void userClicksOnOptionButton() throws IOException {
         click(placesPage.getBtnOptions(), path);
@@ -198,7 +205,7 @@ public class PlacesSteps {
         waitFor(homePage.getBtnSuggestedEvent());
         assertThat("Facility corresponds", DriverFactory.getDriver().getPageSource().contains(facility));
         actions.moveToElement(placesElementPage.getTxtPlacePrice().get(0)).perform();
-        takeScreenshot(DriverFactory.getDriver(),path + LocalDateTime.now().format(formatter) + ".jpg");
+        takeScreenshot(DriverFactory.getDriver(), path + LocalDateTime.now().format(formatter) + ".jpg");
         assertThat("Theme corresponds", DriverFactory.getDriver().getPageSource().contains(theme));
         String classEl = placesElementPage.getTxtPlacePrice().get(0).getAttribute("class");
         assertThat("Price corresponds", classEl.contains(price));
@@ -238,7 +245,7 @@ public class PlacesSteps {
         List<WebElement> pinpoints = mapPlacesPage.getMapPinpoints();
         for (WebElement pinpoint : pinpoints) {
             if (pinpoint.isDisplayed()) {
-                    actions.moveToElement(pinpoint).moveByOffset(30, 0).perform();
+                actions.moveToElement(pinpoint).moveByOffset(30, 0).perform();
                 takeScreenshot(DriverFactory.getDriver(), path + LocalDateTime.now().format(formatter) + ".jpg");
                 try {
                     actions.moveToElement(pinpoint).moveByOffset(30, 0).click().perform();
