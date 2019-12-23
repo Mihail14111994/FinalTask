@@ -5,10 +5,10 @@ import org.openqa.selenium.support.FindBy;
 
 public class HomePage extends PageObject{
 
-    String linkHomePage = "https://www.fest.md/ro/";
+    private static final String LINK_HOME_PAGE = "https://www.fest.md/ro/";
 
     public String getLinkHomePage() {
-        return linkHomePage;
+        return LINK_HOME_PAGE;
     }
 
     @FindBy(xpath = "//div[contains(@class, 'float-right')]//a[@class='bar-item inlined padded login']")
@@ -18,7 +18,8 @@ public class HomePage extends PageObject{
     private WebElement ticketsMenu;
 
     @FindBy(xpath = "//*[@class='links']//a//span[text()='Places']")
-    private WebElement PlacesMenu;
+
+    private WebElement placesMenu;
 
     @FindBy(xpath = "//*[@class = 'form-control large searchbar-search']")
     private WebElement txtSearchbar;
@@ -81,7 +82,7 @@ public class HomePage extends PageObject{
     }
 
     public WebElement getPlacesMenu() {
-        return PlacesMenu;
+        return placesMenu;
     }
 
     public WebElement getBtnMyBookings() {

@@ -17,7 +17,6 @@ public class MyAccountPage extends PageObject{
     @FindBy(xpath = "//div[contains(@class, 'float-right')]//div[@class='bar-item inlined username']")
     private WebElement ddUser;
 
-
     @FindBy(xpath = "//*[@id='header']/div[2]/div[1]/ul/li[2]/a" )
     private WebElement btnOpenMyAccountPage;
 

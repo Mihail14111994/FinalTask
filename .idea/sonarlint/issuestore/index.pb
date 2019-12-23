@@ -94,3 +94,11 @@ V
 +src/main/java/actionMethods/Screenshot.java,0\5\05f97946672f09d8fe14617ebacec1e88c5019f6
 Y
 )src/test/java/testRunners/TestRunner.java,0\6\06a13ef249fea686b026756a37c05a539e833bfd
+U
+%target/cucumber-html-report/report.js,8\3\83b6259ed5e38d9b7cf779c07d932befc731fd49
+D
+target/cucumber.json,f\f\ffb1e574a891cfb57e02364d4412a78506dc5108
+U
+%src/main/java/actionMethods/Wait.java,5\b\5b955739ead8292931b4cdbbb38828f001dcf170
+[
++src/main/java/actionMethods/RandomLink.java,a\b\abab4c98f686b913cb5538ed71ca986603690226

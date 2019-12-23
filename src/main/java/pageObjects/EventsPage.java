@@ -7,43 +7,43 @@ import java.util.List;
 
 public class EventsPage extends PageObject{
     @FindBy(xpath = "//*[@id='events-exhibition']/div/div[2]/div/div[2]/div/div[1]/a")
-    List<WebElement> listExhibitions;
+    private List<WebElement> listExhibitions;
 
     @FindBy(xpath = "//*[@id='events-party']/div/div[2]/div/div[2]/div/div[1]/a")
-    List<WebElement> listParties;
+    private List<WebElement> listParties;
 
     @FindBy(xpath = "//*[@id='events-sports']/div/div/div/div[2]/div/div[1]/a")
-    List<WebElement> listSports;
+    private List<WebElement> listSports;
 
     @FindBy(xpath = "//div[@id='content']/div//div/h2")
-    List <WebElement> listSections;
+    private List <WebElement> listSections;
 
     @FindBy(css="#events-sports div.display-tr.oneline.buttons > a")
-    List <WebElement> listBtnDetailsSport;
+    private List <WebElement> listBtnDetailsSport;
 
     @FindBy(css="#events-exhibition div.display-tr.oneline.buttons > a")
-    List <WebElement> listBtnDetailsExhibitions;
+    private List <WebElement> listBtnDetailsExhibitions;
 
     @FindBy(css = "div.context-wrap div:nth-child(5) > h2")
-    WebElement hdrInfo;
+    private WebElement hdrInfo;
 
     @FindBy(css="#toggle-event-reminder-panel")
-    WebElement btnAlarm;
+    private WebElement btnAlarm;
 
     @FindBy(css = "div.selectbox.dropdown.short.select > button")
-    WebElement ddAlarmReminder;
+    private WebElement ddAlarmReminder;
 
     @FindBy(css="div.selectbox.dropdown.short.select.open > ul >li > a")
-    List<WebElement> listDdAlarmReminder;
+    private List<WebElement> listDdAlarmReminder;
 
     @FindBy (css = "#formReminder_btn-submit")
-    WebElement btnSubmitReminder;
+    private WebElement btnSubmitReminder;
 
     @FindBy (css= "#section-reminders > div.list > div > button")
-    List <WebElement> btnDeleteReminder;
+    private List <WebElement> btnDeleteReminder;
 
     @FindBy (xpath = "//*[@id='formEventEmail_btn-submit']")
-    WebElement btnSaveLanguage;
+    private WebElement btnSaveLanguage;
 
     public WebElement getBtnSaveLanguage() {
         return btnSaveLanguage;

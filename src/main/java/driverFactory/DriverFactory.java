@@ -4,6 +4,8 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.ie.InternetExplorerOptions;
+import org.openqa.selenium.remote.CapabilityType;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -37,22 +39,13 @@ public class DriverFactory {
                     break;
                 case "IE":
                     if (driver == null) {
-//                        InternetExplorerOptions internetExplorerOptions = new InternetExplorerOptions()
-//                                .introduceFlakinessByIgnoringSecurityDomains()
-//                                .disableNativeEvents()
-//                                .ignoreZoomSettings()
-//                                .enablePersistentHovering()
-//                                .destructivelyEnsureCleanSession()
-//                                .setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.ACCEPT);
-//                        InternetExplorerDriverService ieService;
-//                        ieService = new InternetExplorerDriverService.Builder()
-//                                .usingAnyFreePort()
-//                                .build();
-//                        ieService.start();
-//                        DesiredCapabilities ieCap = DesiredCapabilities.internetExplorer();
-//                        ieCap.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
-                        WebDriverManager.iedriver().setup();
-                        driver = new InternetExplorerDriver();
+                        System.setProperty("webdriver.ie.driver", "C:\\Users\\dospataru\\Downloads\\IEDriverServer_x64_3.150.1\\IEDriverServer.exe");
+                        InternetExplorerOptions ieOptions = new InternetExplorerOptions()
+                                .destructivelyEnsureCleanSession();
+                        ieOptions.setCapability("se:ieOptions", ieOptions);
+                        ieOptions.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+                        ieOptions.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
+                        driver=new InternetExplorerDriver(ieOptions);
                     }
                     break;
                 default:

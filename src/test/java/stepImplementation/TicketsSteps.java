@@ -24,17 +24,16 @@ public class TicketsSteps {
     private BookingPage bookingPage = new BookingPage();
     private EventsPage eventsPage = new EventsPage();
     private LoginRegistrationPage loginRegistrationPage = new LoginRegistrationPage();
-    private Logger logger = Logger.getLogger(TicketsSteps.class);
+    private static final Logger logger = Logger.getLogger(TicketsSteps.class);
 
-    private String info = "INFORMAȚII";
-    private String LOGIN = "wh1terabbit@outlook.com";
+    private String INFO = "INFORMAȚII";
+    private String LOGIN = "doina12345@gmail.com";
     private String PASSWORD = "147369";
     private String TICKETS = "Bilete";
     private String EVENTS = "Evenimente";
     private int totalPrice = 0;
     private String nameOfBookedEvent;
     private String path = "target\\screenshots\\tickets\\";
-
 
     public void eventTicketsPageIsDisplayed(String pageName) throws InterruptedException, IOException {
         waitFor(ticketsPage.getAdBanner());
@@ -108,7 +107,7 @@ public class TicketsSteps {
         while (eventWithOutTickets);
     }
 
-    public void selectNrOTickets(int nrOfTickets) throws InterruptedException, IOException {
+    public void selectNrOTickets(int nrOfTickets) throws IOException {
         waitFor(ticketSectionsPage.getBtndetails());
         logger.info("Clicked Tickets DropDown");
         ticketSectionsPage.getBoxOfTickets().get(0).click();
@@ -208,7 +207,7 @@ public class TicketsSteps {
     }
 
     public void verifyDetailsOfEvent() {
-        assertThat("Information section of event is not present", eventsPage.getHdrInfo().getText(), is(info));
+        assertThat("Information section of event is not present", eventsPage.getHdrInfo().getText(), is(INFO));
         logger.info("Information section of event is present");
     }
 

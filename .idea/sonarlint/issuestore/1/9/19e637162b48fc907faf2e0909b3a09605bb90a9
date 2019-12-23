@@ -1,3 +1,11 @@
 
-]squid:S1118":Add a private constructor to hide the implicit public one.(èÁ²ˆùÿÿÿÿ8»›Àò-
-~squid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Òâ³Óøÿÿÿÿ8¬İšñ-
+]squid:S1854A":Remove this useless assignment to local variable "driver".(·¥«ùÿÿÿÿ8°»áó-
+isquid:CommentedOutCodeLine0"<This block of commented-out lines of code should be removed.(²ıÒş8Œ¾àó-
+Nsquid:S1481A"+Remove this unused "driver" local variable.(·¥«ùÿÿÿÿ8°»áó-
+isquid:CommentedOutCodeLine)"<This block of commented-out lines of code should be removed.(«˜å‡8Œ¾àó-
+nsquid:CommentedOutCodeLine4"<This block of commented-out lines of code should be removed.(Â™†úÿÿÿÿ8˜Øó-
+]squid:S1118":Add a private constructor to hide the implicit public one.(èÁ²ˆùÿÿÿÿ8øÖ—ó-
+nsquid:CommentedOutCodeLineB"<This block of commented-out lines of code should be removed.(Ç§Áãùÿÿÿÿ8ï©Çó-
+~squid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Òâ³Óøÿÿÿÿ8¬İšñ-
+[
+squid:S106K"9Replace this use of System.out or System.err by a logger.(²àéÁüÿÿÿÿ8øÖ—ó-

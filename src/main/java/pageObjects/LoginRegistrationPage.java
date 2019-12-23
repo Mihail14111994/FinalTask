@@ -1,36 +1,35 @@
 package pageObjects;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class LoginRegistrationPage extends PageObject{
     @FindBy(id = "formLogin_email")
-    WebElement emailLogin;
+    private WebElement emailLogin;
 
     @FindBy(id = "formLogin_password")
-    WebElement passwordLogin;
+    private WebElement passwordLogin;
 
     @FindBy(xpath = "//*[@id='formLogin_forgot-password']/a")
-    WebElement forgotPasswordLink;
+    private WebElement forgotPasswordLink;
 
     @FindBy(id = "formLogin_btn-submit")
-    WebElement btnLogin;
+    private WebElement btnLogin;
 
     @FindBy(id="formRegister_email")
-    WebElement emailRegister;
+    private WebElement emailRegister;
 
     @FindBy(id="formRegister_password")
-    WebElement passwordRegister;
+    private WebElement passwordRegister;
 
     @FindBy(id="formRegister_passwordConfirm")
-    WebElement passwordConfirmRegister;
+    private WebElement passwordConfirmRegister;
 
     @FindBy(id="formRegister_subscribeNewsletter")
-    WebElement newsletterSelect;
+    private WebElement newsletterSelect;
 
     @FindBy (id="formRegister_btn-submit")
-    WebElement btnRegister;
+    private WebElement btnRegister;
 
     public WebElement getEmailLogin() {
         return emailLogin;

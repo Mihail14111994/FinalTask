@@ -34,12 +34,9 @@ public class LoginPageObject extends PageObject {
     @FindBy(xpath = "//div[@id='formLoginUser_email_field']//div[@class='field-errors']")
     private WebElement msgErrorEmail;
 
-
-
     public WebElement getMsgErrorEmail() {
         return msgErrorEmail;
     }
-
 
     public WebElement getFrmLogin() {
         return frmLogin;
