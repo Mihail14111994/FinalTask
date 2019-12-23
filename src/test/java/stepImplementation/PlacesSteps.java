@@ -124,7 +124,7 @@ public class PlacesSteps {
 
     public void checkThePlacesPresentOnMap(String category) throws IOException {
         waitFor(mapPlacesPage.getChkMapCheckboxes().get(0));
-        assertThat("The places are not on the map", mapPlacesPage.getChkMapCheckboxes().get(0).getText().equalsIgnoreCase(category));
+        assertThat("The places are not on the map", category.contains(mapPlacesPage.getChkMapCheckboxes().get(0).getText()));
         click(mapPlacesPage.getChkMapCheckboxes().get(0), path);
     }
 
@@ -238,10 +238,10 @@ public class PlacesSteps {
         List<WebElement> pinpoints = mapPlacesPage.getMapPinpoints();
         for (WebElement pinpoint : pinpoints) {
             if (pinpoint.isDisplayed()) {
-                    actions.moveToElement(pinpoint).moveByOffset(60, 0).perform();
+                    actions.moveToElement(pinpoint).moveByOffset(30, 0).perform();
                 takeScreenshot(DriverFactory.getDriver(), path + LocalDateTime.now().format(formatter) + ".jpg");
                 try {
-                    actions.moveToElement(pinpoint).moveByOffset(60, 0).click().perform();
+                    actions.moveToElement(pinpoint).moveByOffset(30, 0).click().perform();
                     break;
                 } catch (ElementClickInterceptedException e) {
                     e.getLocalizedMessage();

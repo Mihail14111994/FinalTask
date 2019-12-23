@@ -1,4 +1,4 @@
-@all @fest @Mihail @places
+@All @fest @Mihail @places
 Feature: 'Places' page
 
   Background:
@@ -11,10 +11,10 @@ Feature: 'Places' page
     And User clicks on subcategory
     Then User is able to see the places that belong to subcategories
     Examples:
-      | category       |
-      | Restaurants    |
-      | Bars and cafes |
-    | Sports/Entertainment |
+      | category             |
+      | Restaurants          |
+      | Bars and cafes       |
+      | Sports/Entertainment |
 
   @placesCategories
   Scenario Outline: See a category of Places on the map
@@ -23,9 +23,9 @@ Feature: 'Places' page
     And User clicks on See on map button
     Then User is able to see the places off the chosen <category> places on the map
     Examples:
-      | category |
-      | Clubs    |
-      | Cinema   |
+      | category          |
+      | Clubs             |
+      | Cinema            |
       | Theatres          |
       | Museums/Galleries |
 
@@ -49,7 +49,7 @@ Feature: 'Places' page
 
     Examples:
       | theme     | priceLevel | facilities |
-      | Moldavian |            | Playground |
+      | Moldavian | 4          | Playground |
       | Italian   | 2          | Wi-Fi      |
       | German    | 3          | Parking    |
 

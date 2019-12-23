@@ -1,9 +1,9 @@
 [
   {
-    "line": 1,
+    "line": 2,
     "elements": [
       {
-        "line": 3,
+        "line": 4,
         "name": "",
         "description": "",
         "type": "background",
@@ -11,12 +11,13 @@
         "steps": [
           {
             "result": {
-              "duration": 22961734227,
-              "status": "passed"
+              "error_message": "java.lang.NullPointerException\n\tat stepDefinition.CommonDefinitions.HomePageIsDisplayed(CommonDefinitions.java:24)\n\tat ✽.Fest.md home page is displayed(file:src/test/features/EventsNavigation.feature:5)\n",
+              "duration": 3054758693,
+              "status": "failed"
             },
             "line": 5,
             "name": "Fest.md home page is displayed",
-  z          "match": {
+            "match": {
               "location": "CommonDefinitions.HomePageIsDisplayed()"
             },
             "keyword": "Given "
@@ -24,7 +25,7 @@
         ]
       },
       {
-        "start_timestamp": "2019-12-20T14:59:16.590Z",
+        "start_timestamp": "2019-12-23T08:26:52.306Z",
         "line": 73,
         "name": "User is able to visualise details of any event",
         "description": "",
@@ -32,8 +33,9 @@
         "after": [
           {
             "result": {
-              "duration": 357469507,
-              "status": "passed"
+              "error_message": "java.lang.NullPointerException\n\tat stepDefinition.CommonDefinitions.teardown(CommonDefinitions.java:38)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat cucumber.runtime.Utils$1.call(Utils.java:26)\n\tat cucumber.runtime.Timeout.timeout(Timeout.java:16)\n\tat cucumber.runtime.Utils.invoke(Utils.java:20)\n\tat cucumber.runtime.java.JavaHookDefinition.execute(JavaHookDefinition.java:65)\n\tat cucumber.runner.HookDefinitionMatch.runStep(HookDefinitionMatch.java:16)\n\tat cucumber.runner.TestStep.executeStep(TestStep.java:65)\n\tat cucumber.runner.TestStep.run(TestStep.java:50)\n\tat cucumber.runner.TestCase.run(TestCase.java:50)\n\tat cucumber.runner.Runner.runPickle(Runner.java:50)\n\tat io.cucumber.junit.PickleRunners$NoStepDescriptions.run(PickleRunners.java:146)\n\tat io.cucumber.junit.FeatureRunner.runChild(FeatureRunner.java:68)\n\tat io.cucumber.junit.FeatureRunner.runChild(FeatureRunner.java:23)\n\tat org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)\n\tat org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)\n\tat org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)\n\tat org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)\n\tat org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)\n\tat org.junit.runners.ParentRunner.run(ParentRunner.java:363)\n\tat io.cucumber.junit.Cucumber.runChild(Cucumber.java:144)\n\tat io.cucumber.junit.Cucumber.runChild(Cucumber.java:65)\n\tat org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)\n\tat org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)\n\tat org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)\n\tat org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)\n\tat org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)\n\tat io.cucumber.junit.Cucumber$RunCucumber.evaluate(Cucumber.java:174)\n\tat org.junit.runners.ParentRunner.run(ParentRunner.java:363)\n\tat org.junit.runner.JUnitCore.run(JUnitCore.java:137)\n\tat com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)\n\tat com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)\n\tat com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:230)\n\tat com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:58)\n",
+              "duration": 1444873717,
+              "status": "failed"
             },
             "match": {
               "location": "CommonDefinitions.teardown()"
@@ -45,8 +47,8 @@
         "steps": [
           {
             "result": {
-              "duration": 13536867855,
-              "status": "passed"
+              "duration": 3852033,
+              "status": "skipped"
             },
             "line": 65,
             "name": "Events menu page is displayed",
@@ -63,8 +65,8 @@
           },
           {
             "result": {
-              "duration": 1064969914,
-              "status": "passed"
+              "duration": 757093,
+              "status": "skipped"
             },
             "line": 66,
             "name": "Expoziții is selected",
@@ -81,8 +83,8 @@
           },
           {
             "result": {
-              "duration": 41502802,
-              "status": "passed"
+              "duration": 804318,
+              "status": "skipped"
             },
             "line": 67,
             "name": "All events of Expoziții have \"Detalii\" button",
@@ -99,8 +101,8 @@
           },
           {
             "result": {
-              "duration": 10164070980,
-              "status": "passed"
+              "duration": 841664,
+              "status": "skipped"
             },
             "line": 68,
             "name": "User clicks on \"Detalii\" button of an event of Expoziții",
@@ -117,8 +119,8 @@
           },
           {
             "result": {
-              "duration": 33956889,
-              "status": "passed"
+              "duration": 774005,
+              "status": "skipped"
             },
             "line": 69,
             "name": "The information of the event is displayed",
@@ -133,7 +135,13 @@
             "name": "@Doina"
           },
           {
+            "name": "@All"
+          },
+          {
             "name": "@UI"
+          },
+          {
+            "name": "@Fest"
           }
         ]
       },
@@ -146,29 +154,31 @@
         "steps": [
           {
             "result": {
-              "duration": 13652163686,
-              "status": "passed"
+              "error_message": "java.lang.NullPointerException\n\tat stepDefinition.CommonDefinitions.HomePageIsDisplayed(CommonDefinitions.java:24)\n\tat ✽.Fest.md home page is displayed(file:src/test/features/EventsNavigation.feature:5)\n",
+              "duration": 1670671291,
+              "status": "failed"
             },
             "line": 5,
             "name": "Fest.md home page is displayed",
             "match": {
-              "location": "CommonDefinitions.EnPageIsDisplayed()"
+              "location": "CommonDefinitions.HomePageIsDisplayed()"
             },
             "keyword": "Given "
           }
         ]
       },
       {
-        "start_timestamp": "2019-12-20T15:00:04.828Z",
+        "start_timestamp": "2019-12-23T08:26:56.897Z",
         "line": 74,
         "name": "User is able to visualise details of any event",
         "description": "",
-        "id": "-places--page;select-places-from-the--map",
+        "id": "buy/book-a-ticket-and-get-event-information;user-is-able-to-visualise-details-of-any-event;;3",
         "after": [
           {
             "result": {
-              "duration": 332279963,
-              "status": "passed"
+              "error_message": "java.lang.NullPointerException\n\tat stepDefinition.CommonDefinitions.teardown(CommonDefinitions.java:38)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat cucumber.runtime.Utils$1.call(Utils.java:26)\n\tat cucumber.runtime.Timeout.timeout(Timeout.java:16)\n\tat cucumber.runtime.Utils.invoke(Utils.java:20)\n\tat cucumber.runtime.java.JavaHookDefinition.execute(JavaHookDefinition.java:65)\n\tat cucumber.runner.HookDefinitionMatch.runStep(HookDefinitionMatch.java:16)\n\tat cucumber.runner.TestStep.executeStep(TestStep.java:65)\n\tat cucumber.runner.TestStep.run(TestStep.java:50)\n\tat cucumber.runner.TestCase.run(TestCase.java:50)\n\tat cucumber.runner.Runner.runPickle(Runner.java:50)\n\tat io.cucumber.junit.PickleRunners$NoStepDescriptions.run(PickleRunners.java:146)\n\tat io.cucumber.junit.FeatureRunner.runChild(FeatureRunner.java:68)\n\tat io.cucumber.junit.FeatureRunner.runChild(FeatureRunner.java:23)\n\tat org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)\n\tat org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)\n\tat org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)\n\tat org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)\n\tat org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)\n\tat org.junit.runners.ParentRunner.run(ParentRunner.java:363)\n\tat io.cucumber.junit.Cucumber.runChild(Cucumber.java:144)\n\tat io.cucumber.junit.Cucumber.runChild(Cucumber.java:65)\n\tat org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)\n\tat org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)\n\tat org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)\n\tat org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)\n\tat org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)\n\tat io.cucumber.junit.Cucumber$RunCucumber.evaluate(Cucumber.java:174)\n\tat org.junit.runners.ParentRunner.run(ParentRunner.java:363)\n\tat org.junit.runner.JUnitCore.run(JUnitCore.java:137)\n\tat com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)\n\tat com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)\n\tat com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:230)\n\tat com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:58)\n",
+              "duration": 1395775972,
+              "status": "failed"
             },
             "match": {
               "location": "CommonDefinitions.teardown()"
@@ -176,27 +186,33 @@
           }
         ],
         "type": "scenario",
-        "keyword": "Scenario",
+        "keyword": "Scenario Outline",
         "steps": [
           {
             "result": {
-              "duration": 15108245695,
-              "status": "passed"
+              "duration": 1875671,
+              "status": "skipped"
             },
-            "line": 57,
-            "name": "User is on Places page",
+            "line": 65,
+            "name": "Events menu page is displayed",
             "match": {
-              "location": "PlacesDefinition.useIsOnPlacesPage()"
+              "arguments": [
+                {
+                  "val": "Events",
+                  "offset": 0
+                }
+              ],
+              "location": "TicketsDefinitions.ticketEventPage(String)"
             },
             "keyword": "Given "
           },
           {
             "result": {
-              "duration": 1003285352,
-              "status": "passed"
+              "duration": 361919,
+              "status": "skipped"
             },
-            "line": 58,
-            "name": "User clicks on See on map button",
+            "line": 66,
+            "name": "Sport is selected",
             "match": {
               "arguments": [
                 {
@@ -210,8 +226,8 @@
           },
           {
             "result": {
-              "duration": 44316211,
-              "status": "passed"
+              "duration": 415667,
+              "status": "skipped"
             },
             "line": 67,
             "name": "All events of Sport have \"Detalii\" button",
@@ -228,47 +244,499 @@
           },
           {
             "result": {
-              "duration": 8579676727,
-              "status": "passed"
+              "duration": 385772,
+              "status": "skipped"
             },
-            "line": 59,
-            "name": "Check any Places Category from the checkboxes list",
+            "line": 68,
+            "name": "User clicks on \"Detalii\" button of an event of Sport",
             "match": {
-              "location": "PlacesDefinition.checkAnyPlacesCategoryFromTheCheckboxesList()"
+              "arguments": [
+                {
+                  "val": "Sport",
+                  "offset": 47
+                }
+              ],
+              "location": "TicketsDefinitions.userClicksOnButtonOfAnEvent(String)"
             },
             "keyword": "And "
           },
           {
             "result": {
-              "duration": 48779492,
-              "status": "passed"
+              "duration": 320467,
+              "status": "skipped"
             },
-            "line": 60,
-            "name": "User can see the places of the chosen category on the Map",
+            "line": 69,
+            "name": "The information of the event is displayed",
             "match": {
-              "location": "PlacesDefinition.userCanSeeThePlacesOfTheChosenCategoryOnTheMap()"
+              "location": "TicketsDefinitions.theInformationOfTheEventIsDisplayed()"
             },
             "keyword": "Then "
           }
         ],
         "tags": [
           {
-            "name": "@places"
+            "name": "@Doina"
           },
           {
-            "name": "@placesMap"
+            "name": "@All"
           },
           {
             "name": "@UI"
+          },
+          {
+            "name": "@Fest"
           }
         ]
       }
     ],
-    "name": "\u0027Places\u0027 page",
+    "name": "Buy/book a ticket and get event information",
     "description": "",
-    "id": "-places--page",
+    "id": "buy/book-a-ticket-and-get-event-information",
     "keyword": "Feature",
-    "uri": "file:src/test/features/Places.feature",
-    "tags": []
+    "uri": "file:src/test/features/EventsNavigation.feature",
+    "tags": [
+      {
+        "name": "@Doina",
+        "type": "Tag",
+        "location": {
+          "line": 1,
+          "column": 1
+        }
+      },
+      {
+        "name": "@All",
+        "type": "Tag",
+        "location": {
+          "line": 1,
+          "column": 8
+        }
+      }
+    ]
+  },
+  {
+    "line": 2,
+    "elements": [
+      {
+        "line": 4,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "error_message": "java.lang.NullPointerException\n\tat stepDefinition.CommonDefinitions.HomePageIsDisplayed(CommonDefinitions.java:24)\n\tat ✽.Fest.md home page is displayed(file:src/test/features/Registration.feature:5)\n",
+              "duration": 1357281078,
+              "status": "failed"
+            },
+            "line": 5,
+            "name": "Fest.md home page is displayed",
+            "match": {
+              "location": "CommonDefinitions.HomePageIsDisplayed()"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2019-12-23T08:26:59.993Z",
+        "line": 30,
+        "name": "Registration window UI check",
+        "description": "",
+        "id": "registration;registration-window-ui-check",
+        "after": [
+          {
+            "result": {
+              "error_message": "java.lang.NullPointerException\n\tat stepDefinition.CommonDefinitions.teardown(CommonDefinitions.java:38)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat cucumber.runtime.Utils$1.call(Utils.java:26)\n\tat cucumber.runtime.Timeout.timeout(Timeout.java:16)\n\tat cucumber.runtime.Utils.invoke(Utils.java:20)\n\tat cucumber.runtime.java.JavaHookDefinition.execute(JavaHookDefinition.java:65)\n\tat cucumber.runner.HookDefinitionMatch.runStep(HookDefinitionMatch.java:16)\n\tat cucumber.runner.TestStep.executeStep(TestStep.java:65)\n\tat cucumber.runner.TestStep.run(TestStep.java:50)\n\tat cucumber.runner.TestCase.run(TestCase.java:50)\n\tat cucumber.runner.Runner.runPickle(Runner.java:50)\n\tat io.cucumber.junit.PickleRunners$NoStepDescriptions.run(PickleRunners.java:146)\n\tat io.cucumber.junit.FeatureRunner.runChild(FeatureRunner.java:68)\n\tat io.cucumber.junit.FeatureRunner.runChild(FeatureRunner.java:23)\n\tat org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)\n\tat org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)\n\tat org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)\n\tat org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)\n\tat org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)\n\tat org.junit.runners.ParentRunner.run(ParentRunner.java:363)\n\tat io.cucumber.junit.Cucumber.runChild(Cucumber.java:144)\n\tat io.cucumber.junit.Cucumber.runChild(Cucumber.java:65)\n\tat org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)\n\tat org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)\n\tat org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)\n\tat org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)\n\tat org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)\n\tat io.cucumber.junit.Cucumber$RunCucumber.evaluate(Cucumber.java:174)\n\tat org.junit.runners.ParentRunner.run(ParentRunner.java:363)\n\tat org.junit.runner.JUnitCore.run(JUnitCore.java:137)\n\tat com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)\n\tat com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)\n\tat com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:230)\n\tat com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:58)\n",
+              "duration": 1496753444,
+              "status": "failed"
+            },
+            "match": {
+              "location": "CommonDefinitions.teardown()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 2080048,
+              "status": "skipped"
+            },
+            "line": 31,
+            "name": "Register page is displayed",
+            "match": {
+              "location": "RegistrationStepDefinition.registerPageIsDisplayed()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 2911626,
+              "status": "skipped"
+            },
+            "line": 32,
+            "name": "the following elements are visible on Register page",
+            "match": {
+              "location": "RegistrationStepDefinition.theFollowingElementsAreVisible(DataTable)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "Register title"
+                ]
+              },
+              {
+                "cells": [
+                  "Email field"
+                ]
+              },
+              {
+                "cells": [
+                  "Password field"
+                ]
+              },
+              {
+                "cells": [
+                  "Confirm password field"
+                ]
+              },
+              {
+                "cells": [
+                  "Register button"
+                ]
+              },
+              {
+                "cells": [
+                  "Login button"
+                ]
+              },
+              {
+                "cells": [
+                  "Login with facebook button"
+                ]
+              },
+              {
+                "cells": [
+                  "Recieve newletter checkbox"
+                ]
+              }
+            ],
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@Valik"
+          },
+          {
+            "name": "@All"
+          },
+          {
+            "name": "@UI"
+          },
+          {
+            "name": "@Valik"
+          },
+          {
+            "name": "@Fest"
+          }
+        ]
+      },
+      {
+        "line": 4,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "error_message": "java.lang.NullPointerException\n\tat stepDefinition.CommonDefinitions.HomePageIsDisplayed(CommonDefinitions.java:24)\n\tat ✽.Fest.md home page is displayed(file:src/test/features/Registration.feature:5)\n",
+              "duration": 1274855867,
+              "status": "failed"
+            },
+            "line": 5,
+            "name": "Fest.md home page is displayed",
+            "match": {
+              "location": "CommonDefinitions.HomePageIsDisplayed()"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2019-12-23T08:27:02.886Z",
+        "line": 43,
+        "name": "Login window UI check",
+        "description": "",
+        "id": "registration;login-window-ui-check",
+        "after": [
+          {
+            "result": {
+              "error_message": "java.lang.NullPointerException\n\tat stepDefinition.CommonDefinitions.teardown(CommonDefinitions.java:38)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat cucumber.runtime.Utils$1.call(Utils.java:26)\n\tat cucumber.runtime.Timeout.timeout(Timeout.java:16)\n\tat cucumber.runtime.Utils.invoke(Utils.java:20)\n\tat cucumber.runtime.java.JavaHookDefinition.execute(JavaHookDefinition.java:65)\n\tat cucumber.runner.HookDefinitionMatch.runStep(HookDefinitionMatch.java:16)\n\tat cucumber.runner.TestStep.executeStep(TestStep.java:65)\n\tat cucumber.runner.TestStep.run(TestStep.java:50)\n\tat cucumber.runner.TestCase.run(TestCase.java:50)\n\tat cucumber.runner.Runner.runPickle(Runner.java:50)\n\tat io.cucumber.junit.PickleRunners$NoStepDescriptions.run(PickleRunners.java:146)\n\tat io.cucumber.junit.FeatureRunner.runChild(FeatureRunner.java:68)\n\tat io.cucumber.junit.FeatureRunner.runChild(FeatureRunner.java:23)\n\tat org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)\n\tat org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)\n\tat org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)\n\tat org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)\n\tat org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)\n\tat org.junit.runners.ParentRunner.run(ParentRunner.java:363)\n\tat io.cucumber.junit.Cucumber.runChild(Cucumber.java:144)\n\tat io.cucumber.junit.Cucumber.runChild(Cucumber.java:65)\n\tat org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)\n\tat org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)\n\tat org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)\n\tat org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)\n\tat org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)\n\tat io.cucumber.junit.Cucumber$RunCucumber.evaluate(Cucumber.java:174)\n\tat org.junit.runners.ParentRunner.run(ParentRunner.java:363)\n\tat org.junit.runner.JUnitCore.run(JUnitCore.java:137)\n\tat com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)\n\tat com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)\n\tat com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:230)\n\tat com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:58)\n",
+              "duration": 1200991001,
+              "status": "failed"
+            },
+            "match": {
+              "location": "CommonDefinitions.teardown()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 6249281,
+              "status": "skipped"
+            },
+            "line": 44,
+            "name": "Login page is displayed",
+            "match": {
+              "location": "RegistrationStepDefinition.loginPageIsDisplayed()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 2196240,
+              "status": "skipped"
+            },
+            "line": 45,
+            "name": "the following elements are visible on Login page",
+            "match": {
+              "location": "RegistrationStepDefinition.theFollowingElementsAreVisibleOnLoginPage(DataTable)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "Login title"
+                ]
+              },
+              {
+                "cells": [
+                  "Email field"
+                ]
+              },
+              {
+                "cells": [
+                  "Password field"
+                ]
+              },
+              {
+                "cells": [
+                  "Register button"
+                ]
+              },
+              {
+                "cells": [
+                  "Login button"
+                ]
+              },
+              {
+                "cells": [
+                  "Login with facebook button"
+                ]
+              },
+              {
+                "cells": [
+                  "Forgot password link"
+                ]
+              }
+            ],
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@Valik"
+          },
+          {
+            "name": "@All"
+          },
+          {
+            "name": "@UI"
+          },
+          {
+            "name": "@Fest"
+          }
+        ]
+      },
+      {
+        "line": 4,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "error_message": "java.lang.NullPointerException\n\tat stepDefinition.CommonDefinitions.HomePageIsDisplayed(CommonDefinitions.java:24)\n\tat ✽.Fest.md home page is displayed(file:src/test/features/Registration.feature:5)\n",
+              "duration": 1239553966,
+              "status": "failed"
+            },
+            "line": 5,
+            "name": "Fest.md home page is displayed",
+            "match": {
+              "location": "CommonDefinitions.HomePageIsDisplayed()"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2019-12-23T08:27:05.382Z",
+        "line": 64,
+        "name": "Registration/Login page UI check",
+        "description": "",
+        "id": "registration;registration/login-page-ui-check",
+        "after": [
+          {
+            "result": {
+              "error_message": "java.lang.NullPointerException\n\tat stepDefinition.CommonDefinitions.teardown(CommonDefinitions.java:38)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat cucumber.runtime.Utils$1.call(Utils.java:26)\n\tat cucumber.runtime.Timeout.timeout(Timeout.java:16)\n\tat cucumber.runtime.Utils.invoke(Utils.java:20)\n\tat cucumber.runtime.java.JavaHookDefinition.execute(JavaHookDefinition.java:65)\n\tat cucumber.runner.HookDefinitionMatch.runStep(HookDefinitionMatch.java:16)\n\tat cucumber.runner.TestStep.executeStep(TestStep.java:65)\n\tat cucumber.runner.TestStep.run(TestStep.java:50)\n\tat cucumber.runner.TestCase.run(TestCase.java:50)\n\tat cucumber.runner.Runner.runPickle(Runner.java:50)\n\tat io.cucumber.junit.PickleRunners$NoStepDescriptions.run(PickleRunners.java:146)\n\tat io.cucumber.junit.FeatureRunner.runChild(FeatureRunner.java:68)\n\tat io.cucumber.junit.FeatureRunner.runChild(FeatureRunner.java:23)\n\tat org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)\n\tat org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)\n\tat org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)\n\tat org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)\n\tat org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)\n\tat org.junit.runners.ParentRunner.run(ParentRunner.java:363)\n\tat io.cucumber.junit.Cucumber.runChild(Cucumber.java:144)\n\tat io.cucumber.junit.Cucumber.runChild(Cucumber.java:65)\n\tat org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)\n\tat org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)\n\tat org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)\n\tat org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)\n\tat org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)\n\tat io.cucumber.junit.Cucumber$RunCucumber.evaluate(Cucumber.java:174)\n\tat org.junit.runners.ParentRunner.run(ParentRunner.java:363)\n\tat org.junit.runner.JUnitCore.run(JUnitCore.java:137)\n\tat com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)\n\tat com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)\n\tat com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:230)\n\tat com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:58)\n",
+              "duration": 1184197595,
+              "status": "failed"
+            },
+            "match": {
+              "location": "CommonDefinitions.teardown()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 3410746,
+              "status": "skipped"
+            },
+            "line": 65,
+            "name": "Register_Login page is displayed",
+            "match": {
+              "location": "RegistrationStepDefinition.registerLoginPageIsDisplayed()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 7357545,
+              "status": "skipped"
+            },
+            "line": 66,
+            "name": "the following elements are visible on Register_Login page",
+            "match": {
+              "location": "RegistrationStepDefinition.theFollowingElementsAreVisibleOnRegisterLoginPage(DataTable)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "Register title"
+                ]
+              },
+              {
+                "cells": [
+                  "Login title"
+                ]
+              },
+              {
+                "cells": [
+                  "LoginRegister title"
+                ]
+              },
+              {
+                "cells": [
+                  "Email register field"
+                ]
+              },
+              {
+                "cells": [
+                  "Email login field"
+                ]
+              },
+              {
+                "cells": [
+                  "Password register field"
+                ]
+              },
+              {
+                "cells": [
+                  "Password login field"
+                ]
+              },
+              {
+                "cells": [
+                  "Confirm password field"
+                ]
+              },
+              {
+                "cells": [
+                  "Forgot Password Link"
+                ]
+              },
+              {
+                "cells": [
+                  "Register button"
+                ]
+              },
+              {
+                "cells": [
+                  "Login button"
+                ]
+              },
+              {
+                "cells": [
+                  "Facebook login register button"
+                ]
+              },
+              {
+                "cells": [
+                  "Recieve newletter checkbox"
+                ]
+              }
+            ],
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@Valik"
+          },
+          {
+            "name": "@All"
+          },
+          {
+            "name": "@UI"
+          },
+          {
+            "name": "@Fest"
+          }
+        ]
+      }
+    ],
+    "name": "Registration",
+    "description": "",
+    "id": "registration",
+    "keyword": "Feature",
+    "uri": "file:src/test/features/Registration.feature",
+    "tags": [
+      {
+        "name": "@Valik",
+        "type": "Tag",
+        "location": {
+          "line": 1,
+          "column": 1
+        }
+      },
+      {
+        "name": "@All",
+        "type": "Tag",
+        "location": {
+          "line": 1,
+          "column": 8
+        }
+      }
+    ]
   }
 ]

@@ -1,4 +1,4 @@
-@Valik
+@Valik @All
 Feature: Registration
 
   Background:

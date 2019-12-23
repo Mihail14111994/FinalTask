@@ -1,4 +1,4 @@
-@Doina
+@Doina @All
 Feature: Buy/book a ticket and get event information
 
   Background:
