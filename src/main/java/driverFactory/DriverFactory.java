@@ -12,6 +12,7 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class DriverFactory {
+
     static WebDriver driver = null;
 
     public static WebDriver getDriver() {
@@ -50,9 +51,8 @@ public class DriverFactory {
                 default:
                     throw new NullPointerException("Wrong Browser Name!");
             }
-
         } catch (Exception e) {
-            System.out.println("Exception: " + e);
+            System.out.println(e);
         }
         return driver;
     }

@@ -1,38 +1,37 @@
 package actionMethods;
 
+import enums.Colours;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class Borders {
 
-    public void drawBorder(WebElement element, WebDriver driver, Colours color) {
+    private Borders(){
+        throw new IllegalStateException("Utility class");
+    }
+
+    public static void drawBorder(WebElement element, WebDriver driver, Colours color) {
         String colorString;
-        switch (color)
-        {
+        switch (color) {
             case RED:
-            {
-                colorString="red'";
+                colorString = "red'";
                 break;
-            }
             case BLUE:
-            {
-                colorString="blue'";
+                colorString = "blue'";
                 break;
-            }
             case GREEN:
-            {
-                colorString="green'";
+                colorString = "green'";
                 break;
-            }
             default:
-                colorString="red'";
+                colorString = "red'";
                 break;
         }
         JavascriptExecutor js = ((JavascriptExecutor) driver);
-        js.executeScript("arguments[0].style.border='3px solid "+colorString, element);
+        js.executeScript("arguments[0].style.border='3px solid " + colorString, element);
     }
-    public void undrawBorder(WebElement element, WebDriver driver) {
+
+    public static void undrawBorder(WebElement element, WebDriver driver) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].style.border='0px'", element);
     }

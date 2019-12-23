@@ -18,6 +18,7 @@ public class HomePage extends PageObject{
     private WebElement ticketsMenu;
 
     @FindBy(xpath = "//*[@class='links']//a//span[text()='Places']")
+
     private WebElement placesMenu;
 
     @FindBy(xpath = "//*[@class = 'form-control large searchbar-search']")
