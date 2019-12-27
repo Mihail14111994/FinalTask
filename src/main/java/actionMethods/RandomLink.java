@@ -13,5 +13,4 @@ public class RandomLink {
         if (size == 0) return null;
         return links.get(randomInt.nextInt(size));
     }
-
 }

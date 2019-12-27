@@ -5,7 +5,6 @@ import enums.Colours;
 import org.openqa.selenium.WebElement;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class BorderScreen {
@@ -18,7 +17,7 @@ public class BorderScreen {
 
     public static void safeBorderScreen(WebElement element, Colours color, String path) throws IOException {
         Borders.drawBorder(element, DriverFactory.getDriver(), color);
-        Screenshot.takeScreenshot(DriverFactory.getDriver(), path + LocalDateTime.now().format(formatter) + ".jpg");
+        Screenshot.takeScreenshot();
         Borders.undrawBorder(element, DriverFactory.getDriver());
     }
 }

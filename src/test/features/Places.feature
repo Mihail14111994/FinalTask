@@ -1,5 +1,5 @@
 @All @Fest @Mihail @places
-Feature: 'Places' page navigation
+Feature: Places page navigation
 
   Background:
     Given Fest.md english page is displayed

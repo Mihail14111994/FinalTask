@@ -16,44 +16,33 @@ formatter.feature({
   ]
 });
 formatter.scenarioOutline({
-  "name": "User is able to book a ticket",
+  "name": "User is able to visualise details of any event",
   "description": "",
   "keyword": "Scenario Outline",
   "tags": [
     {
-      "name": "@positive"
-    },
-    {
-      "name": "@book"
+      "name": "@UI"
     }
   ]
 });
 formatter.step({
-  "name": "User is logged in with valid credentials",
+  "name": "Events menu page is displayed",
   "keyword": "Given "
-});
-formatter.step({
-  "name": "Tickets menu page is displayed",
-  "keyword": "And "
 });
 formatter.step({
   "name": "\u003csection\u003e is selected",
   "keyword": "When "
 });
 formatter.step({
-  "name": "User submits \u003cnr\u003e tickets for an event of the \u003csection\u003e",
+  "name": "All events of \u003csection\u003e have \"Detalii\" button",
   "keyword": "And "
 });
 formatter.step({
-  "name": "The total price is displayed correct for \u003cnr\u003e tickets",
+  "name": "User clicks on \"Detalii\" button of an event of \u003csection\u003e",
   "keyword": "And "
 });
 formatter.step({
-  "name": "All fields of booking are filled with \u003cfirstName\u003e, \u003clastName\u003e, \u003cphone\u003e and submited",
-  "keyword": "And "
-});
-formatter.step({
-  "name": "Booking is successfully accepted",
+  "name": "The information of the event is displayed",
   "keyword": "Then "
 });
 formatter.examples({
@@ -63,29 +52,17 @@ formatter.examples({
   "rows": [
     {
       "cells": [
-        "nr",
-        "section",
-        "firstName",
-        "lastName",
-        "phone"
+        "section"
       ]
     },
     {
       "cells": [
-        "2",
-        "Party",
-        "latinlatinlatinlatinlatinlatinlatinlatinlatinlatin",
-        "latinlatinlatinlatinlatinlatinlatinlatinlatinlatin",
-        "078524163"
+        "Expoziții"
       ]
     },
     {
       "cells": [
-        "10",
-        "Conferințe",
-        "Ion",
-        "Ion",
-        "076852146"
+        "Sport"
       ]
     }
   ]
@@ -94,6 +71,9 @@ formatter.background({
   "name": "",
   "description": "",
   "keyword": "Background"
+});
+formatter.before({
+  "status": "passed"
 });
 formatter.step({
   "name": "Fest.md home page is displayed",
@@ -106,7 +86,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.scenario({
-  "name": "User is able to book a ticket",
+  "name": "User is able to visualise details of any event",
   "description": "",
   "keyword": "Scenario Outline",
   "tags": [
@@ -120,77 +100,14 @@ formatter.scenario({
       "name": "@Fest"
     },
     {
-      "name": "@positive"
-    },
-    {
-      "name": "@book"
+      "name": "@UI"
     }
   ]
 });
 formatter.step({
-  "name": "User is logged in with valid credentials",
+  "name": "Events menu page is displayed",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "TicketsDefinitions.userIsLoggedInWithValidCredentials()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "Tickets menu page is displayed",
-  "keyword": "And "
-});
-formatter.match({
   "location": "TicketsDefinitions.ticketEventPage(String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "Party is selected",
-  "keyword": "When "
-});
-formatter.match({
-  "location": "TicketsDefinitions.userSelectsASection(String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "User submits 2 tickets for an event of the Party",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "TicketsDefinitions.userSelectsAnEvent(String,int,String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "The total price is displayed correct for 2 tickets",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "TicketsDefinitions.theTotalPriceOfTicketsIsDisplayedCorrect(int)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "All fields of booking are filled with latinlatinlatinlatinlatinlatinlatinlatinlatinlatin, latinlatinlatinlatinlatinlatinlatinlatinlatinlatin, 078524163 and submited",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "TicketsDefinitions.allFieldsOfBookingAreFilledWithFirstnameLastnamePhoneAndSubmited(String,String,String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "Booking is successfully accepted",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "TicketsDefinitions.bookingIsSuccessfullyAccepted()"
 });

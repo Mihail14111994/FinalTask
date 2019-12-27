@@ -12,7 +12,7 @@ public class TicketsDefinitions {
     private TicketsSteps ticketsSteps = new TicketsSteps();
     private int priceOfTicket;
 
-    @Given("{} menu page is displayed")
+    @Given("^(Tickets|Events) menu page is displayed$")
     public void ticketEventPage(String pageName) throws InterruptedException, IOException {
         ticketsSteps.eventTicketsPageIsDisplayed(pageName);
     }

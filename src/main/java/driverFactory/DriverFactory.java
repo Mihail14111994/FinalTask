@@ -1,5 +1,6 @@
 package driverFactory;
 
+import actionMethods.PropertiesFileConfig;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -8,27 +9,16 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.ie.InternetExplorerOptions;
 import org.openqa.selenium.remote.CapabilityType;
 
-import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.util.Properties;
 
 public class DriverFactory {
-    static WebDriver driver = null;
-    static Logger logger = Logger.getLogger(DriverFactory.class);
+    private static WebDriver driver = null;
+    private static Logger logger = Logger.getLogger(DriverFactory.class);
     public static WebDriver getDriver() {
         InputStream inputStream;
         try {
-            Properties prop = new Properties();
-            String propFileName = "config.properties";
 
-            inputStream = DriverFactory.class.getClassLoader().getResourceAsStream(propFileName);
-
-            if (inputStream != null) {
-                prop.load(inputStream);
-            } else {
-                throw new FileNotFoundException("property file '" + propFileName + "' not found in the classpath");
-            }
-            String browserName = prop.getProperty("browserName");
+            String browserName = PropertiesFileConfig.configProperties("browserName");
 
             switch (browserName.toUpperCase()) {
                 case "CHROME":
@@ -39,7 +29,7 @@ public class DriverFactory {
                     break;
                 case "IE":
                     if (driver == null) {
-                        System.setProperty("webdriver.ie.driver", "C:\\Users\\dospataru\\Downloads\\IEDriverServer_x64_3.150.1\\IEDriverServer.exe");
+                      //  System.setProperty("webdriver.ie.driver", "C:\\Users\\dospataru\\Downloads\\IEDriverServer_x64_3.150.1\\IEDriverServer.exe");
                         InternetExplorerOptions ieOptions = new InternetExplorerOptions()
                                 .destructivelyEnsureCleanSession();
                         ieOptions.setCapability("se:ieOptions", ieOptions);

@@ -5,8 +5,6 @@
 FinalTask.iml,d\e\defb196eca703fa4497dbd0975aa0a466832310d
 ^
 .src/main/java/driverFactory/DriverFactory.java,1\9\19e637162b48fc907faf2e0909b3a09605bb90a9
-[
-+src/main/java/driverFactory/DriverType.java,c\f\cf61af3b4bbe9ac8dba3340cff1d07e0cafebf44
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
@@ -27,8 +25,6 @@ Ptarget/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.ls
 ‚
 Rtarget/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst,8\a\8ae396f369da14bb5c0973286facff8fb2c70d56
 X
-(src/main/java/actionMethods/Colours.java,8\6\860c66344adb51616dab3e852d77ee5751e8e6b7
-X
 (src/main/java/actionMethods/Borders.java,d\3\d36b540092c69f8fdbd1d0e572e3101e28aa0330
 a
 1src/test/java/stepImplementation/PlacesSteps.java,e\e\eede137da9b9c5513ede06f3e21ba787c33440ff
@@ -48,16 +44,8 @@ S
 #src/main/resources/log4j.properties,7\5\755950bb690295904a49d36e60958901c54013b8
 ]
 -src/main/java/actionMethods/BorderScreen.java,3\3\3392a811eb75b18f104f31f2154ded31956568bf
-f
-6src/main/java/pageObjects/LoginRegisterPageObject.java,a\7\a70d25b9720fff80177a5fd468e90800d375464d
-m
-=src/main/java/pageObjects/ModifyPersonalDataWindowObject.java,f\0\f0a4e9ecef8d9e577446076b07844e7c89acd925
 Y
 )src/main/java/pageObjects/PlacesPage.java,7\a\7a41a35c4575e37b41ca35da9ccabab5a90dab30
-a
-1src/main/java/pageObjects/RegisterPageObject.java,e\d\ed9f6d261c66c4c3263c401415ac9c59eb4574c6
-`
-0src/main/java/pageObjects/PlacesElementPage.java,b\d\bd8edc5ab7e085392c927020f85a0e5b6f34f542
 `
 0src/main/java/pageObjects/OptionsPlacesPage.java,9\7\97d987b7355dd3d1e5a2307180722b3a9204d79e
 Y
@@ -68,8 +56,6 @@ V
 	log4j.log,6\a\6afd0e9ca498685b746050d0b8c6790eeb852d01
 c
 3src/test/java/stepImplementation/RegisterSteps.java,6\4\64579f59cbea05dc22ec906d627c37f74d9d33fe
-g
-7src/main/java/pageObjects/ChangePasswordPageObject.java,0\c\0ccf6cac2a11c76ea548ee1f0a60bc9e4aa5fa4f
 Z
 *src/main/java/actionMethods/Scrolling.java,0\9\0925f1c39f9155b890785a687cc068fb8769249a
 Y
@@ -82,12 +68,8 @@ _
 /target/cucumber-html-report/jquery-3.4.1.min.js,f\d\fd556fcf19ecf591702a66c811ad6723855c7484
 U
 %target/cucumber-html-report/style.css,a\b\ab181185923601b234a7ef8ccb88c0ce47a1c2bf
-a
-1src/main/java/pageObjects/TicketSectionsPage.java,9\0\902d27553afeae70ca054fec2576ea52f608bf1a
 \
 ,src/main/java/pageObjects/MyAccountPage.java,d\c\dc5d7aa8fc5552898dc7aa3f8fbcdd16e7936af2
-d
-4src/main/java/pageObjects/LoginRegistrationPage.java,6\b\6b662e1a3455df8648a39792c22347656e6ba174
 V
 &src/main/java/actionMethods/Click.java,b\b\bb931acde60e306367da20ba7b59ecd6cae83852
 [
@@ -102,3 +84,29 @@ U
 %src/main/java/actionMethods/Wait.java,5\b\5b955739ead8292931b4cdbbb38828f001dcf170
 [
 +src/main/java/actionMethods/RandomLink.java,a\b\abab4c98f686b913cb5538ed71ca986603690226
+\
+,src/main/java/pageObjects/MapPlacesPage.java,3\6\3653cf8c4ec747338a464ea58204a58e653b3c9b
+`
+0src/main/java/pageObjects/LoginRegisterPage.java,2\6\26672e41762fd79ae7506cd76f742c7cc82119a0
+e
+5src/main/java/pageObjects/ModifyPersonalDataPage.java,d\2\d231870c0bce18ba924cb0792ed3166ad2441143
+`
+0src/main/java/pageObjects/PlacesDetailsPage.java,2\0\208b2692ccf0135600491ef972d5ef7393520945
+`
+0src/main/java/pageObjects/RegisterPageModal.java,4\6\4614f6e8cefa9f0d33243f0a3f9df21668df746d
+_
+/src/main/java/pageObjects/RegistrationPage.java,a\7\a72fe140f4599b85afc3cc950a3dc2b8255f6bd4
+`
+0src/main/java/pageObjects/TicketDetailsPage.java,b\f\bfc24a4d3339c3be33146244cd4ddfab684336ab
+P
+ src/main/java/enums/Colours.java,1\7\174b430b7d7ad3df0f94494544e81b34a53e987c
+a
+1src/main/java/pageObjects/ChangePasswordPage.java,9\d\9deedc6450b9a985b6853ce7fdb0a2ae6fa0879a
+X
+(src/main/java/pageObjects/LoginPage.java,4\9\490461149aa4161f834841a3fe70bf217a3a694e
+b
+2src/main/java/pageObjects/DeleteAccountWindow.java,b\1\b137350cf5d3ceff6db04704bb7faa6be34d7d68
+P
+ src/test/features/Places.feature,9\7\976782fe08aa3f38423bb550d4970030a19b13db
+T
+$src/main/resources/config.properties,f\a\fac4e92d770a0a6287eaad0e53c4efa350987f47

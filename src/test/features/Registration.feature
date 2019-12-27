@@ -26,7 +26,7 @@ Feature: Registration
       | test2@gma.ru | null                   | Acest câmp nu poate fi gol.               |
       | num2@ij.md   | PassWithAnotherConfirm | Parolele introduse nu coincid.            |
 
-@UI
+@UI @UIRun
   Scenario: Registration window UI check
     When  Register page is displayed
     Then  the following elements are visible on Register page

@@ -4,14 +4,9 @@ import driverFactory.DriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import pageObjects.*;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Objects;
 
@@ -21,21 +16,8 @@ import static actionMethods.Screenshot.takeScreenshot;
 import static actionMethods.Wait.waitFor;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class PlacesSteps {
-
-    private SearchPage searchPage = new SearchPage();
-    private PlacesPage placesPage = new PlacesPage();
-    private PlacesDetailsPage placesDetailsPage = new PlacesDetailsPage();
-    private MapPlacesPage mapPlacesPage = new MapPlacesPage();
-    private OptionsPlacesPage optionsPage = new OptionsPlacesPage();
-    private HomePage homePage = new HomePage();
-    private String categoryName;
-    private String subcategoryName;
-    private String randomLegendElementText;
+public class PlacesSteps extends CommonSteps {
     private String path = "target\\screenshots\\places\\";
-    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy_MM_dd_HH_mm_ss");
-    private static final WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), 30);
-    Actions actions = new Actions(DriverFactory.getDriver());
 
     public void accessPlacesPage() throws IOException {
         waitFor(homePage.getPlacesMenu());
@@ -101,16 +83,6 @@ public class PlacesSteps {
         if (categoryName.equals("Sports/Entertainment")) {
             subcategories.remove(0);
         }
-
-//        if (categoryName.equalsIgnoreCase("Restaurants"))
-//            subcategories = placesPage.getDblRestaurants();
-//        if (categoryName.equalsIgnoreCase("Bars and cafes")) {
-//            subcategories = placesPage.getDblBarsAndCafes();
-//        }
-//        if (categoryName.equals("Sports/Entertainment")) {
-//            subcategories = placesPage.getDblSportsEntertainment();
-//            subcategories.remove(0);
-//        }
         if (Objects.nonNull(subcategories) && subcategories.size() > 0) {
             final WebElement subcategory = randomLink(subcategories);
             subcategoryName = Objects.requireNonNull(subcategory).getText();
@@ -205,7 +177,7 @@ public class PlacesSteps {
         waitFor(homePage.getBtnSuggestedEvent());
         assertThat("Facility corresponds", DriverFactory.getDriver().getPageSource().contains(facility));
         actions.moveToElement(placesDetailsPage.getTxtPlacePrice().get(0)).perform();
-        takeScreenshot(DriverFactory.getDriver(), path + LocalDateTime.now().format(formatter) + ".jpg");
+        takeScreenshot();
         assertThat("Theme corresponds", DriverFactory.getDriver().getPageSource().contains(theme));
         String classEl = placesDetailsPage.getTxtPlacePrice().get(0).getAttribute("class");
         assertThat("Price corresponds", classEl.contains(price));
@@ -224,7 +196,7 @@ public class PlacesSteps {
         List<WebElement> resultsOfSearch = placesDetailsPage.getBtnDetailsOfAPlacesElement();
         if (resultsOfSearch == null)
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("No results have been found."))).isDisplayed();
-        takeScreenshot(DriverFactory.getDriver(), path + LocalDateTime.now().format(formatter) + ".jpg");
+        takeScreenshot();
     }
 
     public void checkARandomCheckboxFromMapLegend() throws IOException {
@@ -246,7 +218,7 @@ public class PlacesSteps {
         for (WebElement pinpoint : pinpoints) {
             if (pinpoint.isDisplayed()) {
                 actions.moveToElement(pinpoint).moveByOffset(30, 0).perform();
-                takeScreenshot(DriverFactory.getDriver(), path + LocalDateTime.now().format(formatter) + ".jpg");
+                takeScreenshot();
                 try {
                     actions.moveToElement(pinpoint).moveByOffset(30, 0).click().perform();
                     break;
@@ -257,6 +229,6 @@ public class PlacesSteps {
         }
         waitFor(placesPage.getPageTitle());
         assertThat("Chosen place is not displayed (from map)", DriverFactory.getDriver().getPageSource().contains(randomLegendElementText));
-        takeScreenshot(DriverFactory.getDriver(), path + LocalDateTime.now().format(formatter) + ".jpg");
+        takeScreenshot();
     }
 }

@@ -4,7 +4,6 @@ import driverFactory.DriverFactory;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import pageObjects.*;
 
 import java.io.IOException;
 import java.util.List;
@@ -17,22 +16,8 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 
-public class TicketsSteps {
-    private TicketsPage ticketsPage = new TicketsPage();
-    private TicketDetailsPage ticketDetailsPage = new TicketDetailsPage();
-    private HomePage homePage = new HomePage();
-    private BookingPage bookingPage = new BookingPage();
-    private EventsPage eventsPage = new EventsPage();
-    private RegistrationPage registrationPage = new RegistrationPage();
+public class TicketsSteps extends CommonSteps {
     private static final Logger logger = Logger.getLogger(TicketsSteps.class);
-
-    private final String INFO = "INFORMAȚII";
-    private final String LOGIN = "doina123456@gmail.com";
-    private final String PASSWORD = "147369";
-    private final String TICKETS = "Bilete";
-    private final String EVENTS = "Evenimente";
-    private int totalPrice = 0;
-    private String nameOfBookedEvent;
     private String path = "target\\screenshots\\tickets\\";
 
     public void eventTicketsPageIsDisplayed(String pageName) throws InterruptedException, IOException {
@@ -43,7 +28,7 @@ public class TicketsSteps {
             assertThat("Ticket Page is not displayed", ticketsPage.getPageName().getText(), is(TICKETS));
         } else if (pageName.equals("Events")) {
             click(homePage.getEventsMenu(), path);
-            assertThat("Ticket Page is not displayed", ticketsPage.getPageName().getText(), is(EVENTS));
+            assertThat("Events Page is not displayed", ticketsPage.getPageName().getText(), is(EVENTS));
         }
     }
 
@@ -89,9 +74,7 @@ public class TicketsSteps {
             click(randomLink, path);
 
             if (ticketDetailsPage.getBoxOfTickets().size() > 0) {
-                nameOfBookedEvent = ticketDetailsPage.getNameOfEvent().getText();
-                eventWithOutTickets = false;
-                logger.info(nameOfBookedEvent + " event is chosen");
+                eventWithOutTickets = isEventWithOutTickets();
 
             } else {
                 logger.warn("Chosen event has no tickets, a new event is going to be chosen...");
@@ -109,6 +92,14 @@ public class TicketsSteps {
             }
         }
         while (eventWithOutTickets);
+    }
+
+    private boolean isEventWithOutTickets() {
+        boolean eventWithOutTickets;
+        nameOfBookedEvent = ticketDetailsPage.getNameOfEvent().getText();
+        eventWithOutTickets = false;
+        logger.info(nameOfBookedEvent + " event is chosen");
+        return eventWithOutTickets;
     }
 
     public void selectNrOTickets(int nrOfTickets) throws IOException {
