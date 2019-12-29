@@ -9,12 +9,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import pageObjects.*;
 import stepDefinition.CommonDefinitions;
 
+import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 
 public class CommonSteps {
     private final static Logger logger = Logger.getLogger(CommonDefinitions.class);
     HomePage homePage = new HomePage();
     RegisterPageModal registerPage = new RegisterPageModal();
+    RegisterSteps registerSteps = new RegisterSteps();
     WebDriver driver = DriverFactory.getDriver();
     WebDriverWait wait = new WebDriverWait(driver, 30);
     MyAccountPage myAccountPage = new MyAccountPage();
@@ -48,8 +50,70 @@ public class CommonSteps {
     public String scenario;
 
 
-    public void beforeScenario (Scenario scenario) {
+    public void beforeScenario(Scenario scenario) {
         logger.info("Scenario: " + scenario.getName());
         this.scenario = scenario.getName();
+    }
+
+    public void dataFillInTarget(String data, String target) throws IOException {
+        switch (target) {
+            case ("Email field in register window"):
+//                if(data.contains("@")&& data.substring(data.indexOf("@")).contains("."))
+                registerPage.getTxtEmail().sendKeys(data);
+                logger.info("In " + target + " was filled " + data);
+                break;
+            case ("Password field in register window"):
+                if(!data.equals("PassWithAnotherConfirm")){
+                registerPage.getTxtPassword().sendKeys(data);
+                logger.info("In " + target + " was filled " + data);
+                }
+                else
+                {
+                    registerPage.getTxtPassword().sendKeys("123123");
+                    logger.info("In " + target + " was filled 123123" );
+                }
+                break;
+            case ("Confirm password field in register window"):
+                if(!data.equals("PassWithAnotherConfirm")){
+                    registerPage.getTxtConfirmPassword().sendKeys(data);
+                    logger.info("In " + target + " was filled " + data);
+                }
+                else
+                {
+                    registerPage.getTxtConfirmPassword().sendKeys("12312313");
+                    logger.info("In " + target + " was filled 123123123" );
+                }
+                break;
+            case ("Current password field in delete window"):
+                registerSteps.deleteAccount(data);
+            default:
+                logger.error("Not found Target place");
+                break;
+        }
+    }
+    public void clickTarget(String target) throws IOException {
+        switch (target) {
+            case ("Register button"):
+                registerSteps.clickRegisterButton();
+                break;
+            case ("Login button"):
+                registerSteps.clickLoginButton();
+                break;
+            case ("User drop-down"):
+                registerSteps.clickUserDD();
+                break;
+            case ("My account button"):
+                registerSteps.getMyAccountPage();
+                break;
+            case ("Delete link"):
+                registerSteps.clickDeleteAccLink();
+                break;
+            case ("Delete button"):
+                registerSteps.clickDeleteBtn();
+                break;
+            default:
+                logger.error("Not found where click");
+                break;
+        }
     }
 }

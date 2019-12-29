@@ -5,10 +5,14 @@ import gherkin.ast.Feature;
 import io.cucumber.core.api.Scenario;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.When;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import stepImplementation.CommonSteps;
+
+import java.io.IOException;
 
 
 public class CommonDefinitions {
@@ -52,4 +56,14 @@ public class CommonDefinitions {
     }
 
 
+    @When("(.*) filled in (.*)")
+    public void FillIn(String data, String target) throws IOException {
+        if(!data.equals("null"))
+        commonSteps.dataFillInTarget(data, target);
+    }
+
+    @When("(.*) was clicked")
+    public void wasClicked(String target) throws IOException {
+        commonSteps.clickTarget(target);
+    }
 }

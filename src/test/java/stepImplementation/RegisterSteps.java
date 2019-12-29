@@ -143,12 +143,17 @@ public class RegisterSteps extends CommonSteps {
         takeScreenshot();
 
     }
-
-    public void getMyAccountPage() throws IOException {
+    public void clickUserDD() throws IOException {
         wait.until(ExpectedConditions.visibilityOf(myAccountPage.getDdUser()));
         click(myAccountPage.getDdUser(), screenshotsPath);
         logger.info("User drop-down was opened ");
         takeScreenshot();
+    }
+    public void getMyAccountPage() throws IOException {
+//        wait.until(ExpectedConditions.visibilityOf(myAccountPage.getDdUser()));
+//        click(myAccountPage.getDdUser(), screenshotsPath);
+//        logger.info("User drop-down was opened ");
+//        takeScreenshot();
         click(myAccountPage.getBtnOpenMyAccountPage(), screenshotsPath);
         logger.info("My account button was clicked ");
         takeScreenshot();
@@ -157,15 +162,29 @@ public class RegisterSteps extends CommonSteps {
         takeScreenshot();
         logger.info("My account page was opened ");
     }
-
-    public void deleteAccount() throws IOException {
+    public void clickDeleteAccLink() throws IOException {
         click(myAccountPage.getBtnDeleteAccount(), screenshotsPath);
         logger.info("Delete button was clicked ");
         logger.info("Delete window was opened ");
         takeScreenshot();
-        deleteAccount.getTxtCurrentPassword().sendKeys(workingPassword);
-        logger.info("In current password field filled " + workingPassword);
+    }
+
+    public void deleteAccount(String data) throws IOException {
+//        click(myAccountPage.getBtnDeleteAccount(), screenshotsPath);
+//        logger.info("Delete button was clicked ");
+//        logger.info("Delete window was opened ");
+//        takeScreenshot();
+        deleteAccount.getTxtCurrentPassword().sendKeys(data);
+        logger.info("In current password field filled " + data);
         takeScreenshot();
+//        ScrollingPixels.scrollingPixels(driver, 0, 250);
+//        click(deleteAccount.getBtnDeleteAccountSubmit(), screenshotsPath);
+//        logger.info("Deleting was confirmed ");
+//        logger.info("Account was deleted");
+//        takeScreenshot();
+    }
+    public void clickDeleteBtn() throws IOException
+    {
         ScrollingPixels.scrollingPixels(driver, 0, 250);
         click(deleteAccount.getBtnDeleteAccountSubmit(), screenshotsPath);
         logger.info("Deleting was confirmed ");

@@ -33,7 +33,7 @@ public class RegistrationStepDefinition {
         registerSteps.checkThatHomePageIsDisplayed();
     }
 
-    @And("User unable to register with the same credentials")
+    @Then("User unable to register with the same credentials")
     public void registerIsSuccessful() throws IOException {
         registerSteps.makeLogout();
         registerSteps.openRegisterWindow();
@@ -42,19 +42,18 @@ public class RegistrationStepDefinition {
         registerSteps.checkFailingRegisterWithTheSameCredentials();
     }
 
-    @When("Account with (.*) and (.*) was deleted")
-    public void accountWasDeleted(String email, String password) throws IOException {
-        workingEmail = email;
-        workingPassword = password;
-        registerSteps.openLoginWindow();
-        registerSteps.fillDataInEmailPasswordFieldsLogin(email, password);
-        registerSteps.clickLoginButton();
-        registerSteps.getMyAccountPage();
-        registerSteps.deleteAccount();
+//    @When("Account with (.*) and (.*) was deleted")
+//    public void accountWasDeleted(String email, String password) throws IOException {
+//        workingEmail = email;
+//        workingPassword = password;
+//        registerSteps.openLoginWindow();
+//        registerSteps.fillDataInEmailPasswordFieldsLogin(email, password);
+//        registerSteps.clickLoginButton();
+//        registerSteps.getMyAccountPage();
+//        registerSteps.deleteAccount();
+//    }
 
-    }
-
-    @And("Checked that account was deleted")
+    @Then("Checked that account was deleted")
     public void checkedThatAccountWasDeleted() throws IOException {
         registerSteps.openLoginWindow();
         registerSteps.fillDataInEmailPasswordFieldsLogin(workingEmail, workingPassword);

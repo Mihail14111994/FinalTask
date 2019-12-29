@@ -3,21 +3,27 @@ Feature: Registration
 
   Background:
     Given Fest.md home page is displayed
-@Registration
+
+  @Registration
   Scenario Outline: User is able to register
     Given Register page is displayed
-    When Submit <email>, <password> and confirm password in registration form
+    When <email> filled in "Email field in register window"
+    And <password> filled in "Password field in register window"
+    And <password> filled in "Confirm password field in register window"
+    And "Register button" was clicked
     Then Home page is displayed
     And User unable to register with the same credentials
-
     Examples:
       | email        | password |
       | test2@gma.ru | 123123   |
 
-@Negative
+  @Negative
   Scenario Outline: User fails to registrate
     Given Register page is displayed
-    When Submit <email>, <password> and confirm password in registration form
+    When <email> filled in "Email field in register window"
+    And <password> filled in "Password field in register window"
+    And <password> filled in "Confirm password field in register window"
+    And "Register button" was clicked
     Then Registration fails with <error> message
     Examples:
       | email        | password               | error                                     |
@@ -26,7 +32,24 @@ Feature: Registration
       | test2@gma.ru | null                   | Acest câmp nu poate fi gol.               |
       | num2@ij.md   | PassWithAnotherConfirm | Parolele introduse nu coincid.            |
 
-@UI @UIRun
+  @Registration @Deleting
+  Scenario Outline: User deletes account
+    When "Open Login page" was clicked
+    And <email> filled in "Email field in login window"
+    And <password> filled in "Password field in login window"
+    And "Login button" was clicked
+    And "User drop-down" was clicked
+    And "My account button" was clicked
+    And "Delete link" was clicked
+    And <password> filled in "Current password field in delete window"
+    And "Delete button" was clicked
+    Then Home page is displayed
+    And Checked that account was deleted
+    Examples:
+      | email        | password |
+      | test2@gma.ru | 123123   |
+
+  @UI
   Scenario: Registration window UI check
     When  Register page is displayed
     Then  the following elements are visible on Register page
@@ -51,16 +74,7 @@ Feature: Registration
       |Login with facebook button|
       |Forgot password link|
 
-    @Registration @Deleting
-  Scenario Outline: User deletes account
-    When Account with <email> and <password> was deleted
-    Then Home page is displayed
-    And Checked that account was deleted
-    Examples:
-      | email        | password |
-      | test2@gma.ru | 123123   |
-
-      @UI
+  @UI
   Scenario: Registration/Login page UI check
     When  Register_Login page is displayed
     Then  the following elements are visible on Register_Login page
