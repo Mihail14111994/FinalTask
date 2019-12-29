@@ -3,6 +3,7 @@ package stepImplementation;
 import driverFactory.DriverFactory;
 import io.cucumber.core.api.Scenario;
 import org.apache.log4j.Logger;
+import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -11,6 +12,7 @@ import stepDefinition.CommonDefinitions;
 
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
+import static org.hamcrest.CoreMatchers.is;
 
 public class CommonSteps {
     private final static Logger logger = Logger.getLogger(CommonDefinitions.class);
@@ -61,15 +63,18 @@ public class CommonSteps {
 //                if(data.contains("@")&& data.substring(data.indexOf("@")).contains("."))
                 registerPage.getTxtEmail().sendKeys(data);
                 logger.info("In " + target + " was filled " + data);
+                MatcherAssert.assertThat(registerPage.getTxtEmail().getText().equals(data), is(true));
                 break;
             case ("Password field in register window"):
                 if(!data.equals("PassWithAnotherConfirm")){
                 registerPage.getTxtPassword().sendKeys(data);
                 logger.info("In " + target + " was filled " + data);
+                    MatcherAssert.assertThat(registerPage.getTxtPassword().getText().equals(data), is(true));
                 }
                 else
                 {
                     registerPage.getTxtPassword().sendKeys("123123");
+                    MatcherAssert.assertThat(registerPage.getTxtPassword().getText().equals("123123"), is(true));
                     logger.info("In " + target + " was filled 123123" );
                 }
                 break;
@@ -77,11 +82,13 @@ public class CommonSteps {
                 if(!data.equals("PassWithAnotherConfirm")){
                     registerPage.getTxtConfirmPassword().sendKeys(data);
                     logger.info("In " + target + " was filled " + data);
+                    MatcherAssert.assertThat(registerPage.getTxtPassword().getText().equals(data), is(true));
                 }
                 else
                 {
                     registerPage.getTxtConfirmPassword().sendKeys("12312313");
                     logger.info("In " + target + " was filled 123123123" );
+                    MatcherAssert.assertThat(registerPage.getTxtPassword().getText().equals("123123123"), is(true));
                 }
                 break;
             case ("Current password field in delete window"):
@@ -98,6 +105,7 @@ public class CommonSteps {
                 break;
             case ("Login button"):
                 registerSteps.clickLoginButton();
+                registerSteps.checkThatHomePageIsDisplayed();
                 break;
             case ("User drop-down"):
                 registerSteps.clickUserDD();

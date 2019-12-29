@@ -6,6 +6,7 @@ import actionMethods.ScrollingPixels;
 import enums.Colours;
 import io.cucumber.datatable.DataTable;
 import org.apache.log4j.Logger;
+import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.io.IOException;
@@ -25,6 +26,7 @@ public class RegisterSteps extends CommonSteps {
         click(homePage.getBtnOpenRegistration(), screenshotsPath);
         logger.info("Registration window was opened");
         wait.until(ExpectedConditions.visibilityOf(registerPage.getTxtEmail()));
+        MatcherAssert.assertThat(registerPage.getTtlRegister().isDisplayed(), is(true));
 
     }
 
@@ -148,6 +150,7 @@ public class RegisterSteps extends CommonSteps {
         click(myAccountPage.getDdUser(), screenshotsPath);
         logger.info("User drop-down was opened ");
         takeScreenshot();
+        assertThat(myAccountPage.getBtnOpenMyAccountPage().isDisplayed(), is(true));
     }
     public void getMyAccountPage() throws IOException {
 //        wait.until(ExpectedConditions.visibilityOf(myAccountPage.getDdUser()));
@@ -177,6 +180,7 @@ public class RegisterSteps extends CommonSteps {
         deleteAccount.getTxtCurrentPassword().sendKeys(data);
         logger.info("In current password field filled " + data);
         takeScreenshot();
+        MatcherAssert.assertThat(deleteAccount.getTxtCurrentPassword().getText().equals(data), is(true));
 //        ScrollingPixels.scrollingPixels(driver, 0, 250);
 //        click(deleteAccount.getBtnDeleteAccountSubmit(), screenshotsPath);
 //        logger.info("Deleting was confirmed ");
