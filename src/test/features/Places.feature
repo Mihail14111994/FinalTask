@@ -2,7 +2,7 @@
 Feature: Places page navigation
 
   Background:
-    Given Fest.md english page is displayed
+    Given The https://www.fest.md/en page is displayed
 
   @placesCategories @UI
   Scenario Outline: See details of places from dropdown lists
@@ -37,8 +37,8 @@ Feature: Places page navigation
     Examples:
       | locationName |
       |              |
-      | restaurants  |
-      | best music   |
+#      | restaurants  |
+#      | best music   |
 
   @placesMap @placesFiltering
   Scenario Outline: Places filtering

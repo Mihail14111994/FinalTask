@@ -9,18 +9,21 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.ie.InternetExplorerOptions;
 import org.openqa.selenium.remote.CapabilityType;
 
-import java.io.InputStream;
+import java.io.FileNotFoundException;
 
 public class DriverFactory {
     private static WebDriver driver = null;
     private static Logger logger = Logger.getLogger(DriverFactory.class);
     public static WebDriver getDriver() {
-        InputStream inputStream;
+
+        String browserName = null;
         try {
+            browserName = PropertiesFileConfig.configProperties("browserName");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
-            String browserName = PropertiesFileConfig.configProperties("browserName");
-
-            switch (browserName.toUpperCase()) {
+        switch (browserName.toUpperCase()) {
                 case "CHROME":
                     if (driver == null) {
                         WebDriverManager.chromedriver().setup();
@@ -41,9 +44,6 @@ public class DriverFactory {
                 default:
                     throw new NullPointerException("Wrong Browser Name!");
             }
-        } catch (Exception e) {
-            logger.error(e);
-        }
         return driver;
     }
 

@@ -2,7 +2,7 @@
 Feature: Registration
 
   Background:
-    Given Fest.md home page is displayed
+    Given The https://www.fest.md page is displayed
 @Registration
   Scenario Outline: User is able to register
     Given Register page is displayed
@@ -62,7 +62,7 @@ Feature: Registration
 
       @UI
   Scenario: Registration/Login page UI check
-    When  Register_Login page is displayed
+    When  The https://www.fest.md/ro/login-register page is displayed
     Then  the following elements are visible on Register_Login page
       |Register title|
       |Login title|

@@ -2,7 +2,7 @@
 Feature: Buy/book a ticket and get event information
 
   Background:
-    Given Fest.md home page is displayed
+    Given The https://www.fest.md page is displayed
 
   @positive @book
   Scenario Outline: User is able to book a ticket

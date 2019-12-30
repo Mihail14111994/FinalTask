@@ -24,6 +24,7 @@ public class PropertiesFileConfig {
                 throw new FileNotFoundException("property file '" + propFileName + "' not found in the classpath");
             }
             Value = prop.getProperty(key);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
