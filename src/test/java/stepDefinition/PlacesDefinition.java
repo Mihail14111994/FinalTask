@@ -35,7 +35,6 @@ public class PlacesDefinition {
         placesSteps.checkPlaceBelongsToSubcategory();
     }
 
-    //  Scenario Outline: See a category of places on the map
     @When("User clicks on {} category")
     public void userClicksOnCategory(String category) throws IOException {
         placesSteps.clickOnCategory(category);
